@@ -1,0 +1,39 @@
+name: 校验 / Validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'empire/**'
+      - 'docs/**'
+      - 'README.md'
+      - 'CONTRIBUTING.md'
+      - '.github/ISSUE_TEMPLATE/**'
+      - '.github/PULL_REQUEST_TEMPLATE.md'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装依赖
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends jq sqlite3 build-essential
+          pip install --quiet -r requirements.txt
+
+      - name: 静态校验（schema + 唯一性 + 协议匹配）
+        run: python tools/validate_all.py
+
+      - name: 协议级 dry-run（实际跑每郡一次 dispatch）
+        run: python tools/validate_all.py --with-dry-run
