@@ -1,0 +1,4 @@
+{"tick": 1, "year": 0, "province_id": "sql", "province": "簿录郡", "language": "SQL", "ok": true, "status": "passed", "elapsed_ms": null, "events": [{"type": "service", "text": "簿录郡奉诏巡丁，新增 2 户，共 5 口。", "severity": "info"}], "error": null}
+{"tick": 1, "year": 0, "province_id": "c", "province": "始源郡", "language": "C", "ok": true, "status": "passed", "elapsed_ms": null, "events": [{"type": "produce", "text": "始源郡 春日 鼓风炼铁，铸工具 5 件。", "severity": "info"}], "error": null}
+{"tick": 1, "year": 0, "province_id": "python", "province": "白蛇郡", "language": "Python", "ok": true, "status": "passed", "elapsed_ms": null, "events": [{"type": "produce", "text": "白蛇郡 春耕之余，天朗气清，献文书 6 卷。", "severity": "info"}], "error": null}
+{"tick": 1, "year": 0, "province_id": "brainfuck", "province": "奇技郡", "language": "Brainfuck", "ok": true, "status": "passed", "elapsed_ms": 0, "events": [{"type": "ceremony", "text": "奇技郡造琉璃球，照见百年风物。", "severity": "info"}], "error": null}

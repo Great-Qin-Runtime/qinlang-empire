@@ -1,27 +1,103 @@
 {
   "schema_version": 1,
   "dynasty": "秦",
-  "tick": 0,
+  "tick": 1,
   "year": 0,
   "stage": "qin-yi",
   "stage_progress": 0.0,
   "season": "春",
   "weather": "晴",
   "treasury": {
-    "wen-shu": 0,
-    "gong-ju": 0,
+    "wen-shu": 6,
+    "gong-ju": 5,
     "qian-liang": 0,
     "jian-zhu": 0,
-    "hu-ji": 0
+    "hu-ji": 2
   },
   "provinces": {
-    "python":    { "level": 1, "loyalty": 100, "last_tick": 0, "produced": 0, "consumed": 0, "fail_streak": 0, "quarantined": false },
-    "c":         { "level": 1, "loyalty": 100, "last_tick": 0, "produced": 0, "consumed": 0, "fail_streak": 0, "quarantined": false },
-    "sql":       { "level": 1, "loyalty": 100, "last_tick": 0, "produced": 0, "consumed": 0, "fail_streak": 0, "quarantined": false },
-    "bash":      { "level": 1, "loyalty": 100, "last_tick": 0, "produced": 0, "consumed": 0, "fail_streak": 0, "quarantined": false },
-    "brainfuck": { "level": 1, "loyalty": 100, "last_tick": 0, "produced": 0, "consumed": 0, "fail_streak": 0, "quarantined": false }
+    "python": {
+      "level": 1,
+      "loyalty": 101,
+      "last_tick": 1,
+      "produced": 6,
+      "consumed": 0,
+      "fail_streak": 0,
+      "quarantined": false
+    },
+    "c": {
+      "level": 1,
+      "loyalty": 101,
+      "last_tick": 1,
+      "produced": 5,
+      "consumed": 0,
+      "fail_streak": 0,
+      "quarantined": false
+    },
+    "sql": {
+      "level": 1,
+      "loyalty": 101,
+      "last_tick": 1,
+      "produced": 2,
+      "consumed": 0,
+      "fail_streak": 0,
+      "quarantined": false
+    },
+    "bash": {
+      "level": 1,
+      "loyalty": 100,
+      "last_tick": 0,
+      "produced": 0,
+      "consumed": 0,
+      "fail_streak": 0,
+      "quarantined": false
+    },
+    "brainfuck": {
+      "level": 1,
+      "loyalty": 101,
+      "last_tick": 1,
+      "produced": 0,
+      "consumed": 0,
+      "fail_streak": 0,
+      "quarantined": false
+    }
   },
   "events": [
+    {
+      "tick": 1,
+      "year": 0,
+      "type": "ceremony",
+      "from_province": "brainfuck",
+      "text": "奇技郡造琉璃球，照见百年风物。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 1,
+      "year": 0,
+      "type": "produce",
+      "from_province": "python",
+      "text": "白蛇郡 春耕之余，天朗气清，献文书 6 卷。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 1,
+      "year": 0,
+      "type": "produce",
+      "from_province": "c",
+      "text": "始源郡 春日 鼓风炼铁，铸工具 5 件。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 1,
+      "year": 0,
+      "type": "service",
+      "from_province": "sql",
+      "text": "簿录郡奉诏巡丁，新增 2 户，共 5 口。",
+      "severity": "info",
+      "artifact": null
+    },
     {
       "tick": 0,
       "year": 0,
@@ -32,20 +108,97 @@
     }
   ],
   "milestones": [
-    { "id": "qin-yi-founded",   "name": "秦邑立国", "achieved": true,  "achieved_at": 0,    "stage": "qin-yi",   "description": "帝国之始。" },
-    { "id": "first-100-wenshu", "name": "百卷文书", "achieved": false, "achieved_at": null, "stage": "qin-yi",   "description": "文书首破百。" },
-    { "id": "first-city",       "name": "首邑筑城", "achieved": false, "achieved_at": null, "stage": "qin-yi",   "description": "建筑首破一。" },
-    { "id": "shang-yang-reform","name": "商鞅变法", "achieved": false, "achieved_at": null, "stage": "zhan-guo", "description": "战国期改制。" },
-    { "id": "fall-of-han",      "name": "灭韩",     "achieved": false, "achieved_at": null, "stage": "heng-sao", "description": "六国之首。" },
-    { "id": "fall-of-zhao",     "name": "灭赵",     "achieved": false, "achieved_at": null, "stage": "heng-sao", "description": "" },
-    { "id": "fall-of-wei",      "name": "灭魏",     "achieved": false, "achieved_at": null, "stage": "heng-sao", "description": "" },
-    { "id": "fall-of-chu",      "name": "灭楚",     "achieved": false, "achieved_at": null, "stage": "heng-sao", "description": "" },
-    { "id": "fall-of-yan",      "name": "灭燕",     "achieved": false, "achieved_at": null, "stage": "heng-sao", "description": "" },
-    { "id": "fall-of-qi",       "name": "灭齐",     "achieved": false, "achieved_at": null, "stage": "heng-sao", "description": "六国终灭。" },
-    { "id": "yi-tong",          "name": "一统天下", "achieved": false, "achieved_at": null, "stage": "yi-tong",  "description": "车同轨、书同文、度同制、币同形。" }
+    {
+      "id": "qin-yi-founded",
+      "name": "秦邑立国",
+      "achieved": true,
+      "achieved_at": 0,
+      "stage": "qin-yi",
+      "description": "帝国之始。"
+    },
+    {
+      "id": "first-100-wenshu",
+      "name": "百卷文书",
+      "achieved": false,
+      "achieved_at": null,
+      "stage": "qin-yi",
+      "description": "文书首破百。"
+    },
+    {
+      "id": "first-city",
+      "name": "首邑筑城",
+      "achieved": false,
+      "achieved_at": null,
+      "stage": "qin-yi",
+      "description": "建筑首破一。"
+    },
+    {
+      "id": "shang-yang-reform",
+      "name": "商鞅变法",
+      "achieved": false,
+      "achieved_at": null,
+      "stage": "zhan-guo",
+      "description": "战国期改制。"
+    },
+    {
+      "id": "fall-of-han",
+      "name": "灭韩",
+      "achieved": false,
+      "achieved_at": null,
+      "stage": "heng-sao",
+      "description": "六国之首。"
+    },
+    {
+      "id": "fall-of-zhao",
+      "name": "灭赵",
+      "achieved": false,
+      "achieved_at": null,
+      "stage": "heng-sao",
+      "description": ""
+    },
+    {
+      "id": "fall-of-wei",
+      "name": "灭魏",
+      "achieved": false,
+      "achieved_at": null,
+      "stage": "heng-sao",
+      "description": ""
+    },
+    {
+      "id": "fall-of-chu",
+      "name": "灭楚",
+      "achieved": false,
+      "achieved_at": null,
+      "stage": "heng-sao",
+      "description": ""
+    },
+    {
+      "id": "fall-of-yan",
+      "name": "灭燕",
+      "achieved": false,
+      "achieved_at": null,
+      "stage": "heng-sao",
+      "description": ""
+    },
+    {
+      "id": "fall-of-qi",
+      "name": "灭齐",
+      "achieved": false,
+      "achieved_at": null,
+      "stage": "heng-sao",
+      "description": "六国终灭。"
+    },
+    {
+      "id": "yi-tong",
+      "name": "一统天下",
+      "achieved": false,
+      "achieved_at": null,
+      "stage": "yi-tong",
+      "description": "车同轨、书同文、度同制、币同形。"
+    }
   ],
   "stats": {
-    "population": 1000,
+    "population": 1005,
     "land": 1,
     "military": 0,
     "reputation": 0,
