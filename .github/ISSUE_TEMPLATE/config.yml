@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 文档（Docs）
+    url: https://github.com/Great-Qin-Runtime/qinlang-empire/tree/main/docs
+    about: 提 issue 前，先看一眼游戏设计 / 协议 / 角色系统。
+  - name: 贡献指南
+    url: https://github.com/Great-Qin-Runtime/qinlang-empire/blob/main/CONTRIBUTING.md
+    about: 工作流：先 issue 后 PR。
