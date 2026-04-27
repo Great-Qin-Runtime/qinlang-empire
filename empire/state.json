@@ -1,43 +1,43 @@
 {
   "schema_version": 1,
   "dynasty": "秦",
-  "tick": 4,
+  "tick": 5,
   "year": 0,
   "stage": "qin-yi",
-  "stage_progress": 0.1947,
+  "stage_progress": 0.2046,
   "season": "春",
   "weather": "晴",
   "treasury": {
-    "wen-shu": 19,
-    "gong-ju": 9,
+    "wen-shu": 26,
+    "gong-ju": 14,
     "qian-liang": 0,
     "jian-zhu": 1,
-    "hu-ji": 8
+    "hu-ji": 11
   },
   "provinces": {
     "python": {
       "level": 1,
-      "loyalty": 104,
-      "last_tick": 4,
-      "produced": 22,
+      "loyalty": 105,
+      "last_tick": 5,
+      "produced": 29,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "c": {
       "level": 1,
-      "loyalty": 104,
-      "last_tick": 4,
-      "produced": 14,
+      "loyalty": 105,
+      "last_tick": 5,
+      "produced": 19,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "sql": {
       "level": 1,
-      "loyalty": 104,
-      "last_tick": 4,
-      "produced": 8,
+      "loyalty": 105,
+      "last_tick": 5,
+      "produced": 11,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -62,6 +62,33 @@
     }
   },
   "events": [
+    {
+      "tick": 5,
+      "year": 0,
+      "type": "produce",
+      "from_province": "python",
+      "text": "白蛇郡 春耕之余，天朗气清，献文书 7 卷。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 5,
+      "year": 0,
+      "type": "produce",
+      "from_province": "c",
+      "text": "始源郡 春日 鼓风炼铁，铸工具 5 件。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 5,
+      "year": 0,
+      "type": "service",
+      "from_province": "sql",
+      "text": "簿录郡奉诏巡丁，新增 3 户，共 9 口。",
+      "severity": "info",
+      "artifact": null
+    },
     {
       "tick": 4,
       "year": 0,
@@ -296,7 +323,7 @@
     }
   ],
   "stats": {
-    "population": 1021,
+    "population": 1030,
     "land": 1,
     "military": 0,
     "reputation": 0,
