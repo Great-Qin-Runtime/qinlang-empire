@@ -92,6 +92,14 @@
     "seal": {
       "type": ["string", "null"],
       "description": "最近一次玉玺 ID；阶段晋升或一统时刷新。"
+    },
+    "buffs": {
+      "type": "object",
+      "description": "阶段仪式赋予的长期加成。键为 buff ID，值为任意结构。",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": true
+      }
     }
   },
   "$defs": {

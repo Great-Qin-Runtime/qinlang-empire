@@ -23,7 +23,7 @@ import time
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from . import registry, state as state_mod, ticker, dispatcher
+from . import registry, state as state_mod, ticker, dispatcher, stages
 
 ROOT = Path(__file__).resolve().parent.parent
 PROVINCES_DIR = ROOT / "provinces"
@@ -67,6 +67,7 @@ def run_one_tick(
         reports.append(report)
 
     _check_milestones(state)
+    stages.maybe_advance(state, manifests)
     return reports
 
 
@@ -82,6 +83,12 @@ def _check_milestones(state: Dict[str, Any]) -> None:
             triggered = True
         elif mid == "first-city" and treasury.get("jian-zhu", 0) >= 1:
             triggered = True
+        elif mid == "shang-yang-reform" and treasury.get("wen-shu", 0) >= 300 and treasury.get("hu-ji", 0) >= 60:
+            triggered = True
+        elif mid.startswith("fall-of-"):
+            triggered = _check_conquest_milestone(mid, state)
+        elif mid == "yi-tong" and state.get("stage") in {"yi-tong", "di-guo", "wan-shi"}:
+            triggered = True
         if triggered:
             m["achieved"] = True
             m["achieved_at"] = state["tick"]
@@ -92,6 +99,23 @@ def _check_milestones(state: Dict[str, Any]) -> None:
                 "text": f"里程碑达成：{m.get('name', mid)}",
                 "severity": "epic",
             })
+
+
+def _check_conquest_milestone(mid: str, state: Dict[str, Any]) -> bool:
+    order = [
+        ("fall-of-han", 120),
+        ("fall-of-zhao", 240),
+        ("fall-of-wei", 360),
+        ("fall-of-chu", 520),
+        ("fall-of-yan", 680),
+        ("fall-of-qi", 860),
+    ]
+    required = dict(order).get(mid)
+    if required is None:
+        return False
+    treasury = state.get("treasury", {})
+    force = treasury.get("bing-qi", 0) + treasury.get("bing-ma", 0) + treasury.get("cheng-chi", 0) * 20
+    return force >= required
 
 
 def main() -> int:
