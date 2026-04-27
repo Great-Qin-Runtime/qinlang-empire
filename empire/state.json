@@ -1,60 +1,60 @@
 {
   "schema_version": 1,
   "dynasty": "秦",
-  "tick": 5,
+  "tick": 6,
   "year": 0,
   "stage": "qin-yi",
-  "stage_progress": 0.2046,
-  "season": "春",
+  "stage_progress": 0.2341,
+  "season": "夏",
   "weather": "晴",
   "treasury": {
-    "wen-shu": 26,
-    "gong-ju": 14,
+    "wen-shu": 27,
+    "gong-ju": 13,
     "qian-liang": 0,
-    "jian-zhu": 1,
-    "hu-ji": 11
+    "jian-zhu": 2,
+    "hu-ji": 12
   },
   "provinces": {
     "python": {
       "level": 1,
-      "loyalty": 105,
-      "last_tick": 5,
-      "produced": 29,
+      "loyalty": 106,
+      "last_tick": 6,
+      "produced": 33,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "c": {
       "level": 1,
-      "loyalty": 105,
-      "last_tick": 5,
-      "produced": 19,
+      "loyalty": 106,
+      "last_tick": 6,
+      "produced": 23,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "sql": {
       "level": 1,
-      "loyalty": 105,
-      "last_tick": 5,
-      "produced": 11,
+      "loyalty": 106,
+      "last_tick": 6,
+      "produced": 12,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "bash": {
       "level": 1,
-      "loyalty": 101,
-      "last_tick": 3,
-      "produced": 1,
-      "consumed": 8,
+      "loyalty": 102,
+      "last_tick": 6,
+      "produced": 2,
+      "consumed": 16,
       "fail_streak": 0,
       "quarantined": false
     },
     "brainfuck": {
       "level": 1,
-      "loyalty": 101,
-      "last_tick": 1,
+      "loyalty": 102,
+      "last_tick": 6,
       "produced": 0,
       "consumed": 0,
       "fail_streak": 0,
@@ -62,6 +62,51 @@
     }
   },
   "events": [
+    {
+      "tick": 6,
+      "year": 0,
+      "type": "ceremony",
+      "from_province": "brainfuck",
+      "text": "奇技郡造水钟，市井惊曰天工。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 6,
+      "year": 0,
+      "type": "produce",
+      "from_province": "python",
+      "text": "白蛇郡 夏暑稍歇，天朗气清，献文书 4 卷。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 6,
+      "year": 0,
+      "type": "produce",
+      "from_province": "c",
+      "text": "始源郡 夏日 鼓风炼铁，铸工具 4 件。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 6,
+      "year": 0,
+      "type": "transform",
+      "from_province": "bash",
+      "text": "巴什郡兴土木 1 座，耗工具 5 件、文书 3 卷。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 6,
+      "year": 0,
+      "type": "service",
+      "from_province": "sql",
+      "text": "簿录郡奉诏巡丁，新增 1 户，共 2 口。",
+      "severity": "info",
+      "artifact": null
+    },
     {
       "tick": 5,
       "year": 0,
@@ -323,7 +368,7 @@
     }
   ],
   "stats": {
-    "population": 1030,
+    "population": 1032,
     "land": 1,
     "military": 0,
     "reputation": 0,
