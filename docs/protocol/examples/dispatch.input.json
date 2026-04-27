@@ -1,0 +1,33 @@
+{
+  "protocol_version": 2,
+  "dispatch": {
+    "schema_version": 1,
+    "dispatch_id": "dispatch-000042-python",
+    "tick": 42,
+    "year": 1,
+    "stage": "qin-yi",
+    "to_province": "python",
+    "dispatch_type": "produce",
+    "self": {
+      "level": 1,
+      "loyalty": 102,
+      "last_tick": 41,
+      "produced": 168,
+      "consumed": 0,
+      "fail_streak": 0,
+      "quarantined": false
+    },
+    "context": {
+      "season": "夏",
+      "weather": "晴",
+      "random_seed": "ab7c3d92",
+      "deadline_ms": 3000
+    },
+    "expects": {
+      "produces": ["wen-shu"],
+      "consumes": {},
+      "max_event_count": 4,
+      "max_text_length": 256
+    }
+  }
+}

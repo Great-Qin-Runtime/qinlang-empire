@@ -1,0 +1,37 @@
+{
+  "protocol_version": 2,
+  "dispatch": {
+    "schema_version": 1,
+    "dispatch_id": "dispatch-000045-bash",
+    "tick": 45,
+    "year": 1,
+    "stage": "qin-yi",
+    "to_province": "bash",
+    "dispatch_type": "transform",
+    "self": {
+      "level": 1,
+      "loyalty": 100,
+      "last_tick": 42,
+      "produced": 3,
+      "consumed": 24,
+      "fail_streak": 0,
+      "quarantined": false
+    },
+    "treasury_view": {
+      "gong-ju": 23,
+      "wen-shu": 17
+    },
+    "context": {
+      "season": "夏",
+      "weather": "晴",
+      "random_seed": "9be4f1aa",
+      "deadline_ms": 5000
+    },
+    "expects": {
+      "produces": ["jian-zhu"],
+      "consumes": { "gong-ju": 5, "wen-shu": 3 },
+      "max_event_count": 4,
+      "max_text_length": 256
+    }
+  }
+}

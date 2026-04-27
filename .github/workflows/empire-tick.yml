@@ -1,0 +1,61 @@
+name: 帝国心跳 / Empire Tick
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'   # 每 5 分钟（GitHub 实际可能延迟到 10~15 分钟）
+  workflow_dispatch:
+    inputs:
+      ticks:
+        description: '一次跑多少 tick'
+        required: false
+        default: '1'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: empire-tick
+  cancel-in-progress: false
+
+jobs:
+  tick:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 安装依赖
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends jq sqlite3 build-essential
+          pip install --quiet -r requirements.txt
+
+      - name: 朝廷心跳
+        run: |
+          TICKS="${{ github.event.inputs.ticks }}"
+          TICKS="${TICKS:-1}"
+          python -m court.emperor --ticks "$TICKS"
+
+      - name: 写回史册
+        env:
+          GIT_AUTHOR_NAME: qin-emperor[bot]
+          GIT_AUTHOR_EMAIL: 169919870+qin-emperor[bot]@users.noreply.github.com
+          GIT_COMMITTER_NAME: qin-emperor[bot]
+          GIT_COMMITTER_EMAIL: 169919870+qin-emperor[bot]@users.noreply.github.com
+        run: |
+          git add empire/state.json empire/history.jsonl
+          if git diff --cached --quiet; then
+            echo "无变更，免复诏。"
+            exit 0
+          fi
+          TICK=$(python -c "import json; print(json.load(open('empire/state.json','r',encoding='utf-8'))['tick'])")
+          YEAR=$(python -c "import json; print(json.load(open('empire/state.json','r',encoding='utf-8'))['year'])")
+          STAGE=$(python -c "import json; print(json.load(open('empire/state.json','r',encoding='utf-8'))['stage'])")
+          git commit -m "tick $TICK · year $YEAR · stage $STAGE"
+          git push

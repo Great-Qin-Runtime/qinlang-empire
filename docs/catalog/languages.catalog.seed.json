@@ -1,0 +1,189 @@
+{
+  "$schema": "../protocol/manifest.schema.json",
+  "version": 1,
+  "comment": "Seed 数据：V0.1 第一批 20 种语言。完整登记表请见仓库根 catalog/languages.catalog.json。",
+  "languages": [
+    {
+      "id": "python",
+      "name": "Python",
+      "province": "白蛇郡",
+      "category": "interpreted-language",
+      "runner": "direct",
+      "status": "runnable",
+      "tags": ["mainstream", "scripting"],
+      "description": "通用动态脚本语言。"
+    },
+    {
+      "id": "javascript",
+      "name": "JavaScript",
+      "province": "柔脚郡",
+      "category": "interpreted-language",
+      "runner": "direct",
+      "status": "runnable",
+      "tags": ["mainstream", "web"],
+      "description": "Node.js 解释执行。"
+    },
+    {
+      "id": "typescript",
+      "name": "TypeScript",
+      "province": "类型郡",
+      "category": "interpreted-language",
+      "runner": "direct",
+      "status": "runnable",
+      "tags": ["mainstream", "typed-static", "web"]
+    },
+    {
+      "id": "c",
+      "name": "C",
+      "province": "始源郡",
+      "category": "compiled-system-language",
+      "runner": "compiled",
+      "status": "runnable",
+      "tags": ["mainstream", "systems", "no-gc"]
+    },
+    {
+      "id": "cpp",
+      "name": "C++",
+      "province": "增广郡",
+      "category": "compiled-system-language",
+      "runner": "compiled",
+      "status": "runnable",
+      "tags": ["mainstream", "systems", "multi-paradigm"]
+    },
+    {
+      "id": "rust",
+      "name": "Rust",
+      "province": "锈铁郡",
+      "category": "compiled-system-language",
+      "runner": "compiled",
+      "status": "runnable",
+      "tags": ["mainstream", "systems", "ownership"]
+    },
+    {
+      "id": "go",
+      "name": "Go",
+      "province": "高速郡",
+      "category": "compiled-system-language",
+      "runner": "compiled",
+      "status": "runnable",
+      "tags": ["mainstream", "systems", "gc"]
+    },
+    {
+      "id": "java",
+      "name": "Java",
+      "province": "虚机郡",
+      "category": "vm-language",
+      "runner": "vm",
+      "status": "runnable",
+      "tags": ["mainstream", "oop", "gc"]
+    },
+    {
+      "id": "csharp",
+      "name": "C#",
+      "province": "锐音郡",
+      "category": "vm-language",
+      "runner": "vm",
+      "status": "runnable",
+      "tags": ["mainstream", "oop", "gc"]
+    },
+    {
+      "id": "ruby",
+      "name": "Ruby",
+      "province": "红玉郡",
+      "category": "interpreted-language",
+      "runner": "direct",
+      "status": "runnable",
+      "tags": ["mainstream", "scripting", "oop"]
+    },
+    {
+      "id": "php",
+      "name": "PHP",
+      "province": "紫衫郡",
+      "category": "interpreted-language",
+      "runner": "direct",
+      "status": "runnable",
+      "tags": ["mainstream", "web"]
+    },
+    {
+      "id": "lua",
+      "name": "Lua",
+      "province": "月光郡",
+      "category": "interpreted-language",
+      "runner": "direct",
+      "status": "runnable",
+      "tags": ["embedded", "scripting"]
+    },
+    {
+      "id": "perl",
+      "name": "Perl",
+      "province": "织丝郡",
+      "category": "interpreted-language",
+      "runner": "direct",
+      "status": "runnable",
+      "tags": ["scripting", "legacy"]
+    },
+    {
+      "id": "bash",
+      "name": "Bash",
+      "province": "巴什郡",
+      "category": "shell-language",
+      "runner": "direct",
+      "status": "runnable",
+      "tags": ["mainstream", "shell"]
+    },
+    {
+      "id": "powershell",
+      "name": "PowerShell",
+      "province": "强壳郡",
+      "category": "shell-language",
+      "runner": "direct",
+      "status": "runnable",
+      "tags": ["shell", "cross-platform"]
+    },
+    {
+      "id": "sql",
+      "name": "SQL",
+      "province": "簿录郡",
+      "category": "query-language",
+      "runner": "query",
+      "status": "runnable",
+      "tags": ["mainstream", "query"]
+    },
+    {
+      "id": "r",
+      "name": "R",
+      "province": "统计郡",
+      "category": "scientific-language",
+      "runner": "direct",
+      "status": "runnable",
+      "tags": ["scientific", "statistics"]
+    },
+    {
+      "id": "julia",
+      "name": "Julia",
+      "province": "朱莉郡",
+      "category": "scientific-language",
+      "runner": "direct",
+      "status": "runnable",
+      "tags": ["scientific", "modern"]
+    },
+    {
+      "id": "prolog",
+      "name": "Prolog",
+      "province": "律令郡",
+      "category": "logic-rule-language",
+      "runner": "direct",
+      "status": "runnable",
+      "tags": ["logic", "declarative"]
+    },
+    {
+      "id": "brainfuck",
+      "name": "Brainfuck",
+      "province": "奇技郡",
+      "category": "esolang",
+      "runner": "esolang",
+      "status": "runnable",
+      "tags": ["fun", "turing-complete"]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "language": "Python",
+  "province": "白蛇郡",
+  "ok": true,
+  "tick": 42,
+  "dispatch_id": "dispatch-000042-python",
+  "deltas": {
+    "treasury": { "wen-shu": 6 },
+    "self": { "produced": 6 }
+  },
+  "events": [
+    {
+      "type": "produce",
+      "text": "白蛇郡 夏暑稍歇，天朗气清，献文书 6 卷。",
+      "severity": "info"
+    }
+  ],
+  "metrics": {
+    "elapsed_ms": 12,
+    "stdin_bytes": 540,
+    "stdout_bytes": 246
+  }
+}

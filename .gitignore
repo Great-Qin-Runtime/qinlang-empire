@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.env
+
+# 编译产物
+provinces/c/main_bin
+provinces/c/main_bin.exe
+provinces/*/build/
+provinces/*/target/
+*.o
+*.exe
+!provinces/*/*.exe.expected   # 保留显式期望
+
+# IDE
+.idea/
+.vscode/
+*.swp
+.DS_Store
+
+# 临时文件
+*.tmp
+*.log
+empire/state.backup*.json

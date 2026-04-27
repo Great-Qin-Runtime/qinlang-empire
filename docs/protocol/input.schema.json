@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qinlang.empire/schema/input.schema.json",
+  "title": "QinLang Empire Province Input (stdin)",
+  "description": "调度器写入到子进程 stdin 的对象。等价于 dispatch.schema.json 加协议元字段。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol_version", "dispatch"],
+  "properties": {
+    "protocol_version": {
+      "type": "integer",
+      "minimum": 2,
+      "default": 2,
+      "description": "v1 = 旧 edict 协议；v2 = idle game 协议（本版）。"
+    },
+    "dispatch": { "$ref": "dispatch.schema.json" },
+    "permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "network":  { "type": "array", "items": { "type": "string" } },
+        "fs_read":  { "type": "array", "items": { "type": "string" } },
+        "fs_write": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

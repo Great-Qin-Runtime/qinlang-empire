@@ -1,0 +1,144 @@
+{
+  "$schema": "../protocol/runners.catalog.schema.json",
+  "version": 1,
+  "runners": [
+    {
+      "id": "direct",
+      "name": "Direct Runner",
+      "description": "本机解释器直接运行；最简单、最快的 runner。",
+      "supports_build": false,
+      "requires_image": false,
+      "input_modes": ["stdin-json", "stdin-text"],
+      "output_modes": ["stdout-json"],
+      "typical_categories": [
+        "interpreted-language",
+        "shell-language"
+      ]
+    },
+    {
+      "id": "compiled",
+      "name": "Compiled Runner",
+      "description": "先 build 再 run；产物为本机二进制。",
+      "supports_build": true,
+      "requires_image": false,
+      "input_modes": ["stdin-json", "ignored"],
+      "output_modes": ["stdout-json"],
+      "typical_categories": [
+        "compiled-system-language",
+        "assembly-ir-language",
+        "smart-contract-language"
+      ]
+    },
+    {
+      "id": "vm",
+      "name": "VM Runner",
+      "description": "运行于 JVM / CLR / BEAM 等虚拟机。",
+      "supports_build": true,
+      "requires_image": false,
+      "input_modes": ["stdin-json"],
+      "output_modes": ["stdout-json"],
+      "typical_categories": ["vm-language"]
+    },
+    {
+      "id": "docker",
+      "name": "Docker Runner",
+      "description": "在容器中执行，隔离工具链与环境。",
+      "supports_build": true,
+      "requires_image": true,
+      "input_modes": ["stdin-json", "stdin-text", "ignored"],
+      "output_modes": ["stdout-json", "wrapped-json"],
+      "typical_categories": [
+        "historical-language",
+        "platform-enterprise-language",
+        "compiled-system-language"
+      ]
+    },
+    {
+      "id": "nix",
+      "name": "Nix Runner",
+      "description": "通过 Nix flake 提供精确工具链。",
+      "supports_build": true,
+      "requires_image": false,
+      "input_modes": ["stdin-json", "ignored"],
+      "output_modes": ["stdout-json", "wrapped-json"],
+      "typical_categories": []
+    },
+    {
+      "id": "query",
+      "name": "Query Runner",
+      "description": "交给查询引擎执行。",
+      "supports_build": false,
+      "requires_image": false,
+      "input_modes": ["stdin-json", "ignored"],
+      "output_modes": ["stdout-json", "wrapped-json"],
+      "typical_categories": [
+        "query-language",
+        "config-data-language"
+      ]
+    },
+    {
+      "id": "render",
+      "name": "Render Runner",
+      "description": "渲染图 / 文档产物，比较产物文件而非 stdout。",
+      "supports_build": false,
+      "requires_image": false,
+      "input_modes": ["ignored"],
+      "output_modes": ["rendered-file"],
+      "typical_categories": [
+        "visualization-dsl",
+        "frontend-language",
+        "template-language"
+      ]
+    },
+    {
+      "id": "proof",
+      "name": "Proof Runner",
+      "description": "运行形式化验证器，仅看 build 退出码。",
+      "supports_build": true,
+      "requires_image": false,
+      "input_modes": ["ignored"],
+      "output_modes": ["wrapped-json"],
+      "typical_categories": ["proof-formal-language"]
+    },
+    {
+      "id": "shader",
+      "name": "Shader Runner",
+      "description": "Shader 编译器仅做语法 / 语义验证。",
+      "supports_build": true,
+      "requires_image": false,
+      "input_modes": ["ignored"],
+      "output_modes": ["wrapped-json"],
+      "typical_categories": ["shader-language"]
+    },
+    {
+      "id": "hdl",
+      "name": "HDL Runner",
+      "description": "硬件描述语言：综合 + 仿真。",
+      "supports_build": true,
+      "requires_image": false,
+      "input_modes": ["ignored"],
+      "output_modes": ["wrapped-json"],
+      "typical_categories": ["hardware-description-language"]
+    },
+    {
+      "id": "esolang",
+      "name": "Esolang Runner",
+      "description": "包装 esolang 解释器，自动合成合规 JSON。",
+      "supports_build": false,
+      "requires_image": false,
+      "input_modes": ["ignored"],
+      "output_modes": ["wrapped-json"],
+      "typical_categories": ["esolang"]
+    },
+    {
+      "id": "manual",
+      "name": "Manual Runner",
+      "description": "平台受限或商业平台，直接读取 expected.json。",
+      "supports_build": false,
+      "requires_image": false,
+      "input_modes": ["ignored"],
+      "output_modes": ["wrapped-json"],
+      "typical_categories": ["platform-enterprise-language"]
+    }
+  ]
+}

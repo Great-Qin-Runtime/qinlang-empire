@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qinlang.empire/schema/output.schema.json",
+  "title": "QinLang Empire Province Output (stdout)",
+  "description": "语言郡返回给调度器的奏报：状态 delta + 事件 + 仪式盖章。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["language", "province", "ok", "tick", "deltas", "events"],
+  "properties": {
+    "language": { "type": "string", "minLength": 1 },
+    "province": { "type": "string", "pattern": ".+郡$" },
+    "ok":       { "type": "boolean" },
+    "tick":     { "type": "integer", "minimum": 0 },
+    "dispatch_id": { "type": ["string", "null"] },
+    "deltas": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "对帝国状态的修改请求；调度器最终决定是否合并。",
+      "properties": {
+        "treasury": {
+          "type": "object",
+          "description": "资源增减；正负皆可，整数。",
+          "additionalProperties": { "type": "integer" }
+        },
+        "self": {
+          "type": "object",
+          "description": "对本郡 provinceState 的修改。",
+          "additionalProperties": false,
+          "properties": {
+            "produced":  { "type": "integer" },
+            "consumed":  { "type": "integer" },
+            "loyalty":   { "type": "integer" },
+            "title":     { "type": ["string", "null"] }
+          }
+        },
+        "stats": {
+          "type": "object",
+          "additionalProperties": { "type": "integer" }
+        },
+        "civilization_index": {
+          "type": "object",
+          "additionalProperties": { "type": "integer" }
+        }
+      }
+    },
+    "events": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "text"],
+        "properties": {
+          "type":     { "type": "string" },
+          "text":     { "type": "string", "minLength": 1, "maxLength": 256 },
+          "severity": { "type": "string", "enum": ["info", "warn", "epic"], "default": "info" },
+          "artifact": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "stamps": {
+      "type": "array",
+      "maxItems": 4,
+      "description": "仪式盖章；保留以兼容旧 v1 协议。",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["language", "province", "text"],
+        "properties": {
+          "language": { "type": "string" },
+          "province": { "type": "string" },
+          "text":     { "type": "string", "maxLength": 256 }
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "message"],
+      "properties": {
+        "code":    { "type": "string", "pattern": "^E[0-9]{4}$" },
+        "message": { "type": "string", "minLength": 1, "maxLength": 1024 },
+        "detail":  { "type": "string", "maxLength": 4096 }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "elapsed_ms":  { "type": "integer", "minimum": 0 },
+        "memory_kb":   { "type": "integer", "minimum": 0 },
+        "stdin_bytes": { "type": "integer", "minimum": 0 },
+        "stdout_bytes":{ "type": "integer", "minimum": 0 },
+        "stderr_bytes":{ "type": "integer", "minimum": 0 }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "ok": { "const": false } } },
+      "then": { "required": ["error"] }
+    }
+  ]
+}

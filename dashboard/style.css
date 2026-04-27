@@ -1,0 +1,336 @@
+/* 大秦帝国 dashboard · 静态样式 */
+
+:root {
+  --bg:        #1a0e0a;
+  --bg-soft:   #241510;
+  --bg-card:   #2c1a13;
+  --ink:       #e8d9b0;
+  --ink-soft:  #b39e75;
+  --ink-mute:  #74634a;
+  --bronze:    #a86932;
+  --jade:      #3a7d44;
+  --indigo:    #2c4a7c;
+  --gold:      #c9a544;
+  --lacquer:   #7a1f1f;
+  --epic:      #c9a544;
+  --warn:      #d97a2c;
+  --info:      #b39e75;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Source Han Serif SC", "Noto Serif CJK SC", "Noto Serif",
+               "STZhongsong", "STSong", serif;
+  font-size: 14px;
+  min-height: 100vh;
+}
+
+a { color: var(--gold); }
+
+/* ==== HALL (top header) ==== */
+.hall {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 24px 32px;
+  background: linear-gradient(180deg, #2a1610 0%, #1a0e0a 100%);
+  border-bottom: 1px solid var(--bronze);
+}
+
+.hall__title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hall__title h1 {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: 2px;
+  color: var(--ink);
+}
+
+.hall__title .subtitle {
+  display: block;
+  font-size: 12px;
+  color: var(--ink-mute);
+  margin-top: 4px;
+}
+
+.seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: var(--lacquer);
+  color: var(--ink);
+  font-size: 36px;
+  font-weight: bold;
+  letter-spacing: 0;
+  border: 2px solid var(--bronze);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  font-family: "STKaiti", "KaiTi", serif;
+}
+
+.hall__clock {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 8px 24px;
+  font-size: 13px;
+}
+
+.clock-row {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.clock-row .label {
+  color: var(--ink-mute);
+  letter-spacing: 1px;
+}
+
+.clock-row .value {
+  color: var(--gold);
+  font-weight: bold;
+}
+
+/* ==== MAIN ==== */
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 16px;
+  padding: 16px 32px;
+}
+
+.events    { grid-column: 1 / 2; grid-row: 2 / 3; }
+.milestones{ grid-column: 2 / 3; grid-row: 2 / 3; }
+
+@media (max-width: 900px) {
+  main { grid-template-columns: 1fr; }
+  .events, .milestones { grid-column: auto; grid-row: auto; }
+  .hall { grid-template-columns: 1fr; gap: 12px; }
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--bronze);
+  border-radius: 4px;
+  padding: 16px 20px;
+}
+
+.card h2 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  border-bottom: 1px dashed var(--bronze);
+  padding-bottom: 6px;
+}
+
+/* ==== Treasury ==== */
+.resource-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 16px;
+}
+
+.resource-list li {
+  display: grid;
+  grid-template-columns: 70px 1fr auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.resource-list .res-name {
+  color: var(--ink-soft);
+}
+
+.resource-list .res-bar {
+  height: 8px;
+  background: var(--bg-soft);
+  border: 1px solid var(--ink-mute);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.resource-list .res-bar > span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--bronze), var(--gold));
+}
+
+.resource-list .res-num {
+  color: var(--gold);
+  font-weight: bold;
+  min-width: 40px;
+  text-align: right;
+}
+
+/* ==== Province grid ==== */
+.province-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 8px;
+}
+
+.province {
+  position: relative;
+  padding: 10px 8px;
+  border: 1px solid var(--bronze);
+  border-radius: 3px;
+  background: var(--bg-soft);
+  text-align: center;
+  cursor: default;
+  transition: transform 0.2s;
+}
+
+.province:hover {
+  transform: translateY(-2px);
+}
+
+.province.role-producer    { border-color: var(--bronze); }
+.province.role-transformer { border-color: var(--jade); }
+.province.role-service     { border-color: var(--indigo); }
+.province.role-specialist  { border-color: var(--gold); }
+.province.role-ceremonial  { border-color: var(--lacquer); }
+
+.province.quarantined {
+  opacity: 0.3;
+  filter: grayscale(1);
+}
+
+.province .prov-name {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.province .prov-lang {
+  font-size: 11px;
+  color: var(--ink-mute);
+  margin-bottom: 6px;
+}
+
+.province .loyalty-bar {
+  height: 4px;
+  background: var(--bg);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.province .loyalty-bar > span {
+  display: block;
+  height: 100%;
+  background: var(--jade);
+}
+
+.province .prov-stat {
+  font-size: 10px;
+  color: var(--ink-mute);
+  letter-spacing: 1px;
+}
+
+.province .prov-pulse {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.province.active .prov-pulse {
+  animation: pulse 2s ease-out 1;
+}
+
+@keyframes pulse {
+  0%   { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(3); }
+}
+
+/* ==== Events ==== */
+.event-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+.event-list li {
+  padding: 6px 8px;
+  border-bottom: 1px dotted var(--bg-soft);
+  font-size: 13px;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.event-list .evt-tag {
+  color: var(--ink-mute);
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.event-list .evt-text {
+  color: var(--ink-soft);
+}
+
+.event-list .severity-info  .evt-text { color: var(--info); }
+.event-list .severity-warn  .evt-text { color: var(--warn); }
+.event-list .severity-epic  .evt-text { color: var(--epic); font-weight: bold; }
+
+/* ==== Milestones ==== */
+.milestone-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.milestone-list li {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px dotted var(--bg-soft);
+  font-size: 13px;
+}
+
+.milestone-list .ms-mark {
+  width: 18px;
+  text-align: center;
+  color: var(--ink-mute);
+}
+
+.milestone-list .achieved .ms-mark { color: var(--gold); }
+.milestone-list .achieved .ms-name { color: var(--gold); }
+
+.milestone-list .ms-stage {
+  font-size: 11px;
+  color: var(--ink-mute);
+}
+
+footer {
+  padding: 12px 32px;
+  font-size: 11px;
+  color: var(--ink-mute);
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--bg-soft);
+}

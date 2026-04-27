@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>大秦帝国 · QinLang Empire</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hall">
+    <div class="hall__title">
+      <span class="seal">秦</span>
+      <h1>大秦帝国 · QinLang Empire</h1>
+      <span class="subtitle">由 <span data-bind="provinceCount">—</span> 种语言协作运转的放置式帝国</span>
+    </div>
+    <div class="hall__clock">
+      <div class="clock-row">
+        <span class="label">朝代</span>
+        <span class="value" data-bind="stageName">—</span>
+      </div>
+      <div class="clock-row">
+        <span class="label">帝国年</span>
+        <span class="value" data-bind="year">—</span>
+      </div>
+      <div class="clock-row">
+        <span class="label">刻</span>
+        <span class="value" data-bind="tick">—</span>
+      </div>
+      <div class="clock-row">
+        <span class="label">时</span>
+        <span class="value">
+          <span data-bind="season">—</span>
+          ·
+          <span data-bind="weather">—</span>
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="treasury card">
+      <h2>国库 · Treasury</h2>
+      <ul class="resource-list" data-bind="treasuryList"></ul>
+    </section>
+
+    <section class="provinces card">
+      <h2>舆图 · Provinces</h2>
+      <div class="province-grid" data-bind="provinceGrid"></div>
+    </section>
+
+    <section class="events card">
+      <h2>史册 · History</h2>
+      <ul class="event-list" data-bind="eventList"></ul>
+    </section>
+
+    <section class="milestones card">
+      <h2>里程碑 · Milestones</h2>
+      <ul class="milestone-list" data-bind="milestoneList"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <span>data: <code>empire/state.json</code></span>
+    <span data-bind="updatedAt">—</span>
+    <span>cron tick 间隔 5 分钟，本页自动刷新</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

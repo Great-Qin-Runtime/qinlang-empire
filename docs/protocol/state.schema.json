@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qinlang.empire/schema/state.schema.json",
+  "title": "QinLang Empire State",
+  "description": "帝国全局状态。永远以秦视角，dynasty 字段恒为「秦」。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "dynasty", "tick", "year", "stage",
+    "treasury", "provinces", "events", "milestones", "stats"
+  ],
+  "properties": {
+    "schema_version": { "type": "integer", "const": 1 },
+    "dynasty": {
+      "type": "string",
+      "const": "秦",
+      "description": "帝国主体永远是秦，不可写入其他值。"
+    },
+    "tick": { "type": "integer", "minimum": 0 },
+    "year": { "type": "integer", "minimum": 0 },
+    "stage": {
+      "type": "string",
+      "enum": ["qin-yi", "chun-qiu", "zhan-guo", "heng-sao", "yi-tong", "di-guo", "wan-shi"]
+    },
+    "stage_progress": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "season": { "type": "string", "enum": ["春", "夏", "秋", "冬"] },
+    "weather": { "type": "string", "enum": ["晴", "雨", "雪", "雾", "霾", "异象"] },
+    "treasury": {
+      "type": "object",
+      "additionalProperties": { "type": "integer" },
+      "description": "资源储备。允许的键见 docs/empire-game-design.md §5。",
+      "properties": {
+        "wen-shu":   { "type": "integer", "minimum": 0 },
+        "gong-ju":   { "type": "integer", "minimum": 0 },
+        "bing-qi":   { "type": "integer", "minimum": 0 },
+        "qian-liang":{ "type": "integer", "minimum": 0 },
+        "jian-zhu":  { "type": "integer", "minimum": 0 },
+        "hu-ji":     { "type": "integer", "minimum": 0 },
+        "xue-wen":   { "type": "integer", "minimum": 0 },
+        "yi-li":     { "type": "integer", "minimum": 0 },
+        "bing-ma":   { "type": "integer", "minimum": 0 },
+        "cheng-chi": { "type": "integer", "minimum": 0 },
+        "zhao-shu":  { "type": "integer", "minimum": 0 },
+        "dian-ji":   { "type": "integer", "minimum": 0 },
+        "fang-shu":  { "type": "integer", "minimum": 0 },
+        "dao-ju":    { "type": "integer", "minimum": 0 }
+      }
+    },
+    "civilization_index": {
+      "type": "object",
+      "description": "文明指数；wan-shi 阶段才开放使用。",
+      "additionalProperties": false,
+      "properties": {
+        "wu-gong":   { "type": "integer", "minimum": 0 },
+        "wen-zhi":   { "type": "integer", "minimum": 0 },
+        "gong-qiao": { "type": "integer", "minimum": 0 },
+        "xue-wen":   { "type": "integer", "minimum": 0 },
+        "yi-li":     { "type": "integer", "minimum": 0 }
+      }
+    },
+    "provinces": {
+      "type": "object",
+      "description": "已入册郡的运行状态。键 = 语言 ID。",
+      "additionalProperties": { "$ref": "#/$defs/provinceState" }
+    },
+    "events": {
+      "type": "array",
+      "description": "最近 N 条事件，长度由调度器保留 cap（默认 200）。",
+      "items": { "$ref": "#/$defs/event" }
+    },
+    "milestones": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/milestone" }
+    },
+    "stats": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "population":     { "type": "integer", "minimum": 0 },
+        "land":           { "type": "integer", "minimum": 0 },
+        "military":       { "type": "integer", "minimum": 0 },
+        "reputation":     { "type": "integer", "minimum": 0 },
+        "edicts_issued":  { "type": "integer", "minimum": 0 },
+        "audits_passed":  { "type": "integer", "minimum": 0 },
+        "audits_failed":  { "type": "integer", "minimum": 0 }
+      }
+    },
+    "seal": {
+      "type": ["string", "null"],
+      "description": "最近一次玉玺 ID；阶段晋升或一统时刷新。"
+    }
+  },
+  "$defs": {
+    "provinceState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "loyalty", "last_tick"],
+      "properties": {
+        "level":      { "type": "integer", "minimum": 1, "default": 1 },
+        "loyalty":    { "type": "integer", "minimum": 0, "maximum": 200, "default": 100 },
+        "last_tick":  { "type": "integer", "minimum": 0 },
+        "produced":   { "type": "integer", "minimum": 0 },
+        "consumed":   { "type": "integer", "minimum": 0 },
+        "fail_streak":{ "type": "integer", "minimum": 0, "default": 0 },
+        "quarantined":{ "type": "boolean", "default": false },
+        "title":      { "type": ["string", "null"] }
+      }
+    },
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tick", "type", "text"],
+      "properties": {
+        "tick":          { "type": "integer", "minimum": 0 },
+        "year":          { "type": "integer", "minimum": 0 },
+        "type": {
+          "type": "string",
+          "enum": [
+            "produce", "transform", "service", "specialist", "ceremony",
+            "natural", "military", "milestone", "unlock", "audit",
+            "quarantine", "rebellion", "epoch", "system"
+          ]
+        },
+        "from_province": { "type": ["string", "null"] },
+        "text":          { "type": "string", "minLength": 1, "maxLength": 1024 },
+        "severity":      { "type": "string", "enum": ["info", "warn", "epic"], "default": "info" },
+        "artifact":      { "type": ["string", "null"] }
+      }
+    },
+    "milestone": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "achieved"],
+      "properties": {
+        "id":         { "type": "string", "pattern": "^[a-z][a-z0-9-]+$" },
+        "name":       { "type": "string" },
+        "achieved":   { "type": "boolean" },
+        "achieved_at":{ "type": ["integer", "null"], "minimum": 0 },
+        "stage":      { "type": ["string", "null"] },
+        "description":{ "type": "string", "maxLength": 512 }
+      }
+    }
+  }
+}

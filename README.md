@@ -1,0 +1,181 @@
+# 大秦帝国 · QinLang Empire
+
+> 一郡一郡建国，一年一年扩疆，一代一代不绝。  
+> 由 300+ 种编程语言协作运转的、永不结束的、放置式经营帝国。
+
+[![tick](https://img.shields.io/badge/dynasty-%E7%A7%A6-7a1f1f)](#)
+[![stage](https://img.shields.io/badge/stage-%E7%A7%A6%E9%82%91-c9a544)](#)
+[![role-system](https://img.shields.io/badge/roles-5-3a7d44)](docs/role-system.md)
+
+---
+
+## 一、这是什么
+
+**大秦帝国是一个 idle game**——但它的"游戏代码"不是一份代码，而是 300+ 种编程语言各写一段、互相配合的活体仓库。
+
+- **每种语言 = 一个郡**：白蛇郡（Python）、始源郡（C）、簿录郡（SQL）、巴什郡（Bash）、奇技郡（Brainfuck）……
+- **每个郡有一个职**：工坊（产资源）/ 转运（合成）/ 官署（巡查）/ 异士（特技）/ 庆典（彩蛋）。
+- **共享一份帝国状态**：`empire/state.json`，朝廷每 tick 改一次。
+- **自动运行**：GitHub Actions cron 每 5 分钟触发一次心跳，访客打开 dashboard 就能看到帝国在长。
+- **永远是秦**：从西陲一邑（秦邑）→ 春秋 → 战国 → 横扫六国 → 一统 → 帝国 → 万世，**不切换文明、一统不结束**。
+
+> 这不是用 300 种语言写 helloworld；  
+> 这是 300 种代码**真的在配合**做一件事——经营一个帝国。
+
+## 二、看一眼帝国现状
+
+```bash
+git clone <this repo>
+cd qinlang-empire
+pip install -r requirements.txt
+
+# 跑一次心跳
+python -m court.emperor --ticks 1
+
+# 看 dashboard（任意静态服务器）
+python -m http.server 8765
+# 浏览器打开 http://localhost:8765/dashboard/
+```
+
+cron 模式不需要本地启动，进 GitHub Pages 直接看就行。
+
+## 三、加入帝国（贡献新郡）
+
+最少改三个文件：
+
+```
+provinces/<lang-id>/
+├── manifest.json     # 户籍声明：role, produces, consumes ...
+├── main.<ext>        # 真正的语言代码
+└── （可选）run.py    # 跨平台启动器
+```
+
+manifest 要点（详见 `docs/protocol/manifest.schema.json`）：
+
+```json
+{
+  "schema_version": 2,
+  "id": "rust",
+  "name": "Rust",
+  "province": "锈铁郡",
+  "category": "compiled-system-language",
+  "runner": "compiled",
+  "source": "main.rs",
+  "build": "rustc main.rs -O -o main_bin",
+  "run": "./main_bin",
+  "role": "producer",
+  "produces": ["bing-qi"],
+  "produce_rate": 4,
+  "cooldown_ticks": 1,
+  "status": "runnable"
+}
+```
+
+每郡的代码只需要：
+
+1. 从 stdin 读一份 dispatch JSON（差遣）；
+2. 做你郡职责对应的事；
+3. 往 stdout 写一份 output JSON（进献）。
+
+详见：
+
+- 协议 `docs/protocol/qin-law.md`
+- 角色系统 `docs/role-system.md`
+- 游戏设计 `docs/empire-game-design.md`
+
+## 四、目录布局
+
+```
+qinlang-empire/
+├── court/                朝廷（调度器 / 主入口）
+│   ├── emperor.py        ── 心跳 CLI
+│   ├── ticker.py         ── 选郡 + 组装差遣
+│   ├── dispatcher.py     ── 子进程执行 main.<ext>
+│   ├── state.py          ── 加载 / 合并 / 保存
+│   └── registry.py       ── 扫描 manifest + 构建
+├── empire/
+│   ├── state.json        帝国当前状态（cron 每 tick 改写）
+│   └── history.jsonl     完整 tick 报告流
+├── provinces/            郡（每语言一目录）
+│   ├── python/  · 白蛇郡 · producer · 文书
+│   ├── c/       · 始源郡 · producer · 工具
+│   ├── sql/     · 簿录郡 · service  · 户籍
+│   ├── bash/    · 巴什郡 · transformer · 建筑
+│   └── brainfuck/ · 奇技郡 · ceremonial · 烟火
+├── tools/
+│   └── esolang/brainfuck.py   共享 esolang 解释器
+├── dashboard/            静态 idle game 面板
+│   ├── index.html
+│   ├── app.js
+│   └── style.css
+├── docs/
+│   ├── empire-game-design.md   游戏机制总图（核心文档）
+│   ├── role-system.md          5 角色定义 + 推荐归属
+│   ├── language-catalog.md     全 300+ 语言登记
+│   ├── naming-convention.md    郡名命名规则
+│   ├── glossary.md             术语表
+│   ├── runner-cookbook.md      接入 cookbook
+│   ├── emperor-skeleton.md     调度器架构说明
+│   └── protocol/               schemas + 律令正文
+│       ├── qin-law.md
+│       ├── state.schema.json
+│       ├── dispatch.schema.json
+│       ├── input.schema.json
+│       ├── output.schema.json
+│       └── manifest.schema.json
+├── .github/workflows/
+│   └── empire-tick.yml   cron 心跳
+├── requirements.txt
+├── index.html            根路径自动转 /dashboard/
+└── README.md             你正在读
+```
+
+## 五、阶段（永远是秦）
+
+```
+秦邑 → 春秋 → 战国 → 横扫 → 一统 → 帝国 → 万世
+（4d）  （8d）  （6d）  （2d）（瞬）  （12d）  （∞）
+```
+
+详见 `docs/empire-game-design.md` §4。一统不结束，万世期永续运行。
+
+## 六、为什么这么做
+
+- **300 种语言不是装饰**——每种语言在帝国里都有真职责，输出真的会改帝国状态；
+- **协议比代码长寿**——`docs/protocol/` 那 5 份 schema 是核心契约，未来 100 年的语言加入也走它；
+- **自动运行**——CI cron + 静态网页 = 没有服务器，没有运维，只有继续跑；
+- **永远是秦**——这不是模拟器，是叙事。你看到的是同一个帝国，在长。
+
+## 七、当前状态（MVP / M1）
+
+| 组件 | 状态 |
+|---|---|
+| 协议 v2（dispatch + delta） | ✅ 完成 |
+| 朝廷 court/ 单 tick 实现 | ✅ 完成 |
+| 5 个 MVP 郡 | ✅ Python · C · SQL · Bash · Brainfuck |
+| 静态 dashboard | ✅ 完成 |
+| GitHub Actions cron | ✅ 已配 |
+| GitHub Pages 部署 | ⚠️ 需在仓库 Settings 中启用 Pages |
+| 阶段晋升逻辑 | 🚧 仅秦邑期固定 |
+| 招贤事件 | 🚧 待 M2 |
+| 浏览器快 tick (路径 D) | 🚧 待 M3 |
+| 300+ 郡入册 | 🚧 长期，每周加一批 |
+
+## 八、贡献者指南速读
+
+1. 先读 `docs/empire-game-design.md`——理解你贡献的是什么；
+2. 读 `docs/protocol/qin-law.md`——理解输入/输出契约；
+3. 复制 `provinces/python/` 作为模板；
+4. 修 `manifest.json` 中的 `id / name / province / role / produces`；
+5. 写 `main.<ext>`（参考 cookbook）；
+6. 本地跑 `python -m court.emperor --province <你的id> --ticks 1` 试一下；
+7. PR 进来——下一次 cron tick 你的郡就活了。
+
+## 九、协议与许可
+
+代码与协议待定（建议 MIT for code, CC-BY-SA for narrative）。  
+所有贡献的语言代码视作"献入大秦"。
+
+---
+
+**长生大秦，万世不绝。**

@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qinlang.empire/schema/dispatch.schema.json",
+  "title": "QinLang Empire Dispatch (Per-Tick Edict to Province)",
+  "description": "调度器在一次 tick 中下发给某个郡的差遣（任务+状态片段）。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "dispatch_id", "tick", "year", "stage",
+    "to_province", "dispatch_type", "self", "context"
+  ],
+  "properties": {
+    "schema_version": { "type": "integer", "const": 1 },
+    "dispatch_id": {
+      "type": "string",
+      "pattern": "^dispatch-[0-9a-z-]{4,64}$"
+    },
+    "tick":  { "type": "integer", "minimum": 0 },
+    "year":  { "type": "integer", "minimum": 0 },
+    "stage": {
+      "type": "string",
+      "enum": ["qin-yi", "chun-qiu", "zhan-guo", "heng-sao", "yi-tong", "di-guo", "wan-shi"]
+    },
+    "to_province": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{0,30}[a-z0-9]$"
+    },
+    "dispatch_type": {
+      "type": "string",
+      "enum": ["produce", "transform", "service", "special", "ceremony"]
+    },
+    "self": { "$ref": "state.schema.json#/$defs/provinceState" },
+    "treasury_view": {
+      "type": "object",
+      "description": "调度器允许该郡看到的资源子集；transformer 类必带。",
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "neighbors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "level"],
+        "properties": {
+          "id":    { "type": "string" },
+          "level": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "event_payload": {
+      "description": "service-trigger=event 类型才出现；为引发本次差遣的源事件。",
+      "anyOf": [
+        { "type": "null" },
+        { "$ref": "state.schema.json#/$defs/event" }
+      ]
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["random_seed"],
+      "properties": {
+        "season":      { "type": "string", "enum": ["春", "夏", "秋", "冬"] },
+        "weather":     { "type": "string" },
+        "random_seed": { "type": "string", "minLength": 1 },
+        "deadline_ms": { "type": "integer", "minimum": 100 }
+      }
+    },
+    "expects": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "对该郡输出的预期约束，由 manifest 推导而来。",
+      "properties": {
+        "produces":      { "type": "array", "items": { "type": "string" } },
+        "consumes":      { "type": "object", "additionalProperties": { "type": "integer" } },
+        "max_event_count": { "type": "integer", "minimum": 0, "default": 4 },
+        "max_text_length": { "type": "integer", "minimum": 1, "default": 256 }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "dispatch_type": { "const": "transform" } } },
+      "then": { "required": ["treasury_view"] }
+    },
+    {
+      "if": { "properties": { "dispatch_type": { "const": "service" } } },
+      "then": { "required": ["event_payload"] }
+    }
+  ]
+}

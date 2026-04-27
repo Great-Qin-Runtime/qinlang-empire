@@ -1,0 +1,23 @@
+{
+  "schema_version": 2,
+  "id": "c",
+  "name": "C",
+  "province": "始源郡",
+  "category": "compiled-system-language",
+  "runner": "compiled",
+  "source": "main.c",
+  "build": null,
+  "run": "python run.py",
+  "input": "stdin-json",
+  "output": "stdout-json",
+  "timeout_ms": 5000,
+  "role": "producer",
+  "produces": ["gong-ju"],
+  "produce_rate": 3,
+  "cooldown_ticks": 1,
+  "tick_weight": 1.2,
+  "status": "runnable",
+  "tags": ["mainstream", "systems", "mvp"],
+  "description": "始源郡，C 之故里，专司锻造工具。",
+  "platform": { "linux": true, "macos": true, "windows": true }
+}

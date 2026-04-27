@@ -1,0 +1,23 @@
+{
+  "id": "REPLACE-WITH-LOWERCASE-ID",
+  "name": "Replace With Display Name",
+  "province": "某某郡",
+  "category": "REPLACE-WITH-ONE-OF-21-CATEGORIES",
+  "runner": "direct",
+  "source": "main.ext",
+  "build": null,
+  "run": "REPLACE-WITH-RUN-COMMAND",
+  "input": "stdin-json",
+  "output": "stdout-json",
+  "timeout_ms": 3000,
+  "stderr_limit_kb": 64,
+  "output_limit_kb": 256,
+  "status": "scaffolded",
+  "tags": ["mainstream"],
+  "description": "Replace with one-line description.",
+  "platform": {
+    "linux": true,
+    "macos": true,
+    "windows": true
+  }
+}

@@ -1,0 +1,2 @@
+# 朝廷依赖（运行 court/emperor.py 所需）
+jsonschema>=4.21.0

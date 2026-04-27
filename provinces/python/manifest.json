@@ -1,0 +1,22 @@
+{
+  "schema_version": 2,
+  "id": "python",
+  "name": "Python",
+  "province": "白蛇郡",
+  "category": "interpreted-language",
+  "runner": "direct",
+  "source": "main.py",
+  "build": null,
+  "run": "python main.py",
+  "input": "stdin-json",
+  "output": "stdout-json",
+  "timeout_ms": 3000,
+  "role": "producer",
+  "produces": ["wen-shu"],
+  "produce_rate": 5,
+  "cooldown_ticks": 1,
+  "tick_weight": 1.0,
+  "status": "runnable",
+  "tags": ["mainstream", "scripting", "mvp"],
+  "description": "白蛇郡，以蛇为图腾，专司文书。"
+}

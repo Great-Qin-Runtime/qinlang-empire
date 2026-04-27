@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://qinlang.empire/schema/manifest.schema.json",
+  "title": "QinLang Empire Province Manifest (v2 idle-game)",
+  "description": "单个语言郡县的户籍。v2 引入 role / produces / consumes 等游戏字段。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "id", "name", "province", "category",
+    "runner", "source", "run", "role", "status"
+  ],
+  "properties": {
+    "schema_version": { "type": "integer", "const": 2 },
+    "id":       { "type": "string", "pattern": "^[a-z][a-z0-9-]{0,30}[a-z0-9]$" },
+    "name":     { "type": "string", "minLength": 1, "maxLength": 64 },
+    "province": { "type": "string", "pattern": ".+郡$" },
+    "category": {
+      "type": "string",
+      "enum": [
+        "compiled-system-language", "vm-language", "interpreted-language",
+        "shell-language", "frontend-language", "template-language",
+        "query-language", "config-data-language", "build-language",
+        "hardware-description-language", "shader-language",
+        "assembly-ir-language", "scientific-language", "logic-rule-language",
+        "proof-formal-language", "smart-contract-language",
+        "game-creative-language", "platform-enterprise-language",
+        "visualization-dsl", "historical-language", "esolang"
+      ]
+    },
+    "runner": {
+      "type": "string",
+      "enum": [
+        "direct", "compiled", "vm", "docker", "nix",
+        "query", "render", "proof", "shader", "hdl", "esolang", "manual"
+      ]
+    },
+    "source": { "type": "string", "minLength": 1 },
+    "build":  { "type": ["string", "null"] },
+    "run":    { "type": "string", "minLength": 1 },
+    "image":  { "type": "string" },
+    "interpreter": { "type": "string" },
+    "input":  { "type": "string", "enum": ["stdin-json", "stdin-text", "ignored", "args-json"], "default": "stdin-json" },
+    "output": { "type": "string", "enum": ["stdout-json", "stdout-text", "wrapped-json", "rendered-file"], "default": "stdout-json" },
+    "timeout_ms":      { "type": "integer", "minimum": 100, "maximum": 600000, "default": 3000 },
+    "stderr_limit_kb": { "type": "integer", "minimum": 1, "maximum": 1024, "default": 64 },
+    "output_limit_kb": { "type": "integer", "minimum": 1, "maximum": 4096, "default": 256 },
+
+    "role": {
+      "type": "string",
+      "enum": ["producer", "transformer", "service", "specialist", "ceremonial"]
+    },
+    "produces": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "wen-shu", "gong-ju", "bing-qi", "qian-liang",
+          "jian-zhu", "hu-ji", "xue-wen", "yi-li",
+          "bing-ma", "cheng-chi", "zhao-shu", "dian-ji",
+          "fang-shu", "dao-ju"
+        ]
+      },
+      "uniqueItems": true,
+      "default": []
+    },
+    "consumes": {
+      "type": "object",
+      "description": "transformer 用。键 = 资源 ID，值 = 每次需要的数量。",
+      "additionalProperties": { "type": "integer", "minimum": 1 }
+    },
+    "produce_rate": { "type": "integer", "minimum": 1, "default": 1 },
+    "yield":        { "type": "integer", "minimum": 1, "default": 1 },
+    "cooldown_ticks": { "type": "integer", "minimum": 1, "default": 1 },
+    "tick_weight":  {
+      "type": "number",
+      "minimum": 0,
+      "default": 1.0,
+      "description": "调度器在同 cooldown 中的权重，越大越常被选。"
+    },
+    "trigger": {
+      "type": "string",
+      "enum": ["periodic", "event"],
+      "description": "service 角色专用。"
+    },
+    "period_ticks": { "type": "integer", "minimum": 1 },
+    "listens_to":   { "type": "array", "items": { "type": "string" } },
+    "service_type": { "type": "string" },
+
+    "specialty":         { "type": "string" },
+    "trigger_stages":    { "type": "array", "items": { "type": "string" } },
+    "trigger_milestones":{ "type": "array", "items": { "type": "string" } },
+
+    "trigger_probability": { "type": "number", "minimum": 0, "maximum": 1 },
+    "tone": { "type": "string", "enum": ["festive", "solemn", "weird", "macabre", "lyric"] },
+
+    "status": {
+      "type": "string",
+      "enum": [
+        "planned", "scaffolded", "runnable",
+        "compile-only", "render-only", "verify-only",
+        "simulated", "manual", "blocked", "deprecated",
+        "failed", "timeout", "quarantined"
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 32 },
+      "uniqueItems": true,
+      "maxItems": 16
+    },
+    "aliases": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z][a-z0-9-]{0,30}[a-z0-9]$" },
+      "uniqueItems": true
+    },
+    "description": { "type": "string", "maxLength": 1024 },
+    "permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "network":  { "type": "array", "items": { "type": "string" } },
+        "fs_read":  { "type": "array", "items": { "type": "string" } },
+        "fs_write": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "platform": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "linux":   { "type": "boolean", "default": true },
+        "macos":   { "type": "boolean", "default": true },
+        "windows": { "type": "boolean", "default": true }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "runner": { "const": "docker" } }, "required": ["runner"] },
+      "then": { "required": ["image"] }
+    },
+    {
+      "if": { "properties": { "runner": { "const": "esolang" } }, "required": ["runner"] },
+      "then": { "required": ["interpreter"] }
+    },
+    {
+      "if": { "properties": { "role": { "const": "producer" } }, "required": ["role"] },
+      "then": { "required": ["produces", "produce_rate"] }
+    },
+    {
+      "if": { "properties": { "role": { "const": "transformer" } }, "required": ["role"] },
+      "then": { "required": ["consumes", "produces"] }
+    },
+    {
+      "if": { "properties": { "role": { "const": "service" } }, "required": ["role"] },
+      "then": { "required": ["trigger"] }
+    },
+    {
+      "if": { "properties": { "role": { "const": "specialist" } }, "required": ["role"] },
+      "then": { "required": ["specialty"] }
+    },
+    {
+      "if": { "properties": { "role": { "const": "ceremonial" } }, "required": ["role"] },
+      "then": { "required": ["trigger_probability"] }
+    }
+  ]
+}
