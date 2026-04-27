@@ -1,53 +1,53 @@
 {
   "schema_version": 1,
   "dynasty": "秦",
-  "tick": 2,
+  "tick": 3,
   "year": 0,
   "stage": "qin-yi",
-  "stage_progress": 0.017,
+  "stage_progress": 0.1893,
   "season": "春",
   "weather": "晴",
   "treasury": {
-    "wen-shu": 12,
-    "gong-ju": 9,
+    "wen-shu": 15,
+    "gong-ju": 7,
     "qian-liang": 0,
-    "jian-zhu": 0,
-    "hu-ji": 5
+    "jian-zhu": 1,
+    "hu-ji": 6
   },
   "provinces": {
     "python": {
       "level": 1,
-      "loyalty": 102,
-      "last_tick": 2,
-      "produced": 12,
+      "loyalty": 103,
+      "last_tick": 3,
+      "produced": 18,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "c": {
       "level": 1,
-      "loyalty": 102,
-      "last_tick": 2,
-      "produced": 9,
+      "loyalty": 103,
+      "last_tick": 3,
+      "produced": 12,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "sql": {
       "level": 1,
-      "loyalty": 102,
-      "last_tick": 2,
-      "produced": 5,
+      "loyalty": 103,
+      "last_tick": 3,
+      "produced": 6,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "bash": {
       "level": 1,
-      "loyalty": 100,
-      "last_tick": 0,
-      "produced": 0,
-      "consumed": 0,
+      "loyalty": 101,
+      "last_tick": 3,
+      "produced": 1,
+      "consumed": 8,
       "fail_streak": 0,
       "quarantined": false
     },
@@ -62,6 +62,50 @@
     }
   },
   "events": [
+    {
+      "tick": 3,
+      "year": 0,
+      "type": "milestone",
+      "from_province": null,
+      "text": "里程碑达成：首邑筑城",
+      "severity": "epic"
+    },
+    {
+      "tick": 3,
+      "year": 0,
+      "type": "produce",
+      "from_province": "python",
+      "text": "白蛇郡 春耕之余，天朗气清，献文书 6 卷。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 3,
+      "year": 0,
+      "type": "produce",
+      "from_province": "c",
+      "text": "始源郡 春日 鼓风炼铁，铸工具 3 件。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 3,
+      "year": 0,
+      "type": "transform",
+      "from_province": "bash",
+      "text": "巴什郡兴土木 1 座，耗工具 5 件、文书 3 卷。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 3,
+      "year": 0,
+      "type": "service",
+      "from_province": "sql",
+      "text": "簿录郡奉诏巡丁，新增 1 户，共 2 口。",
+      "severity": "info",
+      "artifact": null
+    },
     {
       "tick": 2,
       "year": 0,
@@ -154,8 +198,8 @@
     {
       "id": "first-city",
       "name": "首邑筑城",
-      "achieved": false,
-      "achieved_at": null,
+      "achieved": true,
+      "achieved_at": 3,
       "stage": "qin-yi",
       "description": "建筑首破一。"
     },
@@ -225,7 +269,7 @@
     }
   ],
   "stats": {
-    "population": 1014,
+    "population": 1016,
     "land": 1,
     "military": 0,
     "reputation": 0,
