@@ -55,6 +55,7 @@
 | E0700-E0799 | Docker / 容器 |
 | E0800-E0899 | 渲染 / 证明 / HDL |
 | E0900-E0999 | 业务自定义保留 |
+| W0001-W0999 | 警告（不阻断执行，仅注入 events） |
 
 ### 协议类（E0001-E0099）
 
@@ -154,6 +155,14 @@
 | E0811 | PROOF_TIMEOUT | 证明超时 |
 | E0820 | HDL_ELABORATION_FAIL | HDL 综合阶段失败 |
 | E0821 | HDL_SIM_FAIL | HDL 仿真失败 |
+
+### 警告类（W0001-W0999）
+
+警告不会让 `status` 降级，仅作为 `events` 中的 `severity=warn` 条目向 dashboard 上报。
+
+| 码 | 名 | 描述 |
+|---|---|---|
+| W0301 | STDERR_TRUNCATED | 子进程 stderr 超过 `manifest.stderr_limit_kb`，朝廷已截断；末尾追加 `[truncated at NkB]` |
 
 ## 4. 错误码使用建议
 

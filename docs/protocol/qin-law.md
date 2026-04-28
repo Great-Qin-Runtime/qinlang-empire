@@ -188,6 +188,17 @@ for c in candidates_ceremonial:
 - manifest 显式声明 `permissions` 才放开；
 - 见 `security.md`。
 
+### 7.1 stderr 大小约束
+
+子进程 stderr 受 `manifest.stderr_limit_kb` 约束（默认 64 KB，schema 上限 1024 KB）。
+
+- 超过上限时朝廷流式截断：丢弃后续 chunk，**不杀进程**；
+- 在最终 stderr 文本末尾追加 `\n[truncated at NkB]` 标记；
+- 在该郡的 `events` 中追加一条 `{severity: warn, code: W0301, type: system}`；
+- 不影响 `status`，仅做可观测性提示。
+
+stdout 大小限制由 `output_limit_kb`（默认 256 KB）控制，详见 V0.3 [#37](https://github.com/Great-Qin-Runtime/qinlang-empire/issues/37) 落地后的细则。
+
 ---
 
 ## 八、自检流程
