@@ -1,5 +1,9 @@
 # Runner 食谱 / Runner Cookbook
 
+> ⚠️ **历史归档（v1 协议）**。本文档示例使用 v1 的 `edict / payload / stamps`
+> 字段，已被 v2 的 `dispatch / deltas / events` 替换。Runner 的 12 种分类与命名仍然有效，
+> 但具体 IO 形态请参考 [`docs/templates/`](templates/) 与各 `provinces/<id>/` 现有实现。
+
 > 凡郡县奉诏，皆有所循。  
 > 本谱依 Runner 类型分章，每章给出最小可运行示例。
 

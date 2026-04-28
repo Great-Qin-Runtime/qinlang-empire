@@ -1,5 +1,9 @@
 # 中央调度器参考骨架（Emperor Runner Skeleton）
 
+> ⚠️ **历史归档（v1 协议）**。本文档基于 v1 的 mode/payload 调度。v2 已落地：
+> 见 `court/emperor.py`（tick + dispatch + delta + stages + recruitment）。
+> 模块拆分思路仍可参考。
+
 > 凡帝国之事，皆由中央。  
 > 中央之事，皆由 `emperor.py`。
 

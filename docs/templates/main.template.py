@@ -1,39 +1,44 @@
 """
-QinLang Empire province template (Python).
+QinLang Empire province template (Python) — protocol v2.
 
-复制本文件到 provinces/<id>/main.py，
-按 manifest.json 的 name / province 改下面的常量即可。
+复制本文件到 provinces/<id>/main.py，按 manifest.json 调整 LANGUAGE / PROVINCE，
+再按 manifest.role 实现实际产出 / 转换 / 服务逻辑。
+
+输入：dispatch envelope（见 docs/protocol/dispatch.schema.json）
+输出：output delta（见 docs/protocol/output.schema.json）
 """
-import sys
 import json
+import sys
 
 LANGUAGE = "Replace With Display Name"
 PROVINCE = "某某郡"
 
 
 def main() -> None:
-    raw = sys.stdin.read()
-    edict = json.loads(raw) if raw.strip() else {}
+    env = json.loads(sys.stdin.read())
+    d = env["dispatch"]
+    tick = d["tick"]
+    dispatch_id = d["dispatch_id"]
+    level = int(d.get("self", {}).get("level") or 1)
 
-    stamps = list(edict.get("stamps", []))
-    stamps.append({
-        "language": LANGUAGE,
-        "province": PROVINCE,
-        "text": f"{PROVINCE}奉诏",
-    })
+    # producer 示例：每 tick 产 (3 + level - 1) 卷 wen-shu
+    n = 3 + (level - 1)
 
-    output = {
+    out = {
         "language": LANGUAGE,
         "province": PROVINCE,
         "ok": True,
-        "message": f"{LANGUAGE} 郡已奉诏",
-        "step": int(edict.get("step", 0)) + 1,
-        "stamps": stamps,
-        "payload": edict.get("payload", {}),
+        "tick": tick,
+        "dispatch_id": dispatch_id,
+        "deltas": {
+            "treasury": {"wen-shu": n},
+            "self": {"produced": n},
+        },
+        "events": [
+            {"type": "produce", "text": f"{PROVINCE}献文书 {n} 卷。", "severity": "info"},
+        ],
     }
-
-    sys.stdout.write(json.dumps(output, ensure_ascii=False))
-    sys.stdout.write("\n")
+    sys.stdout.write(json.dumps(out, ensure_ascii=False) + "\n")
 
 
 if __name__ == "__main__":
