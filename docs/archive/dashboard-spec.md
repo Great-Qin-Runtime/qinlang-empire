@@ -7,7 +7,7 @@
 >
 > 归档目录索引：[`README.md`](README.md)
 >
-> 重写一份 v2 dashboard 规格属 V0.3 候选项，未排期。
+> **V0.3 已被新文档取代：[`../dashboard-spec.md`](../dashboard-spec.md)**（基于 `state.json` + `history.jsonl`）。本文档仅作历史参考。
 
 > 舆图未必昭示天下，但当昭示帝国之状。
 
