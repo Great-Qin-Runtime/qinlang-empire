@@ -6,6 +6,8 @@
 每个语言郡入帝国时，必须在 `manifest.role` 中声明自己**唯一一个**主角色。  
 角色决定它在 tick 里**多久被调度一次**、**收到什么任务**、**返回什么 delta**。
 
+**相关文档**：[`protocol/qin-law.md`](protocol/qin-law.md)（差遣 / 进献协议正文）、[`protocol/manifest.schema.json`](protocol/manifest.schema.json)（manifest schema 定义）、[`empire-game-design.md`](empire-game-design.md)（朝代与资源体系）。
+
 ---
 
 ## 1. 五大角色总览

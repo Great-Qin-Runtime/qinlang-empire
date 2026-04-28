@@ -1,8 +1,10 @@
 # 秦法 / Qin Law 协议正文（v2 · idle-game）
 
 > 法者，编衡之律也。  
-> v1 律令为"诏书—盖章"模式（已废止）；  
+> v1 律令为"诏书—盖章"模式（已废止，见 [`../archive/design.md`](../archive/design.md)）；  
 > v2 律令为"差遣—进献"模式，是大秦帝国 idle game 的核心契约。
+
+**相关文档**：[`../role-system.md`](../role-system.md)（5 角色定义）、[`../error-codes.md`](../error-codes.md)（违反协议时的错误码）、[`../empire-game-design.md`](../empire-game-design.md)（背景叙事）、五份 schema：[`state`](state.schema.json) / [`dispatch`](dispatch.schema.json) / [`input`](input.schema.json) / [`output`](output.schema.json) / [`manifest`](manifest.schema.json)。
 
 ---
 

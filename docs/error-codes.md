@@ -5,6 +5,8 @@
 
 本文档定义 QinLang Empire 中所有可能出现的状态、错误码、退出码。
 
+**相关文档**：[`protocol/qin-law.md`](protocol/qin-law.md)（协议正文，违反协议会触发本表错误码）、[`security.md`](security.md)（E0600 段安全错误的策略来源）、[`governance.md`](governance.md)（错误码新增需走的 RFC 流程）。
+
 ## 1. 结果状态（Result Status）
 
 每条 `results.status` 必为以下之一：

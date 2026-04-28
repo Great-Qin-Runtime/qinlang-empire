@@ -93,4 +93,4 @@ python -m court.emperor --province mylang --ticks 1
 | 角色制度 | `role-system.md` |
 | 改协议 | `governance.md` RFC 流程 |
 | 看错误码 | `error-codes.md` |
-| v1 历史归档 | `design.md` / `runner-cookbook.md` / `emperor-skeleton.md`（已归档） |
+| v1 历史归档 | [`archive/`](archive/)（design / runner-cookbook / emperor-skeleton / dashboard-spec） |

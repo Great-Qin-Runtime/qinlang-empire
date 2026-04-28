@@ -5,6 +5,8 @@
 
 本文档规定 QinLang Empire 中所有的命名规则。命名违反本文档的 PR 一律由御史台（CI）驳回。
 
+**相关文档**：[`protocol/manifest.schema.json`](protocol/manifest.schema.json)（manifest 字段约束的权威来源，本文档的命名规则在 schema 中以正则形式落地）、[`catalog/language-types.md`](catalog/language-types.md)（21 类 category 详解）、[`catalog/runners.catalog.json`](catalog/runners.catalog.json)（12 种 runner 集合）。
+
 ---
 
 ## 1. 语言 ID（`id`）

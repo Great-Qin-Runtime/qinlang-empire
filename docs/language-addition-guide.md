@@ -5,6 +5,8 @@
 > 本文档已对齐 **协议 v2**。v1 时代的 `parade / chain / graph / edict / payload`
 > 字段已废止。
 
+**相关文档**：[`role-system.md`](role-system.md)（5 角色字段表，决定 `manifest.role / produces / consumes` 怎么填）、[`naming-convention.md`](naming-convention.md)（ID / 郡名 / 分类规则）、[`protocol/qin-law.md`](protocol/qin-law.md)（输入输出契约）、[`templates/`](templates/)（manifest / main / README / test 模板）。
+
 本指南面向 **第一次为 QinLang Empire 提交一个新语言** 的贡献者。
 
 ---
@@ -20,7 +22,7 @@
 
 ## Step 2：选 Runner
 
-参照 [`runner-cookbook.md`](runner-cookbook.md) §12 的速查表。
+参照 [`catalog/runners.catalog.json`](catalog/runners.catalog.json) 的 12 种 runner 速查表（v1 时代的写法示例已归档至 [`archive/runner-cookbook.md`](archive/runner-cookbook.md)，仅供历史参考）。
 
 最常见选择：
 
