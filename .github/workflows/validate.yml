@@ -26,11 +26,16 @@ jobs:
         with:
           python-version: '3.11'
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
       - name: 安装依赖
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y --no-install-recommends jq sqlite3 build-essential ghc
           pip install --quiet -r requirements.txt
+          npm install --silent --global tsx
 
       - name: 静态校验（schema + 唯一性 + 协议匹配）
         run: python tools/validate_all.py
