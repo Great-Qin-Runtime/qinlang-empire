@@ -5,6 +5,8 @@
 
 [![tick](https://img.shields.io/badge/dynasty-%E7%A7%A6-7a1f1f)](#)
 [![stage](https://img.shields.io/badge/stage-%E7%A7%A6%E9%82%91-c9a544)](#)
+[![protocol](https://img.shields.io/badge/protocol-v2%20frozen-1f6f43)](docs/protocol/qin-law.md)
+[![release](https://img.shields.io/badge/release-v0.3.0-3a7d44)](https://github.com/Great-Qin-Runtime/qinlang-empire/releases)
 [![role-system](https://img.shields.io/badge/roles-5-3a7d44)](docs/role-system.md)
 
 ---
@@ -160,11 +162,11 @@ qinlang-empire/
 - **自动运行**——CI cron + 静态网页 = 没有服务器，没有运维，只有继续跑；
 - **永远是秦**——这不是模拟器，是叙事。你看到的是同一个帝国，在长。
 
-## 七、当前状态（V0.2 完成）
+## 七、当前状态（V0.3 完成 · 协议 v2 已冻结）
 
 | 组件 | 状态 |
 |---|---|
-| 协议 v2（dispatch + delta） | ✅ V0.1 |
+| 协议 v2（dispatch + delta） | ✅ V0.1 → **V0.3 冻结** |
 | 朝廷 court/ 单 tick 实现 | ✅ V0.1 |
 | 5 个 MVP 郡（Python · C · SQL · Bash · Brainfuck） | ✅ V0.1 |
 | 静态 dashboard（state.json + history.jsonl） | ✅ V0.1 |
@@ -173,9 +175,14 @@ qinlang-empire/
 | 招贤事件（PR 合入即触发 unlock 事件） | ✅ V0.2 |
 | CI 静态校验 + 跨语言 dry-run（`tools/validate_all.py`） | ✅ V0.2 |
 | 10 个新郡（Rust / Go / Haskell / TS / HTML / jq / Make / Prolog / GLSL / Whitespace） | ✅ V0.2 |
+| `manifest.stderr_limit_kb` 流式截断 + W0301 | ✅ V0.3 |
+| stdout 严格 JSON 检查（E0009/E0010/E0011） | ✅ V0.3 |
+| `manifest.permissions` 软约束 + W0601 | ✅ V0.3 |
+| 传国玉玺 SVG 自动铸造 + 玉玺廊 dashboard | ✅ V0.3 |
+| `dashboard-spec.md` v2（与实际 state 模型对齐） | ✅ V0.3 |
 | GitHub Pages 部署 | ⚠️ 需在仓库 Settings 中启用 Pages |
-| 浏览器快 tick (路径 D) | 🚧 V0.3 候选 |
-| docker / nix runner | 🚧 V0.4 |
+| chain 模式（多郡链式接力） | 🚧 V0.4 候选 |
+| docker / nix runner、文件系统硬约束 | 🚧 V0.4 |
 | 300+ 郡入册 | 🚧 长期，每周加一批 |
 
 ## 八、贡献者指南速读
