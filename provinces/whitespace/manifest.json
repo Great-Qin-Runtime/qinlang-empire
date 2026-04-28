@@ -1,0 +1,23 @@
+{
+  "schema_version": 2,
+  "id": "whitespace",
+  "name": "Whitespace",
+  "province": "无字郡",
+  "category": "esolang",
+  "runner": "esolang",
+  "interpreter": "python run.py",
+  "source": "main.ws",
+  "build": null,
+  "run": "python run.py",
+  "input": "stdin-json",
+  "output": "stdout-json",
+  "timeout_ms": 3000,
+  "role": "ceremonial",
+  "trigger_probability": 0.3,
+  "tone": "weird",
+  "cooldown_ticks": 12,
+  "tick_weight": 0.5,
+  "status": "runnable",
+  "tags": ["esolang", "ceremonial", "v0.2"],
+  "description": "无字郡，纸上无字，简上无文；空白之中，藏密信反诏，奇闻怪事。"
+}
