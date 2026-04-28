@@ -9,6 +9,7 @@ from pathlib import Path
 import pytest
 
 from court import dispatcher
+from court.dispatcher import parse_stdout_strict
 
 
 def _make_manifest(tmp_path: Path, py_body: str, *,
@@ -100,3 +101,106 @@ def test_default_stderr_limit_kb_when_unspecified(tmp_path):
     result = dispatcher.run_province(manifest, _dispatch())
     assert result["ok"] is True
     assert "[truncated" not in result["__stderr"]
+
+
+# -------- parse_stdout_strict 单元测试（#37）--------
+
+
+def test_strict_parse_ok():
+    raw = b'{"language":"X","province":"X\xe9\x83\xa1","ok":true,"tick":1,"dispatch_id":"d","deltas":{},"events":[]}'
+    data, err = parse_stdout_strict(raw)
+    assert err is None
+    assert data["ok"] is True
+
+
+def test_strict_parse_ok_with_surrounding_whitespace():
+    raw = b'\n  {"a":1}\n\n'
+    data, err = parse_stdout_strict(raw)
+    assert err is None
+    assert data == {"a": 1}
+
+
+def test_strict_parse_empty_stdout():
+    data, err = parse_stdout_strict(b"")
+    assert data is None
+    assert err["code"] == "E0009"
+    assert err["kind"] == "stdout-empty"
+
+
+def test_strict_parse_only_whitespace():
+    data, err = parse_stdout_strict(b"   \n\t  ")
+    assert data is None
+    assert err["code"] == "E0009"
+
+
+def test_strict_parse_non_object_array():
+    data, err = parse_stdout_strict(b"[1,2,3]")
+    assert data is None
+    assert err["code"] == "E0010"
+    assert err["kind"] == "stdout-not-object"
+
+
+def test_strict_parse_non_object_string():
+    data, err = parse_stdout_strict(b'"just a string"')
+    assert data is None
+    assert err["code"] == "E0010"
+
+
+def test_strict_parse_non_object_number():
+    data, err = parse_stdout_strict(b"42")
+    assert data is None
+    assert err["code"] == "E0010"
+
+
+def test_strict_parse_extra_bytes_after():
+    raw = b'{"a":1}\nextra junk after'
+    data, err = parse_stdout_strict(raw)
+    assert data is None
+    assert err["code"] == "E0011"
+    assert err["kind"] == "stdout-extra-bytes"
+    assert "extra" in err["preview"]
+
+
+def test_strict_parse_log_before_json():
+    raw = b'[INFO] starting up\n{"a":1}'
+    data, err = parse_stdout_strict(raw)
+    assert data is None
+    # 首字 `[` 命中 not-object 分支
+    assert err["code"] == "E0010"
+
+
+def test_strict_parse_garbage():
+    raw = b"this is not json at all"
+    data, err = parse_stdout_strict(raw)
+    assert data is None
+    assert err["code"] == "E0003"
+    assert err["kind"] == "stdout-not-json"
+
+
+def test_dispatcher_reports_extra_bytes_protocol_violation(tmp_path):
+    manifest = _make_manifest(tmp_path, f"""
+        print({_ok_payload()!r})
+        print("trailing log line")
+    """)
+    result = dispatcher.run_province(manifest, _dispatch())
+    assert result["ok"] is False
+    assert result["__status"] == "protocol-violation"
+    assert result["error"]["code"] == "E0011"
+
+
+def test_dispatcher_reports_non_object_protocol_violation(tmp_path):
+    manifest = _make_manifest(tmp_path, """
+        print('[1,2,3]')
+    """)
+    result = dispatcher.run_province(manifest, _dispatch())
+    assert result["ok"] is False
+    assert result["error"]["code"] == "E0010"
+
+
+def test_dispatcher_reports_empty_stdout(tmp_path):
+    manifest = _make_manifest(tmp_path, """
+        pass
+    """)
+    result = dispatcher.run_province(manifest, _dispatch())
+    assert result["ok"] is False
+    assert result["error"]["code"] == "E0009"

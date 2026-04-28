@@ -14,7 +14,6 @@ from __future__ import annotations
 import argparse
 import json
 import platform
-import re
 import subprocess
 import sys
 from pathlib import Path
@@ -23,6 +22,10 @@ from typing import Any, Dict, List, Optional, Tuple
 ROOT = Path(__file__).resolve().parent.parent
 PROVINCES_DIR = ROOT / "provinces"
 SCHEMA_DIR = ROOT / "docs" / "protocol"
+
+# 让 court.dispatcher 在脚本式调用下可被导入
+sys.path.insert(0, str(ROOT))
+from court.dispatcher import parse_stdout_strict  # noqa: E402
 
 
 # ---------- helpers ----------
@@ -236,15 +239,12 @@ def check_dry_run(report: Report, manifests: List[Dict[str, Any]],
             report.err(i, f"dry-run 退出 {proc.returncode}：{stderr.strip()}")
             continue
 
-        raw = proc.stdout.decode("utf-8", errors="replace").strip()
-        if not raw:
-            report.err(i, "dry-run 无输出")
-            continue
-
-        try:
-            data = json.loads(_extract_last_json_object(raw))
-        except json.JSONDecodeError as exc:
-            report.err(i, f"dry-run 输出非 JSON：{exc}")
+        data, parse_err = parse_stdout_strict(proc.stdout)
+        if parse_err is not None:
+            kind = parse_err.get("kind")
+            offset = parse_err.get("offset")
+            preview = (parse_err.get("preview") or "").replace("\n", "\\n")[:120]
+            report.err(i, f"dry-run stdout {kind} at offset {offset}: {preview!r}")
             continue
 
         errs = list(out_validator.iter_errors(data))
@@ -331,28 +331,6 @@ def _build_test_dispatch(m: Dict[str, Any]) -> Dict[str, Any]:
     if role == "service":
         d["event_payload"] = None
     return d
-
-
-_OBJECT_END_RE = re.compile(r"\}\s*$")
-
-
-def _extract_last_json_object(text: str) -> str:
-    text = text.strip()
-    if text.startswith("{") and _OBJECT_END_RE.search(text):
-        return text
-    depth = 0
-    end = -1
-    for i in range(len(text) - 1, -1, -1):
-        c = text[i]
-        if c == "}":
-            if depth == 0:
-                end = i
-            depth += 1
-        elif c == "{":
-            depth -= 1
-            if depth == 0 and end != -1:
-                return text[i:end + 1]
-    return text
 
 
 # ---------- driver ----------

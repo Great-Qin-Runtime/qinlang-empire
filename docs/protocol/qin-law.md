@@ -197,7 +197,27 @@ for c in candidates_ceremonial:
 - 在该郡的 `events` 中追加一条 `{severity: warn, code: W0301, type: system}`；
 - 不影响 `status`，仅做可观测性提示。
 
-stdout 大小限制由 `output_limit_kb`（默认 256 KB）控制，详见 V0.3 [#37](https://github.com/Great-Qin-Runtime/qinlang-empire/issues/37) 落地后的细则。
+### 7.2 stdout 严格约束
+
+stdout 必须是 **单个 UTF-8 编码的 JSON object**，不允许：
+
+- 在 JSON 之外混入任何非空白字符（前置 `[INFO]` 日志、尾随调试输出都会被拒）；
+- 顶层是数组、字符串、数字、布尔、null（一律拒）；
+- 无 BOM；
+- 多对象（`{...}{...}` 或 NDJSON）。
+
+允许：JSON 前后存在空白 / 换行；JSON 内任意嵌套与中文字符。
+
+违规时朝廷返回结构化错误码（详见 `error-codes.md`）：
+
+| 错误码 | 触发情形 |
+|---|---|
+| `E0009` | stdout 为空或仅空白 |
+| `E0010` | 顶层不是 object |
+| `E0011` | object 之后还有非空白字节 |
+| `E0003` | 中间出现 JSON 语法错误（无法 raw_decode） |
+
+调试日志一律走 stderr。stdout 大小另由 `output_limit_kb`（默认 256 KB）约束，超大流式截断属 V0.4 候选。
 
 ---
 
