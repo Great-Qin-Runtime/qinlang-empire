@@ -1,5 +1,14 @@
 # 帝国舆图设计规格 / Dashboard Spec
 
+> ⚠️ **历史归档（v1 协议）**。本规格基于 `reports/latest.json` / `reports/leaderboard.json`
+> / `reports/history.json` 数据模型，与实际 `dashboard/` 已不符——实际页面读
+> `empire/state.json` + `empire/history.jsonl`。多页面结构（provinces.html / map.html /
+> seal.html）也未实现。当前实际为单页 `dashboard/index.html`。
+>
+> 归档目录索引：[`README.md`](README.md)
+>
+> 重写一份 v2 dashboard 规格属 V0.3 候选项，未排期。
+
 > 舆图未必昭示天下，但当昭示帝国之状。
 
 本文档定义 `dashboard/` 的页面结构、数据来源、交互行为。

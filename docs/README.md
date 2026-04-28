@@ -7,11 +7,11 @@
 
 ## 起步阅读顺序
 
-1. **新人**：根目录 `README.md` → `empire-game-design.md` → `role-system.md`
-2. **加一个郡**：`empire-game-design.md` → `protocol/qin-law.md` → `runner-cookbook.md` → `language-addition-guide.md`
-3. **改协议**：`protocol/qin-law.md` → 五份 schema → `governance.md`
-4. **写朝廷调度**：`emperor-skeleton.md`（架构说明）→ 实际代码在仓库 `court/`
-5. **看舆图**：`dashboard-spec.md`（设计） → 实际页面 `dashboard/`
+1. **新人**：根目录 [`README.md`](../README.md) → [`empire-game-design.md`](empire-game-design.md) → [`role-system.md`](role-system.md)
+2. **加一个郡**：[`empire-game-design.md`](empire-game-design.md) → [`protocol/qin-law.md`](protocol/qin-law.md) → [`role-system.md`](role-system.md) → [`language-addition-guide.md`](language-addition-guide.md) → [`templates/`](templates/)
+3. **改协议**：[`protocol/qin-law.md`](protocol/qin-law.md) → 五份 schema → [`governance.md`](governance.md)
+4. **写朝廷调度**：仓库根 `court/` 实际代码（`emperor.py` / `stages.py` / `recruitment.py`）
+5. **看舆图**：实际页面 `dashboard/`
 
 ---
 
@@ -54,9 +54,6 @@
 
 | 文档 | 主题 |
 |---|---|
-| `runner-cookbook.md` | 12 种 Runner 写法 |
-| `emperor-skeleton.md` | 朝廷调度器架构（实际代码见 `court/`） |
-| `dashboard-spec.md` | dashboard 设计规格（实际页面见 `dashboard/`） |
 | `toolchain-matrix.md` | 工具链与运行环境 |
 | `security.md` | 安全模型与威胁应对 |
 
@@ -69,7 +66,7 @@
 | `faq.md` | 常见问题 |
 | `contribution-guide.md` | 贡献指南 |
 | `governance.md` | 治理与 RFC 流程 |
-| `design.md` | **历史归档**：v0.1 博物馆/语言馆构想（已被 idle-game 取代，保留作背景资料） |
+| [`archive/`](archive/) | **历史归档**：v1 协议时代的 design / runner-cookbook / emperor-skeleton / dashboard-spec |
 
 ---
 
@@ -77,7 +74,7 @@
 
 | 版本 | 模式 | 状态 |
 |---|---|---|
-| v1 | edict + parade/chain/graph 模式 | 已废止；旧 design.md 中的描述仅供参考 |
+| v1 | edict + parade/chain/graph 模式 | 已废止；详见 [`archive/design.md`](archive/design.md) |
 | **v2** | **dispatch + tick + delta + idle game** | **当前** |
 | v3+ | 浏览器快 tick / 远程郡 / 元编译器 | 见 `roadmap.md` |
 

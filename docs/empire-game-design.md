@@ -4,7 +4,9 @@
 > 大秦不止于一统，永世以延帝国。
 
 本文档是 **QinLang Empire 作为放置类经营游戏** 的核心设计。  
-它取代了之前"语言博物馆"定位，是项目自此之后的**最高叙事文件**。
+它取代了之前"语言博物馆"定位（见 [`archive/design.md`](archive/design.md)），是项目自此之后的**最高叙事文件**。
+
+**相关文档**：[`role-system.md`](role-system.md)（5 角色 = producer/transformer/service/specialist/ceremonial 的具体字段与示例）、[`protocol/qin-law.md`](protocol/qin-law.md)（v2 协议正文）、[`glossary.md`](glossary.md)（中英术语速查）、[`roadmap.md`](roadmap.md)（V0.1 → V1.0 路线）。
 
 ---
 

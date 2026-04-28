@@ -257,13 +257,13 @@ def docs_retrofit_body() -> str:
 
 下列文档按 v1 旧协议（edict + parade/chain/graph + 空 payload）写成，与 v2 协议不一致：
 
-- [ ] `docs/runner-cookbook.md` —— 12 个 Runner 类型示例都用 v1 输入输出
-- [ ] `docs/emperor-skeleton.md` —— 调度器骨架仍引用 mode / payload
+- [ ] `docs/archive/runner-cookbook.md` —— 已归档为历史参考
+- [ ] `docs/archive/emperor-skeleton.md` —— 已归档为历史参考
 - [ ] `docs/language-addition-guide.md` —— 新增语言流程未引用 role
 - [ ] `docs/templates/manifest.template.json` —— 字段缺 role / produces / consumes
 - [ ] `docs/templates/main.template.py` —— 输入输出按 v1 模板
 - [ ] `docs/quickstart.md` —— 命令路径与 v2 朝廷不一致
-- [ ] `docs/design.md` —— 标记为"历史归档"即可，不强求重写
+- [ ] `docs/archive/design.md` —— 已加归档头 + 移入 archive/
 - [ ] `docs/language-catalog.md` —— 大体可保留，但建议给每条加 `role` 推荐
 
 ## 提议

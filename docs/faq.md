@@ -19,7 +19,7 @@
 **A：** 因为这是几乎所有语言都能做的最小公约数。文件、socket、共享内存都会增加大量平台和语言依赖。
 
 ### Q：Brainfuck / Whitespace 怎么读 JSON？
-**A：** 不读。这类整活语言走 `esolang` runner：源码只负责输出固定文本，`tools/esolang/<lang>.py` 负责把固定文本包装成合规 v2 dispatch 输出。参考 `provinces/brainfuck/`、`provinces/whitespace/`。
+**A：** 不读。这类整活语言走 `esolang` runner：源码只负责输出固定文本，`tools/esolang/<lang>.py` 负责把固定文本包装成合规 v2 dispatch 输出。参考 `provinces/brainfuck/`、`provinces/whitespace/` 的实际实现。
 
 ### Q：可以输出 JSONL 或 NDJSON 吗？
 **A：** 不行。`stdout` 必须是 **单个** JSON 对象。多对象、注释、调试日志一律走 `stderr`。
@@ -64,7 +64,7 @@
 **A：** 顺序：
 
 1. 读 `naming-convention.md`，挑好 ID 与郡名；
-2. 在 `runner-cookbook.md` 找最接近的 runner 示例；
+2. 在 `catalog/runners.catalog.json` 中挑 runner，照 `provinces/<现有同 runner 郡>/` 模仿；
 3. 复制示例到 `provinces/<id>/`；
 4. 改 `manifest.json` 与 `main.<ext>`；
 5. 本地用 `python -m court.emperor --province <id> --ticks 1` 跑通；

@@ -13,7 +13,7 @@
 | 新增一个语言郡 | ⭐ | `language-addition-guide.md` |
 | 修复某个郡的 bug | ⭐ | issue 区找 `good-first-issue` |
 | 写文档 / 翻译 | ⭐⭐ | docs/ 任意文件 |
-| 写 Runner | ⭐⭐⭐ | `emperor-skeleton.md` |
+| 写 Runner | ⭐⭐⭐ | 仓库根 `court/` 实际代码 + [`archive/emperor-skeleton.md`](archive/emperor-skeleton.md) 历史思路 |
 | 协议变更 | ⭐⭐⭐⭐ | `governance.md` 走 RFC |
 | 安全研究 | ⭐⭐⭐⭐ | `governance.md` §4 |
 
