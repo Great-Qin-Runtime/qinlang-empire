@@ -96,26 +96,37 @@ qinlang-empire/
 ├── empire/
 │   ├── state.json        帝国当前状态（cron 每 tick 改写）
 │   └── history.jsonl     完整 tick 报告流
-├── provinces/            郡（每语言一目录）
-│   ├── python/  · 白蛇郡 · producer · 文书
-│   ├── c/       · 始源郡 · producer · 工具
-│   ├── sql/     · 簿录郡 · service  · 户籍
-│   ├── bash/    · 巴什郡 · transformer · 建筑
-│   └── brainfuck/ · 奇技郡 · ceremonial · 烟火
+├── provinces/            郡（V0.2 已 15 郡入册）
+│   ├── python/      · 白蛇郡 · producer    · 文书
+│   ├── c/           · 始源郡 · producer    · 工具
+│   ├── rust/        · 锈铁郡 · producer    · 兵器
+│   ├── go/          · 御行郡 · producer    · 钱粮
+│   ├── haskell/     · 函郡   · producer    · 学问
+│   ├── typescript/  · 类朔郡 · producer    · 文书
+│   ├── html/        · 文骨郡 · producer    · 礼仪
+│   ├── sql/         · 簿录郡 · service     · 户籍
+│   ├── bash/        · 巴什郡 · transformer · 建筑
+│   ├── make/        · 工部郡 · transformer · 城池
+│   ├── jq/          · 角铲郡 · transformer · 典籍
+│   ├── prolog/      · 律令郡 · service     · 律令
+│   ├── glsl/        · 着色郡 · specialist  · 天象
+│   ├── brainfuck/   · 奇技郡 · ceremonial  · 烟火
+│   └── whitespace/  · 无字郡 · ceremonial  · 静默
 ├── tools/
-│   └── esolang/brainfuck.py   共享 esolang 解释器
-├── dashboard/            静态 idle game 面板
+│   ├── esolang/{brainfuck,whitespace}.py   共享 esolang 解释器
+│   └── validate_all.py                     CI manifest + dry-run 校验
+├── dashboard/            静态 idle game 面板（读 state.json + history.jsonl）
 │   ├── index.html
 │   ├── app.js
 │   └── style.css
 ├── docs/
-│   ├── empire-game-design.md   游戏机制总图（核心文档）
+│   ├── empire-game-design.md   游戏机制总图（核心叙事）
 │   ├── role-system.md          5 角色定义 + 推荐归属
 │   ├── language-catalog.md     全 300+ 语言登记
 │   ├── naming-convention.md    郡名命名规则
 │   ├── glossary.md             术语表
-│   ├── runner-cookbook.md      接入 cookbook
-│   ├── emperor-skeleton.md     调度器架构说明
+│   ├── catalog/                21 类 + 12 runner + V0.1 种子
+│   ├── templates/              新郡 manifest / main / README / test 模板
 │   └── protocol/               schemas + 律令正文
 │       ├── qin-law.md
 │       ├── state.schema.json
@@ -124,11 +135,14 @@ qinlang-empire/
 │       ├── output.schema.json
 │       └── manifest.schema.json
 ├── .github/workflows/
-│   └── empire-tick.yml   cron 心跳
+│   ├── empire-tick.yml   cron 心跳（每 5 分钟）
+│   └── validate.yml      PR 静态校验 + dry-run
 ├── requirements.txt
 ├── index.html            根路径自动转 /dashboard/
 └── README.md             你正在读
 ```
+
+完整文档目录见 [`docs/README.md`](docs/README.md)。
 
 ## 五、阶段（永远是秦）
 
@@ -146,19 +160,22 @@ qinlang-empire/
 - **自动运行**——CI cron + 静态网页 = 没有服务器，没有运维，只有继续跑；
 - **永远是秦**——这不是模拟器，是叙事。你看到的是同一个帝国，在长。
 
-## 七、当前状态（MVP / M1）
+## 七、当前状态（V0.2 完成）
 
 | 组件 | 状态 |
 |---|---|
-| 协议 v2（dispatch + delta） | ✅ 完成 |
-| 朝廷 court/ 单 tick 实现 | ✅ 完成 |
-| 5 个 MVP 郡 | ✅ Python · C · SQL · Bash · Brainfuck |
-| 静态 dashboard | ✅ 完成 |
-| GitHub Actions cron | ✅ 已配 |
+| 协议 v2（dispatch + delta） | ✅ V0.1 |
+| 朝廷 court/ 单 tick 实现 | ✅ V0.1 |
+| 5 个 MVP 郡（Python · C · SQL · Bash · Brainfuck） | ✅ V0.1 |
+| 静态 dashboard（state.json + history.jsonl） | ✅ V0.1 |
+| GitHub Actions cron 心跳 | ✅ V0.1 |
+| 7 阶段晋升 `court/stages.py` + 一统大典 buff | ✅ V0.2 |
+| 招贤事件（PR 合入即触发 unlock 事件） | ✅ V0.2 |
+| CI 静态校验 + 跨语言 dry-run（`tools/validate_all.py`） | ✅ V0.2 |
+| 10 个新郡（Rust / Go / Haskell / TS / HTML / jq / Make / Prolog / GLSL / Whitespace） | ✅ V0.2 |
 | GitHub Pages 部署 | ⚠️ 需在仓库 Settings 中启用 Pages |
-| 阶段晋升逻辑 | 🚧 仅秦邑期固定 |
-| 招贤事件 | 🚧 待 M2 |
-| 浏览器快 tick (路径 D) | 🚧 待 M3 |
+| 浏览器快 tick (路径 D) | 🚧 V0.3 候选 |
+| docker / nix runner | 🚧 V0.4 |
 | 300+ 郡入册 | 🚧 长期，每周加一批 |
 
 ## 八、贡献者指南速读
