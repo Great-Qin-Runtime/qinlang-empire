@@ -30,10 +30,7 @@ build-city:
 	  --arg did $(DID) \
 	  --argjson gu $(NEED_GU) \
 	  --argjson ql $(NEED_QL) \
-	  '{language:"Make",province:"工部郡",ok:true,tick:$$tick,dispatch_id:$$did, \
-	    deltas:{treasury:{"gong-ju":(-1*$$gu),"qian-liang":(-1*$$ql),"cheng-chi":$$y}, \
-	            self:{produced:$$y, consumed:($$gu+$$ql)}}, \
-	    events:[{type:"transform",text:("工部郡按规筑城 \($$y) 座，役工具 \($$gu) 件、钱粮 \($$ql) 石。"),severity:"info"}]}'
+	  '{language:"Make",province:"工部郡",ok:true,tick:$$tick,dispatch_id:$$did,deltas:{treasury:{"gong-ju":(-1*$$gu),"qian-liang":(-1*$$ql),"cheng-chi":$$y},self:{produced:$$y,consumed:($$gu+$$ql)}},events:[{type:"transform",text:("工部郡按规筑城 \($$y) 座，役工具 \($$gu) 件、钱粮 \($$ql) 石。"),severity:"info"}]}'
 
 insufficient:
 	@jq -nc \
@@ -41,7 +38,4 @@ insufficient:
 	  --arg did $(DID) \
 	  --argjson gu $(GU) \
 	  --argjson ql $(QL) \
-	  '{language:"Make",province:"工部郡",ok:false,tick:$$tick,dispatch_id:$$did, \
-	    deltas:{}, \
-	    events:[{type:"transform",text:("工部郡欲筑城，工具 \($$gu) 件、钱粮 \($$ql) 石不足。"),severity:"warn"}], \
-	    error:{code:"E0900",message:"insufficient resources"}}'
+	  '{language:"Make",province:"工部郡",ok:false,tick:$$tick,dispatch_id:$$did,deltas:{},events:[{type:"transform",text:("工部郡欲筑城，工具 \($$gu) 件、钱粮 \($$ql) 石不足。"),severity:"warn"}],error:{code:"E0900",message:"insufficient resources"}}'
