@@ -1,6 +1,9 @@
 from __future__ import annotations
 
-from typing import Any, Dict, Iterable, List
+from pathlib import Path
+from typing import Any, Dict, Iterable, List, Optional
+
+from . import seal as seal_mod
 
 
 STAGE_ORDER = [
@@ -87,7 +90,15 @@ STAGE_REQS: Dict[str, Dict[str, Any]] = {
 }
 
 
-def maybe_advance(state: Dict[str, Any], manifests: Iterable[Dict[str, Any]] = ()) -> Dict[str, Any]:
+def maybe_advance(state: Dict[str, Any],
+                  manifests: Iterable[Dict[str, Any]] = (),
+                  *,
+                  empire_dir: Optional[Path] = None) -> Dict[str, Any]:
+    """评估当前阶段进度，必要时晋升并铸玉玺。
+
+    - empire_dir：empire/ 目录路径，用于写 seals/<stage>-<tick>.svg。
+      None（默认）= 不写文件，仅更新 state["seal"] 字符串（供测试）。
+    """
     stage = state.get("stage", "qin-yi")
     req = STAGE_REQS.get(stage, STAGE_REQS["qin-yi"])
     progress = _progress(state, req)
@@ -95,7 +106,7 @@ def maybe_advance(state: Dict[str, Any], manifests: Iterable[Dict[str, Any]] = (
 
     advanced = False
     if req.get("next") and progress >= 1.0:
-        _advance(state, req, manifests)
+        _advance(state, req, manifests, empire_dir=empire_dir)
         advanced = True
         state["stage_progress"] = round(_progress(state, STAGE_REQS[state["stage"]]), 4)
 
@@ -106,8 +117,9 @@ def maybe_advance(state: Dict[str, Any], manifests: Iterable[Dict[str, Any]] = (
     }
 
 
-def evaluate(state: Dict[str, Any], manifests: Iterable[Dict[str, Any]]) -> Dict[str, Any]:
-    return maybe_advance(state, manifests)
+def evaluate(state: Dict[str, Any], manifests: Iterable[Dict[str, Any]],
+             *, empire_dir: Optional[Path] = None) -> Dict[str, Any]:
+    return maybe_advance(state, manifests, empire_dir=empire_dir)
 
 
 def describe(stage: str) -> Dict[str, Any]:
@@ -124,21 +136,41 @@ def ceremonial_manifests(manifests: Iterable[Dict[str, Any]]) -> List[Dict[str, 
     return [m for m in manifests if m.get("role") == "ceremonial"]
 
 
-def _advance(state: Dict[str, Any], req: Dict[str, Any], manifests: Iterable[Dict[str, Any]]) -> None:
+def _advance(state: Dict[str, Any], req: Dict[str, Any],
+             manifests: Iterable[Dict[str, Any]],
+             *, empire_dir: Optional[Path] = None) -> None:
     next_stage = req.get("next")
     if not next_stage:
         return
     if req.get("ceremonial_tick"):
         _apply_unification_cost(state)
     state["stage"] = next_stage
-    state["seal"] = f"seal-{next_stage}-{state.get('tick', 0)}"
+    tick = int(state.get("tick", 0))
+
+    # 铸玉玺：写 SVG 文件并把相对路径塞进 state["seal"]
+    seal_path: Optional[Path] = None
+    if empire_dir is not None:
+        seal_path = seal_mod.mint_seal(next_stage, tick, state, empire_dir)
+    if seal_path is not None:
+        # 取相对 empire_dir 的路径，便于 dashboard fetch
+        try:
+            rel = seal_path.relative_to(empire_dir).as_posix()
+        except ValueError:
+            rel = seal_path.name
+        state["seal"] = rel
+    else:
+        # 无写盘环境（测试 / 干跑）：保留旧的字符串语义
+        state["seal"] = f"seal-{next_stage}-{tick}"
+
+    artifact = state["seal"] if seal_path is not None else None
     state.setdefault("events", []).insert(0, {
-        "tick": state.get("tick", 0),
+        "tick": tick,
         "year": state.get("year", 0),
         "type": "epoch",
         "from_province": None,
         "text": req.get("text", f"帝国进入 {STAGE_NAMES.get(next_stage, next_stage)}。"),
         "severity": "epic",
+        "artifact": artifact,
     })
     if req.get("ceremonial_tick"):
         for manifest in ceremonial_manifests(manifests):

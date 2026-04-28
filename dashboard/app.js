@@ -162,6 +162,42 @@ function renderEvents(state) {
   bind("eventList", items || `<li><span class="evt-text">尚无事。</span></li>`);
 }
 
+function renderSeals(state) {
+  const seal = state.seal;
+  const gallery = document.querySelector('[data-bind="sealGallery"]');
+  if (!gallery) return;
+
+  // 从 events 中提取最近 6 个 epoch 类型的玉玺路径
+  const events = (state.events || []);
+  const sealPaths = [];
+  for (const e of events) {
+    if (e.type === "epoch" && e.artifact && typeof e.artifact === "string") {
+      if (!sealPaths.includes(e.artifact)) sealPaths.push(e.artifact);
+      if (sealPaths.length >= 6) break;
+    }
+  }
+  // 兜底：若 state.seal 是路径形式（V0.3+）也加入
+  if (typeof seal === "string" && seal.endsWith(".svg") && !sealPaths.includes(seal)) {
+    sealPaths.unshift(seal);
+  }
+
+  if (!sealPaths.length) {
+    gallery.innerHTML = `<p class="seal-empty">尚未铸玺，俟阶段晋升。</p>`;
+    return;
+  }
+
+  // V0.3 #39 路径形式：empire/seals/<stage>-<tick>.svg；dashboard 在 dashboard/ 下，
+  // 相对路径用 ../empire/<seal>。
+  gallery.innerHTML = sealPaths
+    .map((p, i) => `
+      <figure class="seal-tile ${i === 0 ? "seal-latest" : ""}">
+        <img src="../empire/${escapeHtml(p)}" alt="玉玺：${escapeHtml(p)}" loading="lazy"/>
+        <figcaption>${escapeHtml(p.split("/").pop())}</figcaption>
+      </figure>`)
+    .join("");
+}
+
+
 function renderMilestones(state) {
   const ms = state.milestones || [];
   const items = ms.map(m => `
@@ -184,6 +220,7 @@ async function refresh() {
     renderProvinces(state, manifests);
     renderEvents(state);
     renderMilestones(state);
+    renderSeals(state);
 
     // 微动画：tick 变了时让所有最近活跃郡 pulse 一次
     if (state.tick !== lastSeenTick) {
