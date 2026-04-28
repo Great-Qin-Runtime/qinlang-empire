@@ -1,46 +1,47 @@
 {
   "schema_version": 1,
   "dynasty": "秦",
-  "tick": 10,
+  "tick": 11,
   "year": 0,
   "stage": "qin-yi",
-  "stage_progress": 0.2849,
+  "stage_progress": 0.2933,
   "season": "夏",
   "weather": "晴",
   "treasury": {
-    "wen-shu": 42,
-    "gong-ju": 22,
-    "qian-liang": 6,
+    "wen-shu": 49,
+    "gong-ju": 25,
+    "qian-liang": 11,
     "jian-zhu": 3,
-    "hu-ji": 20,
+    "hu-ji": 23,
     "dian-ji": 1,
-    "yi-li": 2,
-    "bing-qi": 3
+    "yi-li": 4,
+    "bing-qi": 8,
+    "xue-wen": 6
   },
   "provinces": {
     "python": {
       "level": 1,
-      "loyalty": 110,
-      "last_tick": 10,
-      "produced": 56,
+      "loyalty": 111,
+      "last_tick": 11,
+      "produced": 63,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "c": {
       "level": 1,
-      "loyalty": 110,
-      "last_tick": 10,
-      "produced": 37,
+      "loyalty": 111,
+      "last_tick": 11,
+      "produced": 40,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "sql": {
       "level": 1,
-      "loyalty": 110,
-      "last_tick": 10,
-      "produced": 20,
+      "loyalty": 111,
+      "last_tick": 11,
+      "produced": 23,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -65,8 +66,8 @@
     },
     "prolog": {
       "level": 1,
-      "loyalty": 101,
-      "last_tick": 10,
+      "loyalty": 102,
+      "last_tick": 11,
       "produced": 0,
       "consumed": 0,
       "fail_streak": 0,
@@ -92,51 +93,131 @@
     },
     "go": {
       "level": 1,
-      "loyalty": 101,
-      "last_tick": 10,
-      "produced": 6,
+      "loyalty": 102,
+      "last_tick": 11,
+      "produced": 11,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "haskell": {
       "level": 1,
-      "loyalty": 97,
-      "last_tick": 10,
-      "produced": 0,
+      "loyalty": 98,
+      "last_tick": 11,
+      "produced": 6,
       "consumed": 0,
-      "fail_streak": 1,
+      "fail_streak": 0,
       "quarantined": false
     },
     "html": {
       "level": 1,
-      "loyalty": 101,
-      "last_tick": 10,
-      "produced": 2,
+      "loyalty": 102,
+      "last_tick": 11,
+      "produced": 4,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "rust": {
       "level": 1,
-      "loyalty": 101,
-      "last_tick": 10,
-      "produced": 3,
+      "loyalty": 102,
+      "last_tick": 11,
+      "produced": 8,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "typescript": {
       "level": 1,
-      "loyalty": 95,
-      "last_tick": 10,
+      "loyalty": 90,
+      "last_tick": 11,
       "produced": 0,
       "consumed": 0,
-      "fail_streak": 1,
+      "fail_streak": 2,
       "quarantined": false
     }
   },
   "events": [
+    {
+      "tick": 11,
+      "year": 0,
+      "type": "system",
+      "from_province": "typescript",
+      "text": "类朔郡奉诏不力：non-zero exit (9)",
+      "severity": "warn"
+    },
+    {
+      "tick": 11,
+      "year": 0,
+      "type": "produce",
+      "from_province": "haskell",
+      "text": "函郡 夏暑校书，明窗对简，献学问 6 编。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 11,
+      "year": 0,
+      "type": "produce",
+      "from_province": "rust",
+      "text": "锈铁郡 夏伏鼓风，炉火映甲，献兵器 5 件。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 11,
+      "year": 0,
+      "type": "produce",
+      "from_province": "html",
+      "text": "文骨郡 夏祭择良，献仪礼 2 章。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 11,
+      "year": 0,
+      "type": "produce",
+      "from_province": "go",
+      "text": "御行郡 夏粟入仓，驿道清明，献钱粮 5 石。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 11,
+      "year": 0,
+      "type": "produce",
+      "from_province": "python",
+      "text": "白蛇郡 夏暑稍歇，天朗气清，献文书 7 卷。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 11,
+      "year": 0,
+      "type": "produce",
+      "from_province": "c",
+      "text": "始源郡 夏日 鼓风炼铁，铸工具 3 件。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 11,
+      "year": 0,
+      "type": "service",
+      "from_province": "prolog",
+      "text": "律令郡今日无讼，律书一卷，束阁待召。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 11,
+      "year": 0,
+      "type": "service",
+      "from_province": "sql",
+      "text": "簿录郡奉诏巡丁，新增 3 户，共 9 口。",
+      "severity": "info",
+      "artifact": null
+    },
     {
       "tick": 10,
       "year": 0,
@@ -656,7 +737,7 @@
     }
   ],
   "stats": {
-    "population": 1053,
+    "population": 1062,
     "land": 1,
     "military": 0,
     "reputation": 0,
