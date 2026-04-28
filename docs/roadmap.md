@@ -5,33 +5,32 @@
 ## 总体节奏
 
 ```
-V0.1 建国    : 跑通最小闭环（4 周）
-V0.2 郡县制  : 扩展到 50 种语言（8 周）
-V0.3 书同文  : 协议加固（4 周）
-V0.4 车同轨  : 工具链统一（6 周）
-V0.5 帝国舆图: 可视化与报告（4 周）
+V0.1 建国    : 跑通最小闭环（4 周）         ✅ 已完成
+V0.2 郡县制  : 扩展到 50 种语言（8 周）     ✅ 已完成（实际 15 郡入册）
+V0.3 书同文  : 协议加固（4 周）             🚧 规划中
+V0.4 车同轨  : 工具链统一（6 周）           🚧
+V0.5 帝国舆图: 可视化与报告（4 周）         🚧
 V1.0 六合一统: 100+ 语言、稳定协议、可贡献社区
 ```
 
-时间为建议节奏，实际取决于贡献者数量。
+时间为建议节奏，实际取决于贡献者数量。当前状态：**V0.2 已完成（15 郡，stages + recruitment + CI 全到位），V0.3 启动中**。
 
 ---
 
-## V0.1 · 建国（M1）
+## V0.1 · 建国（M1）✅ 已完成
 
-里程碑事件：**第一次玉玺生成**
+里程碑事件：**第一次 tick 闭环**
 
-| 任务 | 优先级 | 负责 |
-|---|---|---|
-| 仓库结构搭建 | P0 | maintainer |
-| `protocol/qin-law.md` 与 3 份 schema | P0 | maintainer |
-| `court/emperor.py` parade 模式 | P0 | maintainer |
-| `validators/protocol_validator.py` | P0 | maintainer |
-| `provinces/python` 第一个郡 | P0 | maintainer |
-| 再加 4 种郡（C、JS、Rust、Bash） | P0 | maintainer |
-| `empire/state.json` + `empire/history.jsonl` 产出生成 | P1 | maintainer |
-| GitHub Actions：lint + manifest-check | P1 | maintainer |
-| README + Quickstart | P1 | maintainer |
+| 任务 | 状态 |
+|---|---|
+| 仓库结构搭建 | ✅ |
+| `docs/protocol/qin-law.md` 与 5 份 schema | ✅ |
+| `court/emperor.py` 单 tick 实现 | ✅ |
+| `provinces/python` 第一个郡 | ✅ |
+| 再加 4 种郡（C / SQL / Bash / Brainfuck） | ✅ |
+| `empire/state.json` + `empire/history.jsonl` 产出生成 | ✅ |
+| GitHub Actions cron 心跳 | ✅ |
+| README + Quickstart | ✅ |
 
 **验收**：
 
@@ -42,22 +41,28 @@ python -m court.emperor --ticks 1
 
 ---
 
-## V0.2 · 郡县制（M2）
+## V0.2 · 郡县制（M2）✅ 已完成
 
-里程碑事件：**50 郡入册**
+里程碑事件：**15 郡入册 + stages + 招贤 + CI**
 
-| 任务 | 优先级 |
+| 任务 | 状态 |
 |---|---|
-| 增加 Java、C#、Go、TypeScript、PHP、Ruby、Lua、Perl、SQL、jq、Prolog | P0 |
-| 增加 Brainfuck、Whitespace、LOLCODE、Befunge | P1 |
-| Docker runner 与 `tools/docker/` 镜像构建 | P0 |
-| Esolang runner 与 `tools/esolang/brainfuck.py` | P0 |
-| Render runner（Mermaid、DOT、PlantUML） | P1 |
-| `dashboard/` 静态页第一版 | P1 |
-| 排行榜（最快 / 最慢 / 失败郡排名，读 `empire/history.jsonl`） | P2 |
-| 贡献模板 `docs/templates/` | P1 |
+| 7 阶段晋升 `court/stages.py` + 一统大典 buff | ✅ |
+| 招贤事件 `court/recruitment.py`（PR 合入触发 unlock） | ✅ |
+| CI manifest 校验 + dry-run（`tools/validate_all.py` + `validate.yml`） | ✅ |
+| Rust / Go / Haskell / TypeScript / HTML 5 个 producer 郡 | ✅ |
+| jq / Make 2 个 transformer 郡 | ✅ |
+| Prolog（service · 律令） | ✅ |
+| GLSL（specialist · 天象） | ✅ |
+| Whitespace（ceremonial · 静默） | ✅ |
+| Esolang runner 与 `tools/esolang/{brainfuck,whitespace}.py` | ✅ |
+| 贡献模板 `docs/templates/` | ✅ |
+| 新增剩余 ~35 郡至 50 | 🚧 移交 V0.3 持续加 |
+| Docker runner 与 `tools/docker/` 镜像构建 | 🚧 移交 V0.4 |
+| Render runner（Mermaid / DOT / PlantUML） | 🚧 V0.4 |
+| 排行榜 dashboard | 🚧 V0.5 |
 
-**验收**：50 个 manifest，至少 40 个 `runnable / compile-only / render-only`。
+**验收**：15 个 manifest 全部 runnable，CI 静态 + dry-run 校验通过。
 
 ---
 
