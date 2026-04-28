@@ -14,9 +14,9 @@
 
 任何对以下内容的修改必须走 RFC：
 
-1. `protocol/` 下任意文件；
-2. `catalog/language-types.md` 中的分类集合；
-3. `catalog/runners.catalog.json` 中的 runner 集合；
+1. `docs/protocol/` 下任意文件；
+2. `docs/catalog/language-types.md` 中的分类集合；
+3. `docs/catalog/runners.catalog.json` 中的 runner 集合；
 4. 错误码与状态码语义；
 5. 命名规范；
 6. CI 安全策略。
@@ -86,10 +86,9 @@
 
 ```
 [ ] CHANGELOG.md 更新
-[ ] catalog/languages.catalog.json 校对
-[ ] 全量 CI 通过（所有 runnable）
-[ ] reports/latest.json 重新生成
-[ ] reports/leaderboard.json 重新生成
+[ ] docs/catalog/languages.catalog.seed.json 校对
+[ ] 全量 CI 通过（所有 runnable，python tools/validate_all.py）
+[ ] empire/state.json 在主分支已经过若干 cron tick 验证
 [ ] dashboard/ 截图更新
 [ ] git tag v<MAJOR>.<MINOR>.<PATCH>
 [ ] GitHub Release 草稿（含传国玉玺 SVG）
@@ -104,7 +103,9 @@
 
 ## 8. 镜像与依赖
 
-1. Docker 镜像统一发布到 `qinlang/<id>` 命名空间；
+1. Docker 镜像（待 V0.4 落地）统一发布到 `qinlang/<id>` 命名空间；
 2. 镜像必须基于 LTS 基础镜像，避免 `latest` 标签；
-3. 镜像构建脚本必须在仓库内可见（`tools/docker/<id>/Dockerfile`）；
+3. 镜像构建脚本必须在仓库内可见（`tools/docker/<id>/Dockerfile`，目录尚未建立）；
 4. 不允许在 `manifest.json` 中引用未发布的私人镜像。
+
+> ⚠️ 当前 V0.2 阶段尚未引入 docker runner；所有 docker 相关条款为 V0.4 路线图项。

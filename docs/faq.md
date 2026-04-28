@@ -19,7 +19,7 @@
 **A：** 因为这是几乎所有语言都能做的最小公约数。文件、socket、共享内存都会增加大量平台和语言依赖。
 
 ### Q：Brainfuck / Whitespace 怎么读 JSON？
-**A：** 不读。这类整活语言走 `esolang` runner：源码只负责输出固定文本，`tools/esolang/<lang>.py` 负责把固定文本包装成合规 JSON。详见 `runner-cookbook.md`。
+**A：** 不读。这类整活语言走 `esolang` runner：源码只负责输出固定文本，`tools/esolang/<lang>.py` 负责把固定文本包装成合规 v2 dispatch 输出。参考 `provinces/brainfuck/`、`provinces/whitespace/`。
 
 ### Q：可以输出 JSONL 或 NDJSON 吗？
 **A：** 不行。`stdout` 必须是 **单个** JSON 对象。多对象、注释、调试日志一律走 `stderr`。
@@ -67,8 +67,8 @@
 2. 在 `runner-cookbook.md` 找最接近的 runner 示例；
 3. 复制示例到 `provinces/<id>/`；
 4. 改 `manifest.json` 与 `main.<ext>`；
-5. 本地用 `python court/emperor.py --province <id>` 跑通；
-6. 在 `catalog/languages.catalog.json` 登记；
+5. 本地用 `python -m court.emperor --province <id> --ticks 1` 跑通；
+6. 在 `docs/catalog/languages.catalog.seed.json` 登记；
 7. 提交 PR，标题用 `feat(province): add <id> (<郡名>)`。
 
 ### Q：我加的语言被打回了，常见原因？
@@ -78,7 +78,7 @@
 |---|---|
 | ID 已存在 | 改 ID，或用版本后缀 |
 | 郡名重复 / 不合规则 | 见 `naming-convention.md` §2 |
-| stdout 不是合规 JSON | 用 `validators/result_validator.py` 本地跑 |
+| stdout 不是合规 JSON | 用 `python tools/validate_all.py` 本地跑 |
 | 编译命令绝对路径 | 改为相对路径或 `which` 探测 |
 | 修改了 `protocol/` 但未走 RFC | 拆 PR，先走协议 RFC |
 

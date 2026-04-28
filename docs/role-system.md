@@ -278,7 +278,7 @@ artifact 字段允许特殊郡产出实际文件（SVG / PNG / WAV），由 dash
 - `specialist` → `imperial-master`：解锁专属事件；
 - `ceremonial` → `legend`：自身有了短传；dashboard 显示为金色徽记。
 
-升级路径写在 `protocol/upgrade-paths.json`，由元规则驱动，不需贡献者改代码。
+> ⚠️ V0.2 阶段未落地；路径表与元规则实现待 wan-shi 期再开个 RFC 定义。
 
 ---
 

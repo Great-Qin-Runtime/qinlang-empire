@@ -26,9 +26,9 @@ python -m venv .venv
 . .venv/bin/activate     # Linux/macOS
 .\.venv\Scripts\Activate.ps1   # Windows
 pip install -r requirements.txt
-pip install -r requirements-dev.txt
-pre-commit install
 ```
+
+> 目前没有独立的 dev 依赖文件；CI 校验靠 `python tools/validate_all.py`。
 
 ## 3. 分支策略
 
@@ -41,12 +41,11 @@ pre-commit install
 提交 PR 前，请确认：
 
 - [ ] 标题符合 [命名规范 §7](naming-convention.md)；
-- [ ] `pre-commit run -a` 全绿；
 - [ ] `pytest tests/ -q` 全绿；
-- [ ] 受影响的郡能本地通过 `python court/emperor.py --province <id>`；
+- [ ] 受影响的郡能本地通过 `python -m court.emperor --province <id> --ticks 1`；
 - [ ] 如改协议 / 新分类 / 新 runner，已附 RFC 链接；
-- [ ] 如改 manifest，已通过 `validators/manifest_validator.py`；
-- [ ] 文档随代码同步更新（README / cookbook / catalog）；
+- [ ] `python tools/validate_all.py` 全绿（manifest schema + dry-run）；
+- [ ] 文档随代码同步更新（README / catalog / language-addition-guide）；
 - [ ] 没有把编译产物 / 大文件 / 依赖目录提交进仓。
 
 ## 5. PR 评审流程
@@ -101,5 +100,5 @@ revert: <hash>
 ## 10. 寻求帮助
 
 - 一般问题：开 GitHub Discussion；
-- bug：开 issue 并贴出 `reports/latest.json` 中相关片段；
+- bug：开 issue 并贴出 `empire/state.json` 与 `empire/history.jsonl` 末尾相关片段；
 - 安全：见 `governance.md` §4，**不要** 公开披露。

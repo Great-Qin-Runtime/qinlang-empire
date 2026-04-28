@@ -122,7 +122,7 @@ python -m court.emperor --province <id> --ticks 1
 
 ## Step 7：登记 catalog
 
-打开 `catalog/languages.catalog.json`，按 ID 字典序插入：
+打开 `docs/catalog/languages.catalog.seed.json`，按 ID 字典序插入：
 
 ```json
 {
@@ -153,7 +153,7 @@ python -m court.emperor --province <id> --ticks 1
 
 ## 本地运行
 \```bash
-python court/emperor.py --province <id>
+python -m court.emperor --province <id> --ticks 1
 \```
 
 ## 备注
@@ -181,7 +181,7 @@ python court/emperor.py --province <id>
 
 ```bash
 git checkout -b feat/province-<id>
-git add provinces/<id>/ catalog/languages.catalog.json docs/language-catalog.md
+git add provinces/<id>/ docs/catalog/languages.catalog.seed.json docs/language-catalog.md
 git commit -m "feat(province): add <id> (<郡名>)"
 git push origin feat/province-<id>
 ```
@@ -208,5 +208,5 @@ PR 模板会引导你填写：
 | 输出含 `step / stamps / payload` 等 v1 字段 | 已废止，请改用 v2 的 `tick / dispatch_id / deltas / events` |
 | `E0500 RUN_NONZERO_EXIT` | 运行时异常但被捕获了，记得返回非零或修 bug |
 | `E0501 RUN_TIMEOUT` | 多半是 `read()` 阻塞，确认你确实读完了 stdin |
-| docker 拉镜像超时 | 把镜像构建脚本提交到 `tools/docker/<id>/` 让 CI 复用缓存 |
+| docker 拉镜像超时 | docker runner 属 V0.4 路线图项，当前版本未启用 |
 | Windows 上失败 | 在 manifest 加 `"platform": {"windows": false}` 或改用 docker runner |
