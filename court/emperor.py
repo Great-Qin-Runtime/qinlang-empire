@@ -37,10 +37,13 @@ def run_one_tick(
     manifests: List[Dict[str, Any]],
     *,
     only_province: Optional[str] = None,
+    empire_dir: Optional[Path] = None,
 ) -> List[Dict[str, Any]]:
     """跑一个 tick，返回各郡的运行报告。state 会被原地修改。"""
     recruitment.check_recruits(state, manifests, KNOWN_PATH)
     state_mod.advance_clock(state)
+    if empire_dir is None:
+        empire_dir = STATE_PATH.parent
 
     if only_province:
         selected = [m for m in manifests if m["id"] == only_province]
@@ -69,7 +72,7 @@ def run_one_tick(
         reports.append(report)
 
     _check_milestones(state)
-    stages.maybe_advance(state, manifests)
+    stages.maybe_advance(state, manifests, empire_dir=empire_dir)
     return reports
 
 
@@ -130,6 +133,7 @@ def main() -> int:
     args = ap.parse_args()
 
     state_path = Path(args.state_path)
+    empire_dir = state_path.parent
     state = state_mod.load_state(state_path)
 
     manifests = registry.load_manifests(PROVINCES_DIR)
@@ -148,7 +152,9 @@ def main() -> int:
     all_reports: List[Dict[str, Any]] = []
     for _ in range(args.ticks):
         t0 = time.time()
-        reports = run_one_tick(state, manifests, only_province=args.province)
+        reports = run_one_tick(state, manifests,
+                               only_province=args.province,
+                               empire_dir=empire_dir)
         elapsed = int((time.time() - t0) * 1000)
         all_reports.extend(reports)
         if not args.quiet:

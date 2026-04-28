@@ -31,4 +31,5 @@ provinces/go/main_bin.exe
 *.tmp
 *.log
 empire/state.backup*.json
+empire/seals/*.svg
 provinces/glsl/artifacts/

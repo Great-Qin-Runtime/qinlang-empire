@@ -109,11 +109,14 @@ V0.3 起明确：**单页应用**。多页面（`provinces.html` / `map.html` / 
 - 已达成 ★ 高亮，未达成 · 灰显；
 - 显示所属朝代（`stage`）。
 
-### 2.5 §E 玉玺廊 Seals（V0.3 #39 落地后启用）
+### 2.5 §E 玉玺廊 Seals
 
-- 渲染 `empire/seals/*.svg` 最近 6 张；
-- 当前阶段最新一张放大，其余作时间轴排列；
-- V0.3 阶段先在 HTML 里放占位 `<section hidden>`，#39 PR 中再启用并补 CSS。
+- 渲染 `empire/seals/*.svg` 最近 6 张（V0.3 #39 已落地）；
+- 数据来源：state.events 中 `type=epoch` 且 `artifact` 非空的条目；
+- 当前阶段最新一张放大居顶（CSS 类 `.seal-latest`），其余作小图排列；
+- 没有玉玺时显示一段 placeholder 文案"尚未铸玺"。
+
+铸造在 `court/seal.py::mint_seal`：每次 `stages.maybe_advance` 触发晋升时根据 `(stage, tick, year)` 哈希派生颜色，写出独立 SVG。SVG 是纯字符串模板、无脚本、无外部资源，可放心 fetch。
 
 ---
 
@@ -126,7 +129,7 @@ V0.3 起明确：**单页应用**。多页面（`provinces.html` / `map.html` / 
 | 舆图 | `provinces.*` + 各 `provinces/<id>/manifest.json` | 调度时 `provinces.*` 已有；manifest 浏览器侧并行 fetch |
 | 史册 | `events[0:50]` | 已倒序，无需再排 |
 | 里程碑 | `milestones` | 渲染时按 `achieved` 分类 |
-| 玉玺廊（V0.3 #39） | `seal` 字段 + `empire/seals/*.svg` 文件名约定 | 见 #39 issue |
+| 玉玺廊 | `events[*].artifact`（type=epoch）+ `empire/seals/*.svg` 文件 | V0.3 #39 已落地 |
 | 副标题郡数 | `Object.keys(provinces).length` | 别再写死 |
 | footer 更新时间 | `Date.now()` 客户端时间 | 不是服务端时间 |
 

@@ -6,7 +6,7 @@
 本文档是 **QinLang Empire 作为放置类经营游戏** 的核心设计。  
 它取代了之前"语言博物馆"定位（见 [`archive/design.md`](archive/design.md)），是项目自此之后的**最高叙事文件**。
 
-**相关文档**：[`role-system.md`](role-system.md)（5 角色 = producer/transformer/service/specialist/ceremonial 的具体字段与示例）、[`protocol/qin-law.md`](protocol/qin-law.md)（v2 协议正文）、[`glossary.md`](glossary.md)（中英术语速查）、[`roadmap.md`](roadmap.md)（V0.1 → V1.0 路线）。
+**相关文档**：[`role-system.md`](role-system.md)（5 角色 = producer/transformer/service/specialist/ceremonial 的具体字段与示例）、[`protocol/qin-law.md`](protocol/qin-law.md)（v2 协议正文）、[`glossary.md`](glossary.md)（中英术语速查）、[`roadmap.md`](roadmap.md)（V0.1 → V1.0 路线）、[`dashboard-spec.md`](dashboard-spec.md)（玉玺廊在内的 dashboard 规格）。
 
 ---
 
@@ -206,11 +206,12 @@
 
 ## 10. Dashboard 视图
 
-最简版本三块（M2 阶段）：
+最简版本（V0.2 已落地，详见 [`dashboard-spec.md`](dashboard-spec.md)）：
 
 1. **庙堂** — 当前阶段 / 帝国年 / 资源储备 / 玉玺；
 2. **舆图** — 所有郡的网格，按角色配色，活跃高亮；
-3. **史册** — 事件流（最近 50 条），epic 事件钉顶。
+3. **史册** — 事件流（最近 50 条），epic 事件钉顶；
+4. **玉玺廊**（V0.3 #39 落地）— 每次阶段晋升朝廷自动铸一张 SVG 到 `empire/seals/<stage>-<tick>.svg`，dashboard 自动渲染最近 6 张。
 
 完整版本（M5 阶段）：
 

@@ -296,6 +296,42 @@ main {
 .event-list .severity-warn  .evt-text { color: var(--warn); }
 .event-list .severity-epic  .evt-text { color: var(--epic); font-weight: bold; }
 
+/* ==== seals ==== */
+.seal-gallery {
+  display: grid;
+  grid-template-columns: 1fr repeat(auto-fit, minmax(80px, 1fr));
+  gap: 12px;
+  align-items: center;
+}
+.seal-tile {
+  margin: 0;
+  text-align: center;
+  font-family: monospace;
+  font-size: 11px;
+  opacity: 0.85;
+}
+.seal-tile img {
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+.seal-tile.seal-latest {
+  grid-column: 1 / -1;
+  font-size: 13px;
+  font-weight: bold;
+  opacity: 1;
+}
+.seal-tile.seal-latest img {
+  max-width: 320px;
+}
+.seal-empty {
+  font-style: italic;
+  opacity: 0.6;
+  font-family: serif;
+}
+
 /* ==== Milestones ==== */
 .milestone-list {
   list-style: none;
