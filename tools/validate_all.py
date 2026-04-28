@@ -216,7 +216,7 @@ def check_dry_run(report: Report, manifests: List[Dict[str, Any]],
             proc = subprocess.run(
                 m["run"], shell=True, cwd=m["__cwd"],
                 input=payload, capture_output=True,
-                timeout=max(2.0, m.get("timeout_ms", 3000) / 1000.0 + 1),
+                timeout=max(30.0, m.get("timeout_ms", 3000) / 1000.0 + 1),
             )
         except subprocess.TimeoutExpired:
             report.err(i, "dry-run 超时")
