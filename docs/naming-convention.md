@@ -18,7 +18,7 @@
 3. 必须以字母开头；
 4. 不允许以 `-` 结尾；
 5. 长度建议 ≤ 20 字符；
-6. 必须全局唯一（详见 `catalog/languages.catalog.json`）；
+6. 必须全局唯一（详见 `catalog/languages.catalog.seed.json`）；
 7. 在版本歧义时使用后缀消歧（例如 `lean4`、`python2`、`scheme-r7rs`）；
 8. ID 一旦发布，**不允许重命名**；改名只能新增 ID + 标记旧 ID 为 `deprecated`。
 
@@ -37,7 +37,7 @@
 
 ### 1.3 别名
 
-`languages.catalog.json` 允许声明 `aliases`，CLI 可以接受别名：
+`languages.catalog.seed.json` 允许声明 `aliases`，CLI 可以接受别名：
 
 ```json
 {

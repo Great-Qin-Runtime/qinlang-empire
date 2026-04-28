@@ -29,15 +29,15 @@ V1.0 六合一统: 100+ 语言、稳定协议、可贡献社区
 | `validators/protocol_validator.py` | P0 | maintainer |
 | `provinces/python` 第一个郡 | P0 | maintainer |
 | 再加 4 种郡（C、JS、Rust、Bash） | P0 | maintainer |
-| `reports/latest.json` 生成 | P1 | maintainer |
+| `empire/state.json` + `empire/history.jsonl` 产出生成 | P1 | maintainer |
 | GitHub Actions：lint + manifest-check | P1 | maintainer |
 | README + Quickstart | P1 | maintainer |
 
 **验收**：
 
 ```bash
-python court/emperor.py --mode parade
-# 至少 5/5 通过，输出玉玺
+python -m court.emperor --ticks 1
+# 脱同一轮 tick，应输出郡县调度报告与玉玺进展
 ```
 
 ---
@@ -54,7 +54,7 @@ python court/emperor.py --mode parade
 | Esolang runner 与 `tools/esolang/brainfuck.py` | P0 |
 | Render runner（Mermaid、DOT、PlantUML） | P1 |
 | `dashboard/` 静态页第一版 | P1 |
-| 排行榜 `reports/leaderboard.json` | P2 |
+| 排行榜（最快 / 最慢 / 失败郡排名，读 `empire/history.jsonl`） | P2 |
 | 贡献模板 `docs/templates/` | P1 |
 
 **验收**：50 个 manifest，至少 40 个 `runnable / compile-only / render-only`。
@@ -93,7 +93,7 @@ python court/emperor.py --mode parade
 | 平台受限语言 status 自动标注 | P1 |
 | 每日全量巡查 cron | P1 |
 
-**验收**：在干净 GitHub Actions runner 上 `python court/emperor.py --mode parade` 30 分钟内跑完所有 `runnable`。
+**验收**：在干净 GitHub Actions runner 上 `python -m court.emperor --ticks 24` 30 分钟内跑完，所有 `runnable` 郡至少被调度一次。
 
 ---
 

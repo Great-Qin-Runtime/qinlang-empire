@@ -1,7 +1,7 @@
 {
   "$schema": "../protocol/manifest.schema.json",
   "version": 1,
-  "comment": "Seed 数据：V0.1 第一批 20 种语言。完整登记表请见仓库根 catalog/languages.catalog.json。",
+  "comment": "Seed 数据：V0.1 第一批 20 种语言。完整登记表暂时直接维护在本文件。",
   "languages": [
     {
       "id": "python",

@@ -36,7 +36,7 @@
 - **从开服到一统**：约 **500 帝国年 ≈ 42 天 ≈ 6 周** 真实时间
 - **一统之后**：永续运行，每天数十次 tick，每年数百事件
 
-> 数字均为可调常量，写在 `protocol/time-constants.json`。
+> 数字均为可调常量，V0.2 阶段定义在 `court/stages.py` 与 `.github/workflows/empire-tick.yml` 的 cron 表达式中。
 
 ### 3.2 后期节拍升级（路径 D）
 

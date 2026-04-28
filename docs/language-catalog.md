@@ -517,7 +517,7 @@
 
 ## 统计
 
-> 数字会随合并而变动，最新数据以 `catalog/languages.catalog.json` 与 `reports/latest.json` 为准。
+> 数字会随合并而变动，最新数据以 `docs/catalog/languages.catalog.seed.json` 与 `empire/state.json` 为准。
 
 | 分类 | 语言数（建议） |
 |---|---:|
@@ -554,7 +554,7 @@
 2. 选择合适的分类（**只允许一个主分类**）；
 3. 起郡名（参照 `naming-convention.md` §2）；
 4. 在表中插入条目（按 ID 字典序）；
-5. 在 `catalog/languages.catalog.json` 中同步登记；
+5. 在 `docs/catalog/languages.catalog.seed.json` 中同步登记；
 6. 走 PR，标题格式：`feat(province): add <id> (<郡名>)`。
 
 新增 **分类** 或 **Runner** 必须走 RFC（见 `governance.md`）。

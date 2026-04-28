@@ -23,13 +23,13 @@ winget install xxx
 ## 本地运行
 
 ```bash
-python court/emperor.py --province <id>
+python -m court.emperor --province <id> --ticks 1
 ```
 
-直接调用：
+不经朝廷，直接喂一份 dispatch 给 main.<ext>（v2 协议示例）：
 
 ```bash
-echo '{"mission_id":"demo","mode":"parade","edict":"hi","payload":{},"step":0,"stamps":[]}' \
+echo '{"protocol_version":2,"dispatch":{"schema_version":1,"dispatch_id":"demo","tick":1,"year":0,"stage":"qin-yi","to_province":"<id>","dispatch_type":"produce","self":{"level":1,"loyalty":100,"last_tick":0},"context":{"season":"春","weather":"晴","random_seed":"demo"},"expects":{"produces":["<resource>"],"max_event_count":4,"max_text_length":256}}}' \
   | <run command>
 ```
 
