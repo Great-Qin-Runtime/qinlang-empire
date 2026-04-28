@@ -19,6 +19,11 @@
   "cooldown_ticks": 1,
   "tick_weight": 0.6,
   "status": "runnable",
-  "tags": ["esolang", "ceremonial", "mvp"],
-  "description": "奇技郡，专司节庆烟火，不事生产。"
+  "tags": [
+    "esolang",
+    "ceremonial",
+    "mvp"
+  ],
+  "description": "奇技郡，专司节庆烟火，不事生产。",
+  "permissions": {}
 }

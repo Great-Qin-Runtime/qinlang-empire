@@ -12,13 +12,27 @@
   "output": "stdout-json",
   "timeout_ms": 5000,
   "role": "transformer",
-  "consumes": { "gong-ju": 5, "wen-shu": 3 },
-  "produces": ["jian-zhu"],
+  "consumes": {
+    "gong-ju": 5,
+    "wen-shu": 3
+  },
+  "produces": [
+    "jian-zhu"
+  ],
   "yield": 1,
   "cooldown_ticks": 3,
   "tick_weight": 1.0,
   "status": "runnable",
-  "tags": ["shell", "transformer", "mvp"],
+  "tags": [
+    "shell",
+    "transformer",
+    "mvp"
+  ],
   "description": "巴什郡，主调度物料、兴土木。",
-  "platform": { "linux": true, "macos": true, "windows": false }
+  "platform": {
+    "linux": true,
+    "macos": true,
+    "windows": false
+  },
+  "permissions": {}
 }

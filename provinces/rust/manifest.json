@@ -12,11 +12,18 @@
   "output": "stdout-json",
   "timeout_ms": 8000,
   "role": "producer",
-  "produces": ["bing-qi"],
+  "produces": [
+    "bing-qi"
+  ],
   "produce_rate": 4,
   "cooldown_ticks": 1,
   "tick_weight": 1.0,
   "status": "runnable",
-  "tags": ["systems", "producer", "v0.2"],
-  "description": "锈铁郡，铁衣未冷，淬甲为锋；战国之兵，多出此郡。"
+  "tags": [
+    "systems",
+    "producer",
+    "v0.2"
+  ],
+  "description": "锈铁郡，铁衣未冷，淬甲为锋；战国之兵，多出此郡。",
+  "permissions": {}
 }

@@ -56,6 +56,7 @@
 |---|---|
 | `toolchain-matrix.md` | 工具链与运行环境 |
 | `security.md` | 安全模型与威胁应对 |
+| `security-permissions.md` | `manifest.permissions` 字段定义与软约束实施（V0.3） |
 | `dashboard-spec.md` | dashboard v2 规格（数据来源、页面结构、视觉规范） |
 
 ## 历程与社区
