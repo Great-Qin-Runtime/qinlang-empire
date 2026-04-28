@@ -1,0 +1,22 @@
+{
+  "schema_version": 2,
+  "id": "html",
+  "name": "HTML+CSS",
+  "province": "文骨郡",
+  "category": "frontend-language",
+  "runner": "render",
+  "source": "main.html",
+  "build": null,
+  "run": "python run.py",
+  "input": "stdin-json",
+  "output": "stdout-json",
+  "timeout_ms": 5000,
+  "role": "producer",
+  "produces": ["yi-li"],
+  "produce_rate": 2,
+  "cooldown_ticks": 1,
+  "tick_weight": 1.0,
+  "status": "runnable",
+  "tags": ["frontend", "producer", "v0.2"],
+  "description": "文骨郡，结构有骨，纹饰有衣；典礼布置之事，皆出此郡。"
+}
