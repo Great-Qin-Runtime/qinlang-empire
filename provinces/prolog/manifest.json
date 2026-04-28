@@ -1,0 +1,23 @@
+{
+  "schema_version": 2,
+  "id": "prolog",
+  "name": "Prolog",
+  "province": "律令郡",
+  "category": "logic-rule-language",
+  "runner": "direct",
+  "source": "main.pl",
+  "build": null,
+  "run": "python run.py",
+  "input": "stdin-json",
+  "output": "stdout-json",
+  "timeout_ms": 8000,
+  "role": "service",
+  "trigger": "event",
+  "listens_to": ["dispute", "tax-evasion"],
+  "service_type": "judicial",
+  "cooldown_ticks": 1,
+  "tick_weight": 0.6,
+  "status": "runnable",
+  "tags": ["logic", "service", "v0.2"],
+  "description": "律令郡，以 Horn 子句维持秦律；凡讼狱、逋税之事，皆经此断。"
+}
