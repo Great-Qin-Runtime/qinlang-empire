@@ -7,13 +7,13 @@
 ```
 V0.1 建国    : 跑通最小闭环（4 周）         ✅ 已完成
 V0.2 郡县制  : 扩展到 50 种语言（8 周）     ✅ 已完成（实际 15 郡入册）
-V0.3 书同文  : 协议加固（4 周）             🚧 规划中
-V0.4 车同轨  : 工具链统一（6 周）           🚧
+V0.3 书同文  : 协议加固（4 周）             ✅ 已完成（v2 冻结）
+V0.4 车同轨  : 工具链统一 + 硬约束（6 周）  🚧 计划中
 V0.5 帝国舆图: 可视化与报告（4 周）         🚧
 V1.0 六合一统: 100+ 语言、稳定协议、可贡献社区
 ```
 
-时间为建议节奏，实际取决于贡献者数量。当前状态：**V0.2 已完成（15 郡，stages + recruitment + CI 全到位），V0.3 启动中**。
+时间为建议节奏，实际取决于贡献者数量。当前状态：**V0.3 已完成（v2 协议冻结，玉玺铸造 / 严格 JSON / 软权限模型 / dashboard-spec v2 全部到位），V0.4 启动中**。
 
 ---
 
@@ -66,37 +66,43 @@ python -m court.emperor --ticks 1
 
 ---
 
-## V0.3 · 书同文（M3）
+## V0.3 · 书同文（M3）✅ 已完成
 
-里程碑事件：**协议封版 + chain 模式上线**
+里程碑事件：**v2 协议冻结 + 玉玺廊上线**
 
-| 任务 | 优先级 |
+| 任务 | 状态 |
 |---|---|
-| chain 模式实现（含失败盖章策略） | P0 |
-| stdout 严格 JSON 检查 | P0 |
-| stderr 大小限制 + 截断 | P1 |
-| `permissions` 字段实现（network / fs） | P1 |
-| 协议 RFC 流程文档 | P0 |
-| 传国玉玺 SVG 生成 | P2 |
-| 输入 / 输出 schema v1 冻结 | P0 |
+| stderr 大小限制 + 截断（`manifest.stderr_limit_kb`、W0301） | ✅ #36 |
+| stdout 严格 JSON 检查（E0009/E0010/E0011） | ✅ #37 |
+| `permissions` 字段软约束（network/env_read/W0601） | ✅ #38 |
+| 传国玉玺 SVG 自动铸造 + 玉玺廊 dashboard | ✅ #39 |
+| `dashboard-spec.md` v2 重写（对齐 state.json） | ✅ #40 |
+| 输入 / 输出 schema v2 冻结 | ✅ qin-law.md §九 |
+| chain 模式（多郡链式接力） | 🚧 移交 V0.4 |
+| 协议 RFC 流程文档 | 🚧 移交 V0.4（governance.md 占位） |
 
-**验收**：chain 模式让 ≥ 20 种语言依次处理同一份诏书，不丢失盖章顺序。
+**验收**：协议 v2 冻结声明已写入 `docs/protocol/qin-law.md` 末尾；任何破坏性变更必须升 `protocol_version` 到 v3 + 走 RFC 流程。
 
 ---
 
 ## V0.4 · 车同轨（M4）
 
-里程碑事件：**任意环境一键运行**
+里程碑事件：**chain 模式 + 任意环境一键运行 + 权限硬约束**
 
 | 任务 | 优先级 |
 |---|---|
-| Nix flake 支持（`runner: nix`） | P1 |
+| chain 模式（多郡链式接力，从 V0.3 移交） | P0 |
+| 协议 RFC 流程文档（`governance.md` 完整化） | P0 |
+| `permissions` 硬约束：fs_write/fs_read/subprocess | P0 |
 | Docker 镜像 CI 自动构建到 ghcr.io | P0 |
+| Nix flake 支持（`runner: nix`） | P1 |
 | CI 矩阵：Linux / macOS / Windows | P0 |
 | `qinlang-province` 包装器 | P0 |
 | 工具链矩阵自动生成 | P2 |
 | 平台受限语言 status 自动标注 | P1 |
 | 每日全量巡查 cron | P1 |
+| 二阶资源（兵马 / 城池 / 诏书 / 典籍）合成 | P1 |
+| 浏览器快 tick（路径 D） | P2 |
 
 **验收**：在干净 GitHub Actions runner 上 `python -m court.emperor --ticks 24` 30 分钟内跑完，所有 `runnable` 郡至少被调度一次。
 

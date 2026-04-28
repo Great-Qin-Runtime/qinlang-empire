@@ -63,6 +63,7 @@
 
 | 文档 | 主题 |
 |---|---|
+| `../CHANGELOG.md` | 各版本变更编年史（v0.3 起） |
 | `quickstart.md` | 五分钟跑通第一次 tick |
 | `roadmap.md` | 路线图（V0.1 → 一统 → 万世） |
 | `faq.md` | 常见问题 |

@@ -238,15 +238,43 @@ stdout 必须是 **单个 UTF-8 编码的 JSON object**，不允许：
 
 ---
 
-## 九、版本与升级
+## 九、版本与冻结声明
 
-| 版本 | 模式 | 备注 |
-|---|---|---|
-| v1 | edict + parade/chain/graph | 已废止；旧 manifest 自动迁移到 v2 producer/ceremonial |
-| **v2** | **dispatch + tick + delta** | 当前 |
-| v3+ | 待定（可能引入浏览器快 tick / 远程郡） | 见 `roadmap.md` |
+### 9.1 版本表
 
-任何破坏性协议变更必须升 `protocol_version`，并在 `governance.md` 中走 RFC。
+| 版本 | 模式 | 状态 | 起始 git tag | 备注 |
+|---|---|---|---|---|
+| v1 | edict + parade/chain/graph | 已废止 | — | “诏书—盖章”模式；旧 manifest 自动迁移到 v2 producer/ceremonial；见 [`../archive/design.md`](../archive/design.md) |
+| **v2** | dispatch + tick + delta | **frozen** | `v0.3.0` | 当前本文档；任何破坏性变更必须升 v3 |
+| v3+ | 待定（chain / 远程郡 / 浏览器快 tick 等） | 规划中 | — | 见 [`../roadmap.md`](../roadmap.md) V0.4+ |
+
+### 9.2 冻结承诺（v2 frozen at `v0.3.0`）
+
+自 `v0.3.0` 起，v2 协议进入**冻结**状态。以下项目不再变动，除非升至 v3：
+
+- **五份 schema** (`state` / `dispatch` / `input` / `output` / `manifest`)中已有的 **required 字段名 / 类型 / 语义**；
+- **错误码** E0001–E0099（协议类）与 W0001–W0999（警告类）已分配码点：不会被回收、不会改语义；
+- **`protocol_version` 常量** = `2`；
+- **顶层输出**必须是单个 JSON object（见 §7.2）；
+- **stderr / stdout / permissions** 的实施可以变严（如 V0.4 从软约束转为硬约束），但**不会变宽**。
+
+不在冻结范围内、可以加（不需升 v3）：
+
+- 新增 **可选 manifest 字段**（如未来的 `chain` / `cooldown` / `priority`）；
+- 新增 **错误码** / **警告码**（只要不覆盖已分配的）；
+- 新增 `event.severity` / `event.type` 枚举值；
+- 严格化补鱼网（例如 V0.4 让 `permissions.fs_write` 真正生效）。
+
+### 9.3 升至 v3 的触发条件
+
+以下任一项都需要走 [`../governance.md`](../governance.md) RFC 流程并升至 v3：
+
+- 刪除 / 重命名任何已冻结字段；
+- 改已冻结字段的类型或语义；
+- 加不能默认填充的 **required 字段**；
+- 改 `protocol_version` 本身。
+
+v3 升级并不代表 v2 会被删：朝廷会并行读 v2 与 v3 输出至少一个 release 周期。
 
 ---
 
