@@ -1,53 +1,53 @@
 {
   "schema_version": 1,
   "dynasty": "秦",
-  "tick": 8,
+  "tick": 9,
   "year": 0,
   "stage": "qin-yi",
-  "stage_progress": 0.2483,
+  "stage_progress": 0.2786,
   "season": "夏",
   "weather": "晴",
   "treasury": {
-    "wen-shu": 39,
+    "wen-shu": 40,
     "gong-ju": 18,
     "qian-liang": 0,
-    "jian-zhu": 2,
-    "hu-ji": 17
+    "jian-zhu": 3,
+    "hu-ji": 18
   },
   "provinces": {
     "python": {
       "level": 1,
-      "loyalty": 108,
-      "last_tick": 8,
-      "produced": 45,
+      "loyalty": 109,
+      "last_tick": 9,
+      "produced": 49,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "c": {
       "level": 1,
-      "loyalty": 108,
-      "last_tick": 8,
-      "produced": 28,
+      "loyalty": 109,
+      "last_tick": 9,
+      "produced": 33,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "sql": {
       "level": 1,
-      "loyalty": 108,
-      "last_tick": 8,
-      "produced": 17,
+      "loyalty": 109,
+      "last_tick": 9,
+      "produced": 18,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "bash": {
       "level": 1,
-      "loyalty": 102,
-      "last_tick": 6,
-      "produced": 2,
-      "consumed": 16,
+      "loyalty": 103,
+      "last_tick": 9,
+      "produced": 3,
+      "consumed": 24,
       "fail_streak": 0,
       "quarantined": false
     },
@@ -62,6 +62,42 @@
     }
   },
   "events": [
+    {
+      "tick": 9,
+      "year": 0,
+      "type": "produce",
+      "from_province": "python",
+      "text": "白蛇郡 夏暑稍歇，天朗气清，献文书 4 卷。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 9,
+      "year": 0,
+      "type": "produce",
+      "from_province": "c",
+      "text": "始源郡 夏日 鼓风炼铁，铸工具 5 件。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 9,
+      "year": 0,
+      "type": "transform",
+      "from_province": "bash",
+      "text": "巴什郡兴土木 1 座，耗工具 5 件、文书 3 卷。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 9,
+      "year": 0,
+      "type": "service",
+      "from_province": "sql",
+      "text": "簿录郡奉诏巡丁，新增 1 户，共 2 口。",
+      "severity": "info",
+      "artifact": null
+    },
     {
       "tick": 8,
       "year": 0,
@@ -440,7 +476,7 @@
     }
   ],
   "stats": {
-    "population": 1046,
+    "population": 1048,
     "land": 1,
     "military": 0,
     "reputation": 0,
