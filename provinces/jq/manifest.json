@@ -1,0 +1,23 @@
+{
+  "schema_version": 2,
+  "id": "jq",
+  "name": "jq",
+  "province": "角铲郡",
+  "category": "shell-language",
+  "runner": "direct",
+  "source": "main.jq",
+  "build": null,
+  "run": "jq -cf main.jq",
+  "input": "stdin-json",
+  "output": "stdout-json",
+  "timeout_ms": 5000,
+  "role": "transformer",
+  "consumes": { "wen-shu": 5 },
+  "produces": ["dian-ji"],
+  "yield": 1,
+  "cooldown_ticks": 2,
+  "tick_weight": 1.0,
+  "status": "runnable",
+  "tags": ["shell", "transformer", "v0.2"],
+  "description": "角铲郡，铲数据如削竹，掘文书以入典；专司钞撮成卷之事。"
+}
