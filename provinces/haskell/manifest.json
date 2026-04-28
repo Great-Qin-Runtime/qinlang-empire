@@ -1,0 +1,22 @@
+{
+  "schema_version": 2,
+  "id": "haskell",
+  "name": "Haskell",
+  "province": "函郡",
+  "category": "interpreted-language",
+  "runner": "direct",
+  "source": "main.hs",
+  "build": null,
+  "run": "python run.py",
+  "input": "stdin-json",
+  "output": "stdout-json",
+  "timeout_ms": 8000,
+  "role": "producer",
+  "produces": ["xue-wen"],
+  "produce_rate": 3,
+  "cooldown_ticks": 1,
+  "tick_weight": 1.0,
+  "status": "runnable",
+  "tags": ["functional", "producer", "v0.2"],
+  "description": "函郡，简策入函，函中藏学；纯函如典，可重可证。"
+}
