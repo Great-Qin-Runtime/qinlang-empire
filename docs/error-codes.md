@@ -165,6 +165,7 @@
 | 码 | 名 | 描述 |
 |---|---|---|
 | W0301 | STDERR_TRUNCATED | 子进程 stderr 超过 `manifest.stderr_limit_kb`，朝廷已截断；末尾追加 `[truncated at NkB]` |
+| W0601 | MISSING_PERMISSIONS | manifest 未声明 `permissions` 字段；朝廷按全拒处理。补 `"permissions": {}` 即可消除 |
 
 ## 4. 错误码使用建议
 

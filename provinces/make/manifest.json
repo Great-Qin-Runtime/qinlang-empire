@@ -12,13 +12,29 @@
   "output": "stdout-json",
   "timeout_ms": 8000,
   "role": "transformer",
-  "consumes": { "gong-ju": 8, "qian-liang": 20 },
-  "produces": ["cheng-chi"],
+  "consumes": {
+    "gong-ju": 8,
+    "qian-liang": 20
+  },
+  "produces": [
+    "cheng-chi"
+  ],
   "yield": 1,
   "cooldown_ticks": 5,
   "tick_weight": 1.0,
   "status": "runnable",
-  "tags": ["build", "transformer", "v0.2"],
+  "tags": [
+    "build",
+    "transformer",
+    "v0.2"
+  ],
   "description": "工部郡，按规筑城；凡兴一城，必役工具与钱粮。",
-  "platform": { "linux": true, "macos": true, "windows": false }
+  "platform": {
+    "linux": true,
+    "macos": true,
+    "windows": false
+  },
+  "permissions": {
+    "subprocess": true
+  }
 }

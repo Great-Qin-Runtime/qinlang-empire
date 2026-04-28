@@ -117,10 +117,33 @@
     "permissions": {
       "type": "object",
       "additionalProperties": false,
+      "description": "显式声明该郡需要的能力。未声明 = 视为全拒（V0.3 软约束）。详见 docs/security-permissions.md。",
       "properties": {
-        "network":  { "type": "array", "items": { "type": "string" } },
-        "fs_read":  { "type": "array", "items": { "type": "string" } },
-        "fs_write": { "type": "array", "items": { "type": "string" } }
+        "network":    {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "允许出站访问的域名白名单。空数组 / 未声明 = 完全禁网（朝廷会注入阻断 env）。"
+        },
+        "fs_read":    {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "允许读取的相对路径白名单。V0.3 软约束，不强制。"
+        },
+        "fs_write":   {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "允许写入的相对路径白名单。V0.3 软约束，不强制。"
+        },
+        "env_read":   {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "允许子进程读取的环境变量 key 白名单（除兜底 PATH/LANG/HOME 外）。"
+        },
+        "subprocess": {
+          "type": "boolean",
+          "default": false,
+          "description": "是否允许子进程再 fork 进程。V0.3 仅记录，V0.4 起强制。"
+        }
       }
     },
     "platform": {

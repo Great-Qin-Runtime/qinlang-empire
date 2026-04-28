@@ -12,11 +12,18 @@
   "output": "stdout-json",
   "timeout_ms": 8000,
   "role": "producer",
-  "produces": ["wen-shu"],
+  "produces": [
+    "wen-shu"
+  ],
   "produce_rate": 4,
   "cooldown_ticks": 1,
   "tick_weight": 1.0,
   "status": "runnable",
-  "tags": ["typed", "producer", "v0.2"],
-  "description": "类朔郡，名实相符，类朔以正名分；与白蛇共司文书，体例更严。"
+  "tags": [
+    "typed",
+    "producer",
+    "v0.2"
+  ],
+  "description": "类朔郡，名实相符，类朔以正名分；与白蛇共司文书，体例更严。",
+  "permissions": {}
 }

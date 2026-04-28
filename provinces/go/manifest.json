@@ -12,11 +12,18 @@
   "output": "stdout-json",
   "timeout_ms": 8000,
   "role": "producer",
-  "produces": ["qian-liang"],
+  "produces": [
+    "qian-liang"
+  ],
   "produce_rate": 5,
   "cooldown_ticks": 1,
   "tick_weight": 1.0,
   "status": "runnable",
-  "tags": ["systems", "producer", "v0.2"],
-  "description": "御行郡，驿马如风，钱粮通驰；天下行旅，皆假其道。"
+  "tags": [
+    "systems",
+    "producer",
+    "v0.2"
+  ],
+  "description": "御行郡，驿马如风，钱粮通驰；天下行旅，皆假其道。",
+  "permissions": {}
 }

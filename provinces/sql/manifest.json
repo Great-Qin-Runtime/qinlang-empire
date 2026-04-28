@@ -15,10 +15,17 @@
   "trigger": "periodic",
   "period_ticks": 1,
   "service_type": "census",
-  "produces": ["hu-ji"],
+  "produces": [
+    "hu-ji"
+  ],
   "cooldown_ticks": 1,
   "tick_weight": 0.9,
   "status": "runnable",
-  "tags": ["query", "mvp", "census"],
-  "description": "簿录郡，编户齐民，主清查丁口。"
+  "tags": [
+    "query",
+    "mvp",
+    "census"
+  ],
+  "description": "簿录郡，编户齐民，主清查丁口。",
+  "permissions": {}
 }

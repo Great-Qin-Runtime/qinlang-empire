@@ -13,11 +13,25 @@
   "timeout_ms": 5000,
   "role": "specialist",
   "specialty": "celestial-omen",
-  "trigger_stages": ["di-guo", "wan-shi"],
-  "produces": ["yi-li"],
+  "trigger_stages": [
+    "di-guo",
+    "wan-shi"
+  ],
+  "produces": [
+    "yi-li"
+  ],
   "cooldown_ticks": 240,
   "tick_weight": 0.4,
   "status": "runnable",
-  "tags": ["shader", "specialist", "v0.2"],
-  "description": "着色郡，作天象、绘瑞气；惟帝国、万世之朝得见其奇。"
+  "tags": [
+    "shader",
+    "specialist",
+    "v0.2"
+  ],
+  "description": "着色郡，作天象、绘瑞气；惟帝国、万世之朝得见其奇。",
+  "permissions": {
+    "fs_write": [
+      "./artifacts"
+    ]
+  }
 }

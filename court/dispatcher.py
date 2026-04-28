@@ -12,6 +12,8 @@ import sys
 import threading
 from typing import Any, Dict, List, Optional
 
+from . import sandbox
+
 # 协议自检需要的最少字段
 _REQUIRED_OUTPUT_FIELDS = {"language", "province", "ok", "tick", "deltas", "events"}
 
@@ -33,12 +35,16 @@ def run_province(manifest: Dict[str, Any], dispatch: Dict[str, Any]) -> Dict[str
     }
     stdin_data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
 
+    perm_events = sandbox.permission_warnings(manifest)
+    subprocess_env = sandbox.build_subprocess_env(manifest)
+
     try:
         proc = subprocess.Popen(
             cmd, shell=True, cwd=cwd,
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
+            env=subprocess_env,
         )
     except FileNotFoundError as exc:
         return _failure(
@@ -100,13 +106,13 @@ def run_province(manifest: Dict[str, Any], dispatch: Dict[str, Any]) -> Dict[str
             manifest, dispatch, status="timeout", code="E0501",
             message="run timeout",
             stderr=_finalize_stderr(err_buf, err_truncated[0], stderr_limit_kb),
-            extra_events=_truncate_events(err_truncated[0], stderr_limit_kb),
+            extra_events=_truncate_events(err_truncated[0], stderr_limit_kb) + perm_events,
         )
 
     t_in.join(timeout=2); t_out.join(timeout=2); t_err.join(timeout=2)
     stdout_bytes = bytes(out_buf)
     stderr = _finalize_stderr(err_buf, err_truncated[0], stderr_limit_kb)
-    truncate_events = _truncate_events(err_truncated[0], stderr_limit_kb)
+    truncate_events = _truncate_events(err_truncated[0], stderr_limit_kb) + perm_events
 
     if proc.returncode != 0:
         return _failure(

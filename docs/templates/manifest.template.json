@@ -23,6 +23,7 @@
   "status": "scaffolded",
   "tags": ["mainstream"],
   "description": "Replace with one-line description.",
+  "permissions": {},
   "platform": {
     "linux": true,
     "macos": true,
