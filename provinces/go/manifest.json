@@ -1,0 +1,22 @@
+{
+  "schema_version": 2,
+  "id": "go",
+  "name": "Go",
+  "province": "御行郡",
+  "category": "compiled-system-language",
+  "runner": "compiled",
+  "source": "main.go",
+  "build": "python run.py --build-only",
+  "run": "python run.py",
+  "input": "stdin-json",
+  "output": "stdout-json",
+  "timeout_ms": 8000,
+  "role": "producer",
+  "produces": ["qian-liang"],
+  "produce_rate": 5,
+  "cooldown_ticks": 1,
+  "tick_weight": 1.0,
+  "status": "runnable",
+  "tags": ["systems", "producer", "v0.2"],
+  "description": "御行郡，驿马如风，钱粮通驰；天下行旅，皆假其道。"
+}
