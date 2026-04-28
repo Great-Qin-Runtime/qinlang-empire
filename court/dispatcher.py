@@ -116,22 +116,12 @@ def run_province(manifest: Dict[str, Any], dispatch: Dict[str, Any]) -> Dict[str
             extra_events=truncate_events,
         )
 
-    raw = stdout_bytes.decode("utf-8", errors="replace").strip()
-    if not raw:
+    data, parse_err = parse_stdout_strict(stdout_bytes)
+    if parse_err is not None:
         return _failure(
-            manifest, dispatch, status="protocol-violation", code="E0009",
-            message="empty stdout",
-            stderr=stderr,
-            extra_events=truncate_events,
-        )
-
-    try:
-        # 容错：取最后一个 JSON 对象（部分语言可能在前面打调试行）
-        data = json.loads(_extract_last_json_object(raw))
-    except Exception as exc:
-        return _failure(
-            manifest, dispatch, status="protocol-violation", code="E0003",
-            message=f"non-JSON stdout: {exc}",
+            manifest, dispatch, status="protocol-violation",
+            code=parse_err["code"],
+            message=_format_parse_error(parse_err),
             stderr=stderr,
             extra_events=truncate_events,
         )
@@ -228,22 +218,73 @@ def _truncate_events(truncated: bool, limit_kb: int) -> List[Dict[str, Any]]:
     }]
 
 
-def _extract_last_json_object(text: str) -> str:
-    """从可能含调试输出的文本中提取最后一个完整的 JSON 对象。"""
-    text = text.strip()
-    if text.startswith("{") and text.endswith("}"):
-        return text
-    # 简单括号配对：从右向左找平衡的 {...}
-    depth = 0
-    end = -1
-    for i in range(len(text) - 1, -1, -1):
-        c = text[i]
-        if c == "}":
-            if depth == 0:
-                end = i
-            depth += 1
-        elif c == "{":
-            depth -= 1
-            if depth == 0 and end != -1:
-                return text[i:end + 1]
-    return text
+def parse_stdout_strict(raw: bytes) -> "tuple[Optional[Dict[str, Any]], Optional[Dict[str, Any]]]":
+    """严格解析郡子进程的 stdout。
+
+    返回 (data, err)，二选一：
+    - data：顺利解析出的顶层 object
+    - err：违规描述 dict，含 kind / code / offset / preview
+
+    规则（v2）：
+    1. UTF-8 解码、仅冗余头尾空白可以；
+    2. 顶层必须是 object，array/number/string/null/bool 一律拒；
+    3. 不允许 JSON 之外还有任何非空白字节（前置日志、尾随调试都会被拒）；
+    4. preview 取出错位附近 200 字符，供贡献者定位。
+    """
+    text = raw.decode("utf-8", errors="replace")
+    stripped = text.strip()
+    if not stripped:
+        return None, {
+            "kind": "stdout-empty",
+            "code": "E0009",
+            "offset": 0,
+            "preview": "",
+        }
+
+    # 定位首个非空白字符的偏移，以便报错准确
+    leading_ws = len(text) - len(text.lstrip())
+    decoder = json.JSONDecoder()
+    try:
+        obj, end_in_stripped = decoder.raw_decode(stripped)
+    except json.JSONDecodeError as exc:
+        # 判定是“顶层不是 object”的常见情形（首字不是 {）
+        if stripped[:1] in ("[", '"', "-") or (stripped[:1].isdigit() if stripped else False):
+            return None, {
+                "kind": "stdout-not-object",
+                "code": "E0010",
+                "offset": leading_ws,
+                "preview": stripped[:200],
+            }
+        return None, {
+            "kind": "stdout-not-json",
+            "code": "E0003",
+            "offset": leading_ws + exc.pos,
+            "preview": stripped[max(0, exc.pos - 50): exc.pos + 150] or stripped[:200],
+        }
+
+    if not isinstance(obj, dict):
+        return None, {
+            "kind": "stdout-not-object",
+            "code": "E0010",
+            "offset": leading_ws,
+            "preview": stripped[:200],
+        }
+
+    rest = stripped[end_in_stripped:].strip()
+    if rest:
+        return None, {
+            "kind": "stdout-extra-bytes",
+            "code": "E0011",
+            "offset": leading_ws + end_in_stripped,
+            "preview": rest[:200],
+        }
+    return obj, None
+
+
+def _format_parse_error(err: Dict[str, Any]) -> str:
+    kind = err.get("kind", "protocol-violation")
+    offset = err.get("offset", 0)
+    preview = err.get("preview", "") or ""
+    # 限制预览长度，避免污染 history.jsonl
+    short = preview[:120].replace("\n", "\\n")
+    return f"{kind} at offset {offset}: {short!r}"

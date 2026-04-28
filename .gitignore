@@ -13,6 +13,12 @@ provinces/*/build/
 provinces/*/target/
 *.o
 *.exe
+*.pdb
+*.ilk
+provinces/rust/main_bin
+provinces/rust/main_bin.exe
+provinces/go/main_bin
+provinces/go/main_bin.exe
 !provinces/*/*.exe.expected   # 保留显式期望
 
 # IDE

@@ -63,13 +63,15 @@
 |---|---|---|
 | E0001 | INVALID_INPUT_JSON | stdin 不是合法 JSON |
 | E0002 | INPUT_SCHEMA_FAIL | 输入不符合 input.schema.json |
-| E0003 | INVALID_OUTPUT_JSON | stdout 不是合法 JSON |
+| E0003 | INVALID_OUTPUT_JSON | stdout 是 JSON 但解析失败（含语法错误，且首字非已知非 object 起始） |
 | E0004 | OUTPUT_SCHEMA_FAIL | 输出不符合 output.schema.json |
 | E0005 | OUTPUT_TOO_LARGE | 输出超过 output_limit_kb |
 | E0006 | LANGUAGE_MISMATCH | 输出 language 与 manifest.name 不一致 |
 | E0007 | PROVINCE_MISMATCH | 输出 province 与 manifest.province 不一致 |
 | E0008 | MISSING_OK_FALSE_ERROR | ok=false 时未提供 error 字段 |
-| E0009 | NON_JSON_ON_STDOUT | stdout 中混入了非 JSON 文本 |
+| E0009 | STDOUT_EMPTY | stdout 为空或仅空白；过去叫 NON_JSON_ON_STDOUT，V0.3 起细化 |
+| E0010 | STDOUT_NOT_OBJECT | stdout 顶层不是 JSON object（数组、字符串、数字、bool、null 一律拒）|
+| E0011 | STDOUT_EXTRA_BYTES | JSON object 之外还有多余非空白字节（前置日志、尾随调试都计入） |
 
 ### 调度器类（E0100-E0199）
 
