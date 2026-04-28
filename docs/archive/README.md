@@ -15,7 +15,7 @@
 | [`design.md`](design.md) | v0.1 博物馆/语言馆构想 | [`../empire-game-design.md`](../empire-game-design.md) |
 | [`runner-cookbook.md`](runner-cookbook.md) | 12 种 Runner 的 v1 echo 示例 | [`../templates/`](../templates/) + 各 `provinces/<id>/` 实现 |
 | [`emperor-skeleton.md`](emperor-skeleton.md) | v1 调度器 `mode/edict/payload` 骨架 | 仓库 `court/emperor.py` 实际代码 |
-| [`dashboard-spec.md`](dashboard-spec.md) | v1 dashboard 规格（基于 `reports/*.json`） | 实际页面 `dashboard/`（读 `empire/state.json` + `empire/history.jsonl`） |
+| [`dashboard-spec.md`](dashboard-spec.md) | v1 dashboard 规格（基于 `reports/*.json`） | [`../dashboard-spec.md`](../dashboard-spec.md) v2 规格（V0.3 重写） |
 
 ## 为什么保留
 
