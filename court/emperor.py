@@ -23,12 +23,13 @@ import time
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from . import registry, state as state_mod, ticker, dispatcher, stages
+from . import registry, state as state_mod, ticker, dispatcher, stages, recruitment
 
 ROOT = Path(__file__).resolve().parent.parent
 PROVINCES_DIR = ROOT / "provinces"
 STATE_PATH    = ROOT / "empire" / "state.json"
 HISTORY_PATH  = ROOT / "empire" / "history.jsonl"
+KNOWN_PATH    = ROOT / "empire" / "known_provinces.json"
 
 
 def run_one_tick(
@@ -38,6 +39,7 @@ def run_one_tick(
     only_province: Optional[str] = None,
 ) -> List[Dict[str, Any]]:
     """跑一个 tick，返回各郡的运行报告。state 会被原地修改。"""
+    recruitment.check_recruits(state, manifests, KNOWN_PATH)
     state_mod.advance_clock(state)
 
     if only_province:

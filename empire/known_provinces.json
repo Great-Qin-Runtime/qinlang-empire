@@ -1,0 +1,19 @@
+{
+  "known": [
+    "bash",
+    "brainfuck",
+    "c",
+    "glsl",
+    "go",
+    "haskell",
+    "html",
+    "jq",
+    "make",
+    "prolog",
+    "python",
+    "rust",
+    "sql",
+    "typescript",
+    "whitespace"
+  ]
+}
