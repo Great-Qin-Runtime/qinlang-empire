@@ -28,36 +28,36 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-## 3. 跑通最小阅兵
+## 3. 跑一个 tick
 
 ```bash
-python court/emperor.py --mode parade --status runnable --jobs 4
+python -m court.emperor --ticks 1
 ```
 
-期望输出：
+期望输出（数字会随阶段变化）：
 
 ```text
-完成：5/5 通过；玉玺：QIN-SEAL-2026-XXXXXXXX
+[emperor] 15 郡入册：[bash, brainfuck, c, glsl, go, ...]
+[tick   nn/year   k] 5/5 ok, 320 ms
+[emperor] state 写回 empire/state.json
 ```
 
-打开 `reports/latest.md` 查看战报；打开 `reports/latest.json` 查看结构化结果。
+`empire/state.json` 是当前帝国状态；`empire/history.jsonl` 追加每 tick 的报告。
 
-## 4. 试一试单语言
+## 4. 试一试单郡
 
 ```bash
-python court/emperor.py --province python
-python court/emperor.py --province rust
-python court/emperor.py --province cobol           # 需要 docker
-python court/emperor.py --category esolang
+python -m court.emperor --province python --ticks 1
+python -m court.emperor --province rust --ticks 1
+python -m court.emperor --province sql --ticks 1
 ```
 
-## 5. 试一试链式
+## 5. 校验所有 manifest / 协议
 
 ```bash
-python court/emperor.py --mode chain --tags mainstream --input "六合一统"
+python tools/validate_all.py            # 仅静态校验
+python tools/validate_all.py --with-dry-run   # 加上 dry-run 实跑
 ```
-
-诏书会按 ID 字典序依次经过 `tags=[mainstream]` 的所有郡县，每个郡县盖一个章。
 
 ## 6. 加自己的语言（最快路径）
 
@@ -65,19 +65,20 @@ python court/emperor.py --mode chain --tags mainstream --input "六合一统"
 mkdir provinces/mylang
 cp docs/templates/manifest.template.json provinces/mylang/manifest.json
 cp docs/templates/main.template.py       provinces/mylang/main.py
-# 编辑 manifest.json：id / name / province / runner / run
-# 编辑 main.py：实现你想要的处理逻辑
-python court/emperor.py --province mylang
+# 编辑 manifest.json：id / name / province / role / runner / run
+# 编辑 main.py：按 protocol v2 读 dispatch / 输出 deltas
+python -m court.emperor --province mylang --ticks 1
 ```
 
-详细步骤见 `language-addition-guide.md`。
+详细步骤见 `language-addition-guide.md`。新增郡县会在下一次 tick 自动产生
+`unlock` 招贤事件（见 `docs/empire-game-design.md` §8）。
 
 ## 7. 出错了怎么办？
 
 | 现象 | 排查 |
 |---|---|
 | `E0200 manifest not found` | 目录拼写、文件名拼写 |
-| `E0004 output schema fail` | 用 `--dry-run` + 单语言模式重跑，把 stdout 喂给 `python -m json.tool` |
+| `E0004 output schema fail` | 单郡模式重跑，把 stdout 喂给 `python -m json.tool` |
 | `E0500 non-zero exit` | 直接进入 `provinces/<id>/` 手动运行 `run` 命令 |
 | `E0501 timeout` | 调大 `manifest.timeout_ms`，或排查死循环 |
 | `E0700 docker not available` | 改用其他 runner，或装 Docker Desktop |
@@ -86,8 +87,10 @@ python court/emperor.py --province mylang
 
 | 想做 | 读 |
 |---|---|
-| 系统了解整套设计 | `design.md` |
+| 系统了解整套设计 | `empire-game-design.md` |
 | 加新语言 | `language-addition-guide.md` |
-| 写 / 改 Runner | `emperor-skeleton.md` + `runner-cookbook.md` |
-| 改协议 | `protocol/qin-law.md` + `governance.md` RFC 流程 |
+| 看协议 v2 | `protocol/qin-law.md` + `protocol/*.schema.json` |
+| 角色制度 | `role-system.md` |
+| 改协议 | `governance.md` RFC 流程 |
 | 看错误码 | `error-codes.md` |
+| v1 历史归档 | `design.md` / `runner-cookbook.md` / `emperor-skeleton.md`（已归档） |

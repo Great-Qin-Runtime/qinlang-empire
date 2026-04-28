@@ -1,5 +1,10 @@
 # 大秦语言帝国管理系统设计文档
 
+> ⚠️ **历史归档（v1 协议）**。最新设计请看
+> [`empire-game-design.md`](empire-game-design.md) 与 [`protocol/qin-law.md`](protocol/qin-law.md)。
+> 本文档保留作为命名/分类/语言目录等仍可参考的史料；
+> 其中 `parade / chain / graph / edict / payload / mission_id` 等概念在 v2 协议中已废止。
+
 > 项目代号：QinLang Empire  
 > 中文名：大秦语言帝国管理系统  
 > 核心口号：书同文，车同轨，码同规。  

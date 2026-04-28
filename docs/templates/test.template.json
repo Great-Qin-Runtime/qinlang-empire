@@ -1,12 +1,27 @@
 {
-  "protocol_version": 1,
-  "mission_id": "test-local",
-  "mode": "parade",
-  "edict": "测试诏书",
-  "payload": {
-    "text": "Hello",
-    "number": 1
-  },
-  "step": 0,
-  "stamps": []
+  "protocol_version": 2,
+  "dispatch": {
+    "dispatch_id": "test-local-0",
+    "tick": 0,
+    "year": 0,
+    "stage": "qin-yi",
+    "context": {
+      "season": "春",
+      "weather": "晴",
+      "random_seed": "test-seed",
+      "deadline_ms": 3000
+    },
+    "self": {
+      "id": "REPLACE-WITH-LOWERCASE-ID",
+      "level": 1,
+      "loyalty": 100
+    },
+    "treasury_view": {
+      "wen-shu": 0,
+      "gong-ju": 0
+    },
+    "expects": {
+      "produces": ["wen-shu"]
+    }
+  }
 }

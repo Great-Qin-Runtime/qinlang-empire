@@ -1,6 +1,9 @@
 # 新增语言指南 / Add a Language
 
 > 凡欲立郡者，依此六步。
+>
+> 本文档已对齐 **协议 v2**。v1 时代的 `parade / chain / graph / edict / payload`
+> 字段已废止。
 
 本指南面向 **第一次为 QinLang Empire 提交一个新语言** 的贡献者。
 
@@ -51,10 +54,12 @@ provinces/<id>/
 
 ## Step 4：写 `manifest.json`
 
-模板（按需替换）：
+参考 [`docs/templates/manifest.template.json`](templates/manifest.template.json)。
+关键 v2 字段：
 
 ```json
 {
+  "schema_version": 2,
   "id": "<id>",
   "name": "<Display Name>",
   "province": "<某某郡>",
@@ -66,39 +71,51 @@ provinces/<id>/
   "input": "stdin-json",
   "output": "stdout-json",
   "timeout_ms": 3000,
+
+  "role": "<producer | transformer | service | specialist | ceremonial>",
+  "produces": ["wen-shu"],
+  "produce_rate": 3,
+  "cooldown_ticks": 1,
+  "tick_weight": 1.0,
+
   "status": "scaffolded",
   "tags": ["mainstream"],
   "description": "<一句话简介>"
 }
 ```
 
+按角色再加专属字段：
+
+| role | 必填字段 |
+|---|---|
+| `producer` | `produces`, `produce_rate` |
+| `transformer` | `consumes`, `produces`, `yield` |
+| `service` | `trigger` (`periodic`/`event`)，配 `period_ticks` 或 `listens_to` |
+| `specialist` | `specialty`，可选 `trigger_stages` / `trigger_milestones` |
+| `ceremonial` | `trigger_probability`，可选 `tone` |
+
 校验命令：
 
 ```bash
-python court/validators/manifest_validator.py provinces/<id>/manifest.json
+python tools/validate_all.py
 ```
 
 ## Step 5：写 `main.<ext>`
 
-照抄 `runner-cookbook.md` 中最接近的示例，必须满足：
+照抄 [`docs/templates/main.template.py`](templates/main.template.py) 或同类郡示例
+（`provinces/python/`、`provinces/c/`、`provinces/sql/`），必须满足：
 
-1. 从 `stdin` 读 JSON（如 runner 是 `direct/compiled/vm`）；
-2. 向 `stdout` 输出 **唯一一个** JSON 对象；
-3. 输出包含必填字段：`language / province / ok / step / stamps / payload`；
+1. 从 `stdin` 读 v2 dispatch envelope（见 `docs/protocol/dispatch.schema.json`）；
+2. 向 `stdout` 输出 **唯一一个** JSON delta（见 `docs/protocol/output.schema.json`）；
+3. 输出必含字段：`language`、`province`、`ok`、`tick`、`dispatch_id`、`deltas`、`events`；
 4. `language` 必须严格等于 `manifest.name`；
 5. `province` 必须严格等于 `manifest.province`；
-6. 不要往 stdout 输出多余文本（包括空行之外的内容）。
+6. 不要往 stdout 输出多余文本（除 trailing newline 外）。
 
 ## Step 6：本地跑通
 
 ```bash
-python court/emperor.py --province <id>
-```
-
-期望：
-
-```
-完成：1/1 通过
+python -m court.emperor --province <id> --ticks 1
 ```
 
 如果失败，请按 [`error-codes.md`](error-codes.md) 对照错误码排查。
@@ -188,6 +205,7 @@ PR 模板会引导你填写：
 | `E0006 LANGUAGE_MISMATCH` | 输出的 `language` 字段忘了改 |
 | `E0007 PROVINCE_MISMATCH` | 输出 / manifest 中郡名不一致 |
 | `E0009 NON_JSON_ON_STDOUT` | print 调试残留 / BOM / 多个 JSON 对象 |
+| 输出含 `step / stamps / payload` 等 v1 字段 | 已废止，请改用 v2 的 `tick / dispatch_id / deltas / events` |
 | `E0500 RUN_NONZERO_EXIT` | 运行时异常但被捕获了，记得返回非零或修 bug |
 | `E0501 RUN_TIMEOUT` | 多半是 `read()` 阻塞，确认你确实读完了 stdin |
 | docker 拉镜像超时 | 把镜像构建脚本提交到 `tools/docker/<id>/` 让 CI 复用缓存 |

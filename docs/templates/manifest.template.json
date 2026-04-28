@@ -1,4 +1,5 @@
 {
+  "schema_version": 2,
   "id": "REPLACE-WITH-LOWERCASE-ID",
   "name": "Replace With Display Name",
   "province": "某某郡",
@@ -12,6 +13,13 @@
   "timeout_ms": 3000,
   "stderr_limit_kb": 64,
   "output_limit_kb": 256,
+
+  "role": "producer",
+  "produces": ["wen-shu"],
+  "produce_rate": 3,
+  "cooldown_ticks": 1,
+  "tick_weight": 1.0,
+
   "status": "scaffolded",
   "tags": ["mainstream"],
   "description": "Replace with one-line description.",
