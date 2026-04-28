@@ -1,43 +1,46 @@
 {
   "schema_version": 1,
   "dynasty": "秦",
-  "tick": 9,
+  "tick": 10,
   "year": 0,
   "stage": "qin-yi",
-  "stage_progress": 0.2786,
+  "stage_progress": 0.2849,
   "season": "夏",
   "weather": "晴",
   "treasury": {
-    "wen-shu": 40,
-    "gong-ju": 18,
-    "qian-liang": 0,
+    "wen-shu": 42,
+    "gong-ju": 22,
+    "qian-liang": 6,
     "jian-zhu": 3,
-    "hu-ji": 18
+    "hu-ji": 20,
+    "dian-ji": 1,
+    "yi-li": 2,
+    "bing-qi": 3
   },
   "provinces": {
     "python": {
       "level": 1,
-      "loyalty": 109,
-      "last_tick": 9,
-      "produced": 49,
+      "loyalty": 110,
+      "last_tick": 10,
+      "produced": 56,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "c": {
       "level": 1,
-      "loyalty": 109,
-      "last_tick": 9,
-      "produced": 33,
+      "loyalty": 110,
+      "last_tick": 10,
+      "produced": 37,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "sql": {
       "level": 1,
-      "loyalty": 109,
-      "last_tick": 9,
-      "produced": 18,
+      "loyalty": 110,
+      "last_tick": 10,
+      "produced": 20,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -53,15 +56,192 @@
     },
     "brainfuck": {
       "level": 1,
-      "loyalty": 104,
-      "last_tick": 8,
+      "loyalty": 105,
+      "last_tick": 10,
       "produced": 0,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
+    },
+    "prolog": {
+      "level": 1,
+      "loyalty": 101,
+      "last_tick": 10,
+      "produced": 0,
+      "consumed": 0,
+      "fail_streak": 0,
+      "quarantined": false
+    },
+    "jq": {
+      "level": 1,
+      "loyalty": 101,
+      "last_tick": 10,
+      "produced": 1,
+      "consumed": 5,
+      "fail_streak": 0,
+      "quarantined": false
+    },
+    "make": {
+      "level": 1,
+      "loyalty": 95,
+      "last_tick": 10,
+      "produced": 0,
+      "consumed": 0,
+      "fail_streak": 1,
+      "quarantined": false
+    },
+    "go": {
+      "level": 1,
+      "loyalty": 101,
+      "last_tick": 10,
+      "produced": 6,
+      "consumed": 0,
+      "fail_streak": 0,
+      "quarantined": false
+    },
+    "haskell": {
+      "level": 1,
+      "loyalty": 97,
+      "last_tick": 10,
+      "produced": 0,
+      "consumed": 0,
+      "fail_streak": 1,
+      "quarantined": false
+    },
+    "html": {
+      "level": 1,
+      "loyalty": 101,
+      "last_tick": 10,
+      "produced": 2,
+      "consumed": 0,
+      "fail_streak": 0,
+      "quarantined": false
+    },
+    "rust": {
+      "level": 1,
+      "loyalty": 101,
+      "last_tick": 10,
+      "produced": 3,
+      "consumed": 0,
+      "fail_streak": 0,
+      "quarantined": false
+    },
+    "typescript": {
+      "level": 1,
+      "loyalty": 95,
+      "last_tick": 10,
+      "produced": 0,
+      "consumed": 0,
+      "fail_streak": 1,
+      "quarantined": false
     }
   },
   "events": [
+    {
+      "tick": 10,
+      "year": 0,
+      "type": "ceremony",
+      "from_province": "brainfuck",
+      "text": "奇技郡焚奇香，街巷皆嗅，竟数日不散。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 10,
+      "year": 0,
+      "type": "system",
+      "from_province": "typescript",
+      "text": "类朔郡奉诏不力：non-zero exit (9)",
+      "severity": "warn"
+    },
+    {
+      "tick": 10,
+      "year": 0,
+      "type": "produce",
+      "from_province": "rust",
+      "text": "锈铁郡 夏伏鼓风，炉火映甲，献兵器 3 件。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 10,
+      "year": 0,
+      "type": "produce",
+      "from_province": "html",
+      "text": "文骨郡 夏祭择良，献仪礼 2 章。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 10,
+      "year": 0,
+      "type": "system",
+      "from_province": "haskell",
+      "text": "函郡奉诏不力：run timeout",
+      "severity": "warn"
+    },
+    {
+      "tick": 10,
+      "year": 0,
+      "type": "produce",
+      "from_province": "go",
+      "text": "御行郡 夏粟入仓，驿道清明，献钱粮 6 石。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 10,
+      "year": 0,
+      "type": "produce",
+      "from_province": "python",
+      "text": "白蛇郡 夏暑稍歇，天朗气清，献文书 7 卷。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 10,
+      "year": 0,
+      "type": "produce",
+      "from_province": "c",
+      "text": "始源郡 夏日 鼓风炼铁，铸工具 4 件。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 10,
+      "year": 0,
+      "type": "system",
+      "from_province": "make",
+      "text": "工部郡奉诏不力：insufficient resources",
+      "severity": "warn"
+    },
+    {
+      "tick": 10,
+      "year": 0,
+      "type": "transform",
+      "from_province": "jq",
+      "text": "角铲郡铲文书 5 卷，钞撮成典籍 1 编。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 10,
+      "year": 0,
+      "type": "service",
+      "from_province": "prolog",
+      "text": "律令郡今日无讼，律书一卷，束阁待召。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 10,
+      "year": 0,
+      "type": "service",
+      "from_province": "sql",
+      "text": "簿录郡奉诏巡丁，新增 2 户，共 5 口。",
+      "severity": "info",
+      "artifact": null
+    },
     {
       "tick": 9,
       "year": 0,
@@ -476,7 +656,7 @@
     }
   ],
   "stats": {
-    "population": 1048,
+    "population": 1053,
     "land": 1,
     "military": 0,
     "reputation": 0,
