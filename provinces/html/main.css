@@ -1,0 +1,6 @@
+/* 文骨郡 · 仪礼样式（纯陈设，未实际渲染） */
+.court { font-family: serif; color: #2b1d0e; }
+.palace { border-bottom: 2px solid #8a5a2b; padding: 1rem; }
+.rite { padding: .5rem 1rem; border-left: 4px solid #8a5a2b; margin: .5rem 0; }
+.rite[data-weight="1"] { background: #f9efd9; }
+.subtitle { color: #6b4a26; font-style: italic; }
