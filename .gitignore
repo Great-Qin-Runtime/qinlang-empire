@@ -25,3 +25,4 @@ provinces/*/target/
 *.tmp
 *.log
 empire/state.backup*.json
+provinces/glsl/artifacts/

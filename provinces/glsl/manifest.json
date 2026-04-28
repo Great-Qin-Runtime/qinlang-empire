@@ -1,0 +1,23 @@
+{
+  "schema_version": 2,
+  "id": "glsl",
+  "name": "GLSL",
+  "province": "着色郡",
+  "category": "shader-language",
+  "runner": "shader",
+  "source": "main.glsl",
+  "build": null,
+  "run": "python run.py",
+  "input": "stdin-json",
+  "output": "stdout-json",
+  "timeout_ms": 5000,
+  "role": "specialist",
+  "specialty": "celestial-omen",
+  "trigger_stages": ["di-guo", "wan-shi"],
+  "produces": ["yi-li"],
+  "cooldown_ticks": 240,
+  "tick_weight": 0.4,
+  "status": "runnable",
+  "tags": ["shader", "specialist", "v0.2"],
+  "description": "着色郡，作天象、绘瑞气；惟帝国、万世之朝得见其奇。"
+}
