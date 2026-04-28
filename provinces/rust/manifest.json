@@ -1,0 +1,22 @@
+{
+  "schema_version": 2,
+  "id": "rust",
+  "name": "Rust",
+  "province": "锈铁郡",
+  "category": "compiled-system-language",
+  "runner": "compiled",
+  "source": "main.rs",
+  "build": "python run.py --build-only",
+  "run": "python run.py",
+  "input": "stdin-json",
+  "output": "stdout-json",
+  "timeout_ms": 8000,
+  "role": "producer",
+  "produces": ["bing-qi"],
+  "produce_rate": 4,
+  "cooldown_ticks": 1,
+  "tick_weight": 1.0,
+  "status": "runnable",
+  "tags": ["systems", "producer", "v0.2"],
+  "description": "锈铁郡，铁衣未冷，淬甲为锋；战国之兵，多出此郡。"
+}
