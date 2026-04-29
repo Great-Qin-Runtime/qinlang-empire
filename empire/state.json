@@ -1,48 +1,48 @@
 {
   "schema_version": 1,
   "dynasty": "秦",
-  "tick": 22,
+  "tick": 23,
   "year": 0,
   "stage": "qin-yi",
-  "stage_progress": 0.3849,
+  "stage_progress": 0.3927,
   "season": "冬",
   "weather": "晴",
   "treasury": {
-    "wen-shu": 57,
-    "gong-ju": 28,
-    "qian-liang": 42,
+    "wen-shu": 62,
+    "gong-ju": 31,
+    "qian-liang": 46,
     "jian-zhu": 7,
-    "hu-ji": 44,
+    "hu-ji": 47,
     "dian-ji": 7,
-    "yi-li": 26,
-    "bing-qi": 58,
+    "yi-li": 28,
+    "bing-qi": 62,
     "xue-wen": 6,
     "cheng-chi": 2
   },
   "provinces": {
     "python": {
       "level": 1,
-      "loyalty": 122,
-      "last_tick": 22,
-      "produced": 113,
+      "loyalty": 123,
+      "last_tick": 23,
+      "produced": 118,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "c": {
       "level": 1,
-      "loyalty": 122,
-      "last_tick": 22,
-      "produced": 79,
+      "loyalty": 123,
+      "last_tick": 23,
+      "produced": 82,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "sql": {
       "level": 1,
-      "loyalty": 122,
-      "last_tick": 22,
-      "produced": 44,
+      "loyalty": 123,
+      "last_tick": 23,
+      "produced": 47,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -58,8 +58,8 @@
     },
     "brainfuck": {
       "level": 1,
-      "loyalty": 108,
-      "last_tick": 21,
+      "loyalty": 109,
+      "last_tick": 23,
       "produced": 0,
       "consumed": 0,
       "fail_streak": 0,
@@ -67,8 +67,8 @@
     },
     "prolog": {
       "level": 1,
-      "loyalty": 113,
-      "last_tick": 22,
+      "loyalty": 114,
+      "last_tick": 23,
       "produced": 0,
       "consumed": 0,
       "fail_streak": 0,
@@ -94,9 +94,9 @@
     },
     "go": {
       "level": 1,
-      "loyalty": 113,
-      "last_tick": 22,
-      "produced": 82,
+      "loyalty": 114,
+      "last_tick": 23,
+      "produced": 86,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -112,18 +112,18 @@
     },
     "html": {
       "level": 1,
-      "loyalty": 113,
-      "last_tick": 22,
-      "produced": 26,
+      "loyalty": 114,
+      "last_tick": 23,
+      "produced": 28,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "rust": {
       "level": 1,
-      "loyalty": 113,
-      "last_tick": 22,
-      "produced": 58,
+      "loyalty": 114,
+      "last_tick": 23,
+      "produced": 62,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -148,6 +148,78 @@
     }
   },
   "events": [
+    {
+      "tick": 23,
+      "year": 0,
+      "type": "ceremony",
+      "from_province": "brainfuck",
+      "text": "奇技郡设迷阵，行人遇之，竟数日方出。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 23,
+      "year": 0,
+      "type": "produce",
+      "from_province": "rust",
+      "text": "锈铁郡 冬日炼器，炉火映甲，献兵器 4 件。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 23,
+      "year": 0,
+      "type": "produce",
+      "from_province": "html",
+      "text": "文骨郡 冬蜡定节，献仪礼 2 章。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 23,
+      "year": 0,
+      "type": "produce",
+      "from_province": "go",
+      "text": "御行郡 冬储足备，驿道清明，献钱粮 4 石。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 23,
+      "year": 0,
+      "type": "produce",
+      "from_province": "python",
+      "text": "白蛇郡 冬日抄录，天朗气清，献文书 5 卷。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 23,
+      "year": 0,
+      "type": "produce",
+      "from_province": "c",
+      "text": "始源郡 冬日 鼓风炼铁，铸工具 3 件。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 23,
+      "year": 0,
+      "type": "service",
+      "from_province": "prolog",
+      "text": "律令郡今日无讼，律书一卷，束阁待召。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 23,
+      "year": 0,
+      "type": "service",
+      "from_province": "sql",
+      "text": "簿录郡奉诏巡丁，新增 3 户，共 9 口。",
+      "severity": "info",
+      "artifact": null
+    },
     {
       "tick": 22,
       "year": 0,
@@ -1616,7 +1688,7 @@
     }
   ],
   "stats": {
-    "population": 1117,
+    "population": 1126,
     "land": 1,
     "military": 0,
     "reputation": 0,
