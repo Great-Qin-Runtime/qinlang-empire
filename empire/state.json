@@ -1,48 +1,48 @@
 {
   "schema_version": 1,
   "dynasty": "秦",
-  "tick": 28,
+  "tick": 29,
   "year": 1,
   "stage": "qin-yi",
-  "stage_progress": 0.4077,
+  "stage_progress": 0.4176,
   "season": "春",
   "weather": "晴",
   "treasury": {
-    "wen-shu": 62,
-    "gong-ju": 29,
-    "qian-liang": 52,
+    "wen-shu": 69,
+    "gong-ju": 34,
+    "qian-liang": 59,
     "jian-zhu": 9,
-    "hu-ji": 56,
+    "hu-ji": 59,
     "dian-ji": 10,
-    "yi-li": 38,
-    "bing-qi": 84,
+    "yi-li": 40,
+    "bing-qi": 87,
     "xue-wen": 6,
     "cheng-chi": 3
   },
   "provinces": {
     "python": {
       "level": 1,
-      "loyalty": 128,
-      "last_tick": 28,
-      "produced": 139,
+      "loyalty": 129,
+      "last_tick": 29,
+      "produced": 146,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "c": {
       "level": 1,
-      "loyalty": 128,
-      "last_tick": 28,
-      "produced": 98,
+      "loyalty": 129,
+      "last_tick": 29,
+      "produced": 103,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "sql": {
       "level": 1,
-      "loyalty": 128,
-      "last_tick": 28,
-      "produced": 56,
+      "loyalty": 129,
+      "last_tick": 29,
+      "produced": 59,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -58,8 +58,8 @@
     },
     "brainfuck": {
       "level": 1,
-      "loyalty": 111,
-      "last_tick": 28,
+      "loyalty": 112,
+      "last_tick": 29,
       "produced": 0,
       "consumed": 0,
       "fail_streak": 0,
@@ -67,8 +67,8 @@
     },
     "prolog": {
       "level": 1,
-      "loyalty": 119,
-      "last_tick": 28,
+      "loyalty": 120,
+      "last_tick": 29,
       "produced": 0,
       "consumed": 0,
       "fail_streak": 0,
@@ -94,9 +94,9 @@
     },
     "go": {
       "level": 1,
-      "loyalty": 119,
-      "last_tick": 28,
-      "produced": 112,
+      "loyalty": 120,
+      "last_tick": 29,
+      "produced": 119,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -112,18 +112,18 @@
     },
     "html": {
       "level": 1,
-      "loyalty": 119,
-      "last_tick": 28,
-      "produced": 38,
+      "loyalty": 120,
+      "last_tick": 29,
+      "produced": 40,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "rust": {
       "level": 1,
-      "loyalty": 119,
-      "last_tick": 28,
-      "produced": 84,
+      "loyalty": 120,
+      "last_tick": 29,
+      "produced": 87,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -148,6 +148,78 @@
     }
   },
   "events": [
+    {
+      "tick": 29,
+      "year": 1,
+      "type": "ceremony",
+      "from_province": "brainfuck",
+      "text": "奇技郡设迷阵，行人遇之，竟数日方出。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 29,
+      "year": 1,
+      "type": "produce",
+      "from_province": "rust",
+      "text": "锈铁郡 春试新刃，炉火映甲，献兵器 3 件。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 29,
+      "year": 1,
+      "type": "produce",
+      "from_province": "html",
+      "text": "文骨郡 春朝陈仪，献仪礼 2 章。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 29,
+      "year": 1,
+      "type": "produce",
+      "from_province": "go",
+      "text": "御行郡 春耕粮丰，驿道清明，献钱粮 7 石。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 29,
+      "year": 1,
+      "type": "produce",
+      "from_province": "python",
+      "text": "白蛇郡 春耕之余，天朗气清，献文书 7 卷。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 29,
+      "year": 1,
+      "type": "produce",
+      "from_province": "c",
+      "text": "始源郡 春日 鼓风炼铁，铸工具 5 件。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 29,
+      "year": 1,
+      "type": "service",
+      "from_province": "prolog",
+      "text": "律令郡今日无讼，律书一卷，束阁待召。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 29,
+      "year": 1,
+      "type": "service",
+      "from_province": "sql",
+      "text": "簿录郡奉诏巡丁，新增 3 户，共 12 口。",
+      "severity": "info",
+      "artifact": null
+    },
     {
       "tick": 28,
       "year": 1,
@@ -1865,77 +1937,6 @@
       "text": "簿录郡奉诏巡丁，新增 3 户，共 9 口。",
       "severity": "info",
       "artifact": null
-    },
-    {
-      "tick": 4,
-      "year": 0,
-      "type": "produce",
-      "from_province": "python",
-      "text": "白蛇郡 春耕之余，天朗气清，献文书 4 卷。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 4,
-      "year": 0,
-      "type": "produce",
-      "from_province": "c",
-      "text": "始源郡 春日 鼓风炼铁，铸工具 2 件。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 4,
-      "year": 0,
-      "type": "service",
-      "from_province": "sql",
-      "text": "簿录郡奉诏巡丁，新增 2 户，共 5 口。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 3,
-      "year": 0,
-      "type": "milestone",
-      "from_province": null,
-      "text": "里程碑达成：首邑筑城",
-      "severity": "epic"
-    },
-    {
-      "tick": 3,
-      "year": 0,
-      "type": "produce",
-      "from_province": "python",
-      "text": "白蛇郡 春耕之余，天朗气清，献文书 6 卷。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 3,
-      "year": 0,
-      "type": "produce",
-      "from_province": "c",
-      "text": "始源郡 春日 鼓风炼铁，铸工具 3 件。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 3,
-      "year": 0,
-      "type": "transform",
-      "from_province": "bash",
-      "text": "巴什郡兴土木 1 座，耗工具 5 件、文书 3 卷。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 3,
-      "year": 0,
-      "type": "service",
-      "from_province": "sql",
-      "text": "簿录郡奉诏巡丁，新增 1 户，共 2 口。",
-      "severity": "info",
-      "artifact": null
     }
   ],
   "milestones": [
@@ -2029,7 +2030,7 @@
     }
   ],
   "stats": {
-    "population": 1158,
+    "population": 1170,
     "land": 1,
     "military": 0,
     "reputation": 0,
