@@ -1,48 +1,48 @@
 {
   "schema_version": 1,
   "dynasty": "秦",
-  "tick": 24,
+  "tick": 25,
   "year": 1,
   "stage": "qin-yi",
-  "stage_progress": 0.3947,
+  "stage_progress": 0.3969,
   "season": "春",
   "weather": "晴",
   "treasury": {
-    "wen-shu": 59,
-    "gong-ju": 28,
-    "qian-liang": 53,
+    "wen-shu": 64,
+    "gong-ju": 25,
+    "qian-liang": 37,
     "jian-zhu": 8,
-    "hu-ji": 48,
+    "hu-ji": 50,
     "dian-ji": 8,
-    "yi-li": 30,
-    "bing-qi": 66,
+    "yi-li": 32,
+    "bing-qi": 69,
     "xue-wen": 6,
-    "cheng-chi": 2
+    "cheng-chi": 3
   },
   "provinces": {
     "python": {
       "level": 1,
-      "loyalty": 124,
-      "last_tick": 24,
-      "produced": 123,
+      "loyalty": 125,
+      "last_tick": 25,
+      "produced": 128,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "c": {
       "level": 1,
-      "loyalty": 124,
-      "last_tick": 24,
-      "produced": 84,
+      "loyalty": 125,
+      "last_tick": 25,
+      "produced": 89,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "sql": {
       "level": 1,
-      "loyalty": 124,
-      "last_tick": 24,
-      "produced": 48,
+      "loyalty": 125,
+      "last_tick": 25,
+      "produced": 50,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -67,8 +67,8 @@
     },
     "prolog": {
       "level": 1,
-      "loyalty": 115,
-      "last_tick": 24,
+      "loyalty": 116,
+      "last_tick": 25,
       "produced": 0,
       "consumed": 0,
       "fail_streak": 0,
@@ -85,18 +85,18 @@
     },
     "make": {
       "level": 1,
-      "loyalty": 97,
-      "last_tick": 20,
-      "produced": 2,
-      "consumed": 56,
+      "loyalty": 98,
+      "last_tick": 25,
+      "produced": 3,
+      "consumed": 84,
       "fail_streak": 0,
       "quarantined": false
     },
     "go": {
       "level": 1,
-      "loyalty": 115,
-      "last_tick": 24,
-      "produced": 93,
+      "loyalty": 116,
+      "last_tick": 25,
+      "produced": 97,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -112,18 +112,18 @@
     },
     "html": {
       "level": 1,
-      "loyalty": 115,
-      "last_tick": 24,
-      "produced": 30,
+      "loyalty": 116,
+      "last_tick": 25,
+      "produced": 32,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "rust": {
       "level": 1,
-      "loyalty": 115,
-      "last_tick": 24,
-      "produced": 66,
+      "loyalty": 116,
+      "last_tick": 25,
+      "produced": 69,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -148,6 +148,86 @@
     }
   },
   "events": [
+    {
+      "tick": 25,
+      "year": 1,
+      "type": "milestone",
+      "from_province": null,
+      "text": "里程碑达成：灭韩",
+      "severity": "epic"
+    },
+    {
+      "tick": 25,
+      "year": 1,
+      "type": "produce",
+      "from_province": "rust",
+      "text": "锈铁郡 春试新刃，炉火映甲，献兵器 3 件。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 25,
+      "year": 1,
+      "type": "produce",
+      "from_province": "html",
+      "text": "文骨郡 春朝陈仪，献仪礼 2 章。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 25,
+      "year": 1,
+      "type": "produce",
+      "from_province": "go",
+      "text": "御行郡 春耕粮丰，驿道清明，献钱粮 4 石。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 25,
+      "year": 1,
+      "type": "produce",
+      "from_province": "python",
+      "text": "白蛇郡 春耕之余，天朗气清，献文书 5 卷。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 25,
+      "year": 1,
+      "type": "produce",
+      "from_province": "c",
+      "text": "始源郡 春日 鼓风炼铁，铸工具 5 件。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 25,
+      "year": 1,
+      "type": "transform",
+      "from_province": "make",
+      "text": "工部郡按规筑城 1 座，役工具 8 件、钱粮 20 石。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 25,
+      "year": 1,
+      "type": "service",
+      "from_province": "prolog",
+      "text": "律令郡今日无讼，律书一卷，束阁待召。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 25,
+      "year": 1,
+      "type": "service",
+      "from_province": "sql",
+      "text": "簿录郡奉诏巡丁，新增 2 户，共 7 口。",
+      "severity": "info",
+      "artifact": null
+    },
     {
       "tick": 24,
       "year": 1,
@@ -1731,8 +1811,8 @@
     {
       "id": "fall-of-han",
       "name": "灭韩",
-      "achieved": false,
-      "achieved_at": null,
+      "achieved": true,
+      "achieved_at": 25,
       "stage": "heng-sao",
       "description": "六国之首。"
     },
@@ -1786,7 +1866,7 @@
     }
   ],
   "stats": {
-    "population": 1129,
+    "population": 1136,
     "land": 1,
     "military": 0,
     "reputation": 0,
