@@ -1,48 +1,48 @@
 {
   "schema_version": 1,
   "dynasty": "秦",
-  "tick": 70,
+  "tick": 71,
   "year": 2,
   "stage": "qin-yi",
-  "stage_progress": 0.6391,
+  "stage_progress": 0.6433,
   "season": "冬",
   "weather": "晴",
   "treasury": {
-    "wen-shu": 122,
-    "gong-ju": 36,
-    "qian-liang": 123,
+    "wen-shu": 129,
+    "gong-ju": 39,
+    "qian-liang": 128,
     "jian-zhu": 23,
-    "hu-ji": 140,
+    "hu-ji": 143,
     "dian-ji": 31,
-    "yi-li": 122,
-    "bing-qi": 280,
+    "yi-li": 124,
+    "bing-qi": 284,
     "xue-wen": 6,
     "cheng-chi": 12
   },
   "provinces": {
     "python": {
       "level": 1,
-      "loyalty": 170,
-      "last_tick": 70,
-      "produced": 346,
+      "loyalty": 171,
+      "last_tick": 71,
+      "produced": 353,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "c": {
       "level": 1,
-      "loyalty": 170,
-      "last_tick": 70,
-      "produced": 247,
+      "loyalty": 171,
+      "last_tick": 71,
+      "produced": 250,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "sql": {
       "level": 1,
-      "loyalty": 170,
-      "last_tick": 70,
-      "produced": 140,
+      "loyalty": 171,
+      "last_tick": 71,
+      "produced": 143,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -58,8 +58,8 @@
     },
     "brainfuck": {
       "level": 1,
-      "loyalty": 131,
-      "last_tick": 70,
+      "loyalty": 132,
+      "last_tick": 71,
       "produced": 0,
       "consumed": 0,
       "fail_streak": 0,
@@ -67,8 +67,8 @@
     },
     "prolog": {
       "level": 1,
-      "loyalty": 161,
-      "last_tick": 70,
+      "loyalty": 162,
+      "last_tick": 71,
       "produced": 0,
       "consumed": 0,
       "fail_streak": 0,
@@ -94,9 +94,9 @@
     },
     "go": {
       "level": 1,
-      "loyalty": 161,
-      "last_tick": 70,
-      "produced": 363,
+      "loyalty": 162,
+      "last_tick": 71,
+      "produced": 368,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -112,18 +112,18 @@
     },
     "html": {
       "level": 1,
-      "loyalty": 161,
-      "last_tick": 70,
-      "produced": 122,
+      "loyalty": 162,
+      "last_tick": 71,
+      "produced": 124,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "rust": {
       "level": 1,
-      "loyalty": 161,
-      "last_tick": 70,
-      "produced": 280,
+      "loyalty": 162,
+      "last_tick": 71,
+      "produced": 284,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -148,6 +148,78 @@
     }
   },
   "events": [
+    {
+      "tick": 71,
+      "year": 2,
+      "type": "ceremony",
+      "from_province": "brainfuck",
+      "text": "奇技郡焚奇香，街巷皆嗅，竟数日不散。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 71,
+      "year": 2,
+      "type": "produce",
+      "from_province": "rust",
+      "text": "锈铁郡 冬日炼器，炉火映甲，献兵器 4 件。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 71,
+      "year": 2,
+      "type": "produce",
+      "from_province": "html",
+      "text": "文骨郡 冬蜡定节，献仪礼 2 章。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 71,
+      "year": 2,
+      "type": "produce",
+      "from_province": "go",
+      "text": "御行郡 冬储足备，驿道清明，献钱粮 5 石。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 71,
+      "year": 2,
+      "type": "produce",
+      "from_province": "python",
+      "text": "白蛇郡 冬日抄录，天朗气清，献文书 7 卷。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 71,
+      "year": 2,
+      "type": "produce",
+      "from_province": "c",
+      "text": "始源郡 冬日 鼓风炼铁，铸工具 3 件。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 71,
+      "year": 2,
+      "type": "service",
+      "from_province": "prolog",
+      "text": "律令郡今日无讼，律书一卷，束阁待召。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 71,
+      "year": 2,
+      "type": "service",
+      "from_province": "sql",
+      "text": "簿录郡奉诏巡丁，新增 3 户，共 10 口。",
+      "severity": "info",
+      "artifact": null
+    },
     {
       "tick": 70,
       "year": 2,
@@ -1872,87 +1944,6 @@
       "text": "白蛇郡 春耕之余，天朗气清，献文书 4 卷。",
       "severity": "info",
       "artifact": null
-    },
-    {
-      "tick": 49,
-      "year": 2,
-      "type": "produce",
-      "from_province": "c",
-      "text": "始源郡 春日 鼓风炼铁，铸工具 5 件。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 49,
-      "year": 2,
-      "type": "service",
-      "from_province": "prolog",
-      "text": "律令郡今日无讼，律书一卷，束阁待召。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 49,
-      "year": 2,
-      "type": "service",
-      "from_province": "sql",
-      "text": "簿录郡奉诏巡丁，新增 2 户，共 9 口。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 48,
-      "year": 2,
-      "type": "ceremony",
-      "from_province": "brainfuck",
-      "text": "奇技郡演幻术，瓦砾化为金石——半刻而散。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 48,
-      "year": 2,
-      "type": "produce",
-      "from_province": "rust",
-      "text": "锈铁郡 春试新刃，炉火映甲，献兵器 5 件。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 48,
-      "year": 2,
-      "type": "produce",
-      "from_province": "html",
-      "text": "文骨郡 春朝陈仪，献仪礼 2 章。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 48,
-      "year": 2,
-      "type": "produce",
-      "from_province": "go",
-      "text": "御行郡 春耕粮丰，驿道清明，献钱粮 6 石。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 48,
-      "year": 2,
-      "type": "produce",
-      "from_province": "python",
-      "text": "白蛇郡 春耕之余，天朗气清，献文书 5 卷。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 48,
-      "year": 2,
-      "type": "produce",
-      "from_province": "c",
-      "text": "始源郡 春日 鼓风炼铁，铸工具 2 件。",
-      "severity": "info",
-      "artifact": null
     }
   ],
   "milestones": [
@@ -2046,7 +2037,7 @@
     }
   ],
   "stats": {
-    "population": 1476,
+    "population": 1486,
     "land": 1,
     "military": 0,
     "reputation": 0,
