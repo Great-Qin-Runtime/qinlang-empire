@@ -1,48 +1,48 @@
 {
   "schema_version": 1,
   "dynasty": "秦",
-  "tick": 69,
+  "tick": 70,
   "year": 2,
   "stage": "qin-yi",
-  "stage_progress": 0.642,
+  "stage_progress": 0.6391,
   "season": "冬",
   "weather": "晴",
   "treasury": {
     "wen-shu": 122,
-    "gong-ju": 40,
-    "qian-liang": 135,
+    "gong-ju": 36,
+    "qian-liang": 123,
     "jian-zhu": 23,
-    "hu-ji": 138,
-    "dian-ji": 30,
-    "yi-li": 120,
-    "bing-qi": 277,
+    "hu-ji": 140,
+    "dian-ji": 31,
+    "yi-li": 122,
+    "bing-qi": 280,
     "xue-wen": 6,
-    "cheng-chi": 11
+    "cheng-chi": 12
   },
   "provinces": {
     "python": {
       "level": 1,
-      "loyalty": 169,
-      "last_tick": 69,
-      "produced": 341,
+      "loyalty": 170,
+      "last_tick": 70,
+      "produced": 346,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "c": {
       "level": 1,
-      "loyalty": 169,
-      "last_tick": 69,
-      "produced": 243,
+      "loyalty": 170,
+      "last_tick": 70,
+      "produced": 247,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "sql": {
       "level": 1,
-      "loyalty": 169,
-      "last_tick": 69,
-      "produced": 138,
+      "loyalty": 170,
+      "last_tick": 70,
+      "produced": 140,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -58,8 +58,8 @@
     },
     "brainfuck": {
       "level": 1,
-      "loyalty": 130,
-      "last_tick": 68,
+      "loyalty": 131,
+      "last_tick": 70,
       "produced": 0,
       "consumed": 0,
       "fail_streak": 0,
@@ -67,8 +67,8 @@
     },
     "prolog": {
       "level": 1,
-      "loyalty": 160,
-      "last_tick": 69,
+      "loyalty": 161,
+      "last_tick": 70,
       "produced": 0,
       "consumed": 0,
       "fail_streak": 0,
@@ -76,27 +76,27 @@
     },
     "jq": {
       "level": 1,
-      "loyalty": 130,
-      "last_tick": 68,
-      "produced": 30,
-      "consumed": 150,
+      "loyalty": 131,
+      "last_tick": 70,
+      "produced": 31,
+      "consumed": 155,
       "fail_streak": 0,
       "quarantined": false
     },
     "make": {
       "level": 1,
-      "loyalty": 106,
-      "last_tick": 65,
-      "produced": 11,
-      "consumed": 308,
+      "loyalty": 107,
+      "last_tick": 70,
+      "produced": 12,
+      "consumed": 336,
       "fail_streak": 0,
       "quarantined": false
     },
     "go": {
       "level": 1,
-      "loyalty": 160,
-      "last_tick": 69,
-      "produced": 355,
+      "loyalty": 161,
+      "last_tick": 70,
+      "produced": 363,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -112,18 +112,18 @@
     },
     "html": {
       "level": 1,
-      "loyalty": 160,
-      "last_tick": 69,
-      "produced": 120,
+      "loyalty": 161,
+      "last_tick": 70,
+      "produced": 122,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "rust": {
       "level": 1,
-      "loyalty": 160,
-      "last_tick": 69,
-      "produced": 277,
+      "loyalty": 161,
+      "last_tick": 70,
+      "produced": 280,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -139,8 +139,8 @@
     },
     "whitespace": {
       "level": 1,
-      "loyalty": 104,
-      "last_tick": 55,
+      "loyalty": 105,
+      "last_tick": 70,
       "produced": 0,
       "consumed": 0,
       "fail_streak": 0,
@@ -148,6 +148,113 @@
     }
   },
   "events": [
+    {
+      "tick": 70,
+      "year": 2,
+      "type": "milestone",
+      "from_province": null,
+      "text": "里程碑达成：灭楚",
+      "severity": "epic"
+    },
+    {
+      "tick": 70,
+      "year": 2,
+      "type": "ceremony",
+      "from_province": "whitespace",
+      "text": "无字郡夜闻马蹄入殿，旦视之地无痕。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 70,
+      "year": 2,
+      "type": "ceremony",
+      "from_province": "brainfuck",
+      "text": "奇技郡设迷阵，行人遇之，竟数日方出。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 70,
+      "year": 2,
+      "type": "produce",
+      "from_province": "rust",
+      "text": "锈铁郡 冬日炼器，炉火映甲，献兵器 3 件。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 70,
+      "year": 2,
+      "type": "produce",
+      "from_province": "html",
+      "text": "文骨郡 冬蜡定节，献仪礼 2 章。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 70,
+      "year": 2,
+      "type": "produce",
+      "from_province": "go",
+      "text": "御行郡 冬储足备，驿道清明，献钱粮 8 石。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 70,
+      "year": 2,
+      "type": "produce",
+      "from_province": "python",
+      "text": "白蛇郡 冬日抄录，天朗气清，献文书 5 卷。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 70,
+      "year": 2,
+      "type": "produce",
+      "from_province": "c",
+      "text": "始源郡 冬日 鼓风炼铁，铸工具 4 件。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 70,
+      "year": 2,
+      "type": "transform",
+      "from_province": "make",
+      "text": "工部郡按规筑城 1 座，役工具 8 件、钱粮 20 石。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 70,
+      "year": 2,
+      "type": "transform",
+      "from_province": "jq",
+      "text": "角铲郡铲文书 5 卷，钞撮成典籍 1 编。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 70,
+      "year": 2,
+      "type": "service",
+      "from_province": "prolog",
+      "text": "律令郡今日无讼，律书一卷，束阁待召。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 70,
+      "year": 2,
+      "type": "service",
+      "from_province": "sql",
+      "text": "簿录郡奉诏巡丁，新增 2 户，共 9 口。",
+      "severity": "info",
+      "artifact": null
+    },
     {
       "tick": 69,
       "year": 2,
@@ -1846,104 +1953,6 @@
       "text": "始源郡 春日 鼓风炼铁，铸工具 2 件。",
       "severity": "info",
       "artifact": null
-    },
-    {
-      "tick": 48,
-      "year": 2,
-      "type": "transform",
-      "from_province": "bash",
-      "text": "巴什郡兴土木 1 座，耗工具 5 件、文书 3 卷。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 48,
-      "year": 2,
-      "type": "transform",
-      "from_province": "jq",
-      "text": "角铲郡铲文书 5 卷，钞撮成典籍 1 编。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 48,
-      "year": 2,
-      "type": "service",
-      "from_province": "prolog",
-      "text": "律令郡今日无讼，律书一卷，束阁待召。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 48,
-      "year": 2,
-      "type": "service",
-      "from_province": "sql",
-      "text": "簿录郡奉诏巡丁，新增 1 户，共 4 口。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 48,
-      "year": 2,
-      "type": "epoch",
-      "from_province": null,
-      "text": "帝国 2 年。",
-      "severity": "info"
-    },
-    {
-      "tick": 47,
-      "year": 1,
-      "type": "ceremony",
-      "from_province": "brainfuck",
-      "text": "奇技郡造水钟，市井惊曰天工。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 47,
-      "year": 1,
-      "type": "produce",
-      "from_province": "rust",
-      "text": "锈铁郡 冬日炼器，炉火映甲，献兵器 4 件。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 47,
-      "year": 1,
-      "type": "produce",
-      "from_province": "html",
-      "text": "文骨郡 冬蜡定节，献仪礼 2 章。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 47,
-      "year": 1,
-      "type": "produce",
-      "from_province": "go",
-      "text": "御行郡 冬储足备，驿道清明，献钱粮 4 石。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 47,
-      "year": 1,
-      "type": "produce",
-      "from_province": "python",
-      "text": "白蛇郡 冬日抄录，天朗气清，献文书 6 卷。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 47,
-      "year": 1,
-      "type": "produce",
-      "from_province": "c",
-      "text": "始源郡 冬日 鼓风炼铁，铸工具 3 件。",
-      "severity": "info",
-      "artifact": null
     }
   ],
   "milestones": [
@@ -2006,8 +2015,8 @@
     {
       "id": "fall-of-chu",
       "name": "灭楚",
-      "achieved": false,
-      "achieved_at": null,
+      "achieved": true,
+      "achieved_at": 70,
       "stage": "heng-sao",
       "description": ""
     },
@@ -2037,7 +2046,7 @@
     }
   ],
   "stats": {
-    "population": 1467,
+    "population": 1476,
     "land": 1,
     "military": 0,
     "reputation": 0,
