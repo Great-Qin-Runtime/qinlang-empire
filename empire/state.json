@@ -1,48 +1,48 @@
 {
   "schema_version": 1,
   "dynasty": "秦",
-  "tick": 85,
+  "tick": 86,
   "year": 3,
   "stage": "qin-yi",
-  "stage_progress": 0.6529,
+  "stage_progress": 0.656,
   "season": "秋",
   "weather": "晴",
   "treasury": {
-    "wen-shu": 150,
-    "gong-ju": 39,
-    "qian-liang": 148,
+    "wen-shu": 151,
+    "gong-ju": 43,
+    "qian-liang": 155,
     "jian-zhu": 28,
-    "hu-ji": 170,
-    "dian-ji": 38,
-    "yi-li": 152,
-    "bing-qi": 344,
+    "hu-ji": 173,
+    "dian-ji": 39,
+    "yi-li": 154,
+    "bing-qi": 350,
     "xue-wen": 6,
     "cheng-chi": 15
   },
   "provinces": {
     "python": {
       "level": 1,
-      "loyalty": 185,
-      "last_tick": 85,
-      "produced": 424,
+      "loyalty": 186,
+      "last_tick": 86,
+      "produced": 430,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "c": {
       "level": 1,
-      "loyalty": 185,
-      "last_tick": 85,
-      "produced": 299,
+      "loyalty": 186,
+      "last_tick": 86,
+      "produced": 303,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "sql": {
       "level": 1,
-      "loyalty": 185,
-      "last_tick": 85,
-      "produced": 170,
+      "loyalty": 186,
+      "last_tick": 86,
+      "produced": 173,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -67,8 +67,8 @@
     },
     "prolog": {
       "level": 1,
-      "loyalty": 176,
-      "last_tick": 85,
+      "loyalty": 177,
+      "last_tick": 86,
       "produced": 0,
       "consumed": 0,
       "fail_streak": 0,
@@ -76,10 +76,10 @@
     },
     "jq": {
       "level": 1,
-      "loyalty": 138,
-      "last_tick": 84,
-      "produced": 38,
-      "consumed": 190,
+      "loyalty": 139,
+      "last_tick": 86,
+      "produced": 39,
+      "consumed": 195,
       "fail_streak": 0,
       "quarantined": false
     },
@@ -94,9 +94,9 @@
     },
     "go": {
       "level": 1,
-      "loyalty": 176,
-      "last_tick": 85,
-      "produced": 448,
+      "loyalty": 177,
+      "last_tick": 86,
+      "produced": 455,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -112,18 +112,18 @@
     },
     "html": {
       "level": 1,
-      "loyalty": 176,
-      "last_tick": 85,
-      "produced": 152,
+      "loyalty": 177,
+      "last_tick": 86,
+      "produced": 154,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
     },
     "rust": {
       "level": 1,
-      "loyalty": 176,
-      "last_tick": 85,
-      "produced": 344,
+      "loyalty": 177,
+      "last_tick": 86,
+      "produced": 350,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -148,6 +148,78 @@
     }
   },
   "events": [
+    {
+      "tick": 86,
+      "year": 3,
+      "type": "produce",
+      "from_province": "rust",
+      "text": "锈铁郡 秋点甲胄，炉火映甲，献兵器 6 件。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 86,
+      "year": 3,
+      "type": "produce",
+      "from_province": "html",
+      "text": "文骨郡 秋飨备物，献仪礼 2 章。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 86,
+      "year": 3,
+      "type": "produce",
+      "from_province": "go",
+      "text": "御行郡 秋赋盈囷，驿道清明，献钱粮 7 石。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 86,
+      "year": 3,
+      "type": "produce",
+      "from_province": "python",
+      "text": "白蛇郡 秋稔登仓，天朗气清，献文书 6 卷。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 86,
+      "year": 3,
+      "type": "produce",
+      "from_province": "c",
+      "text": "始源郡 秋日 鼓风炼铁，铸工具 4 件。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 86,
+      "year": 3,
+      "type": "transform",
+      "from_province": "jq",
+      "text": "角铲郡铲文书 5 卷，钞撮成典籍 1 编。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 86,
+      "year": 3,
+      "type": "service",
+      "from_province": "prolog",
+      "text": "律令郡今日无讼，律书一卷，束阁待召。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 86,
+      "year": 3,
+      "type": "service",
+      "from_province": "sql",
+      "text": "簿录郡奉诏巡丁，新增 3 户，共 8 口。",
+      "severity": "info",
+      "artifact": null
+    },
     {
       "tick": 85,
       "year": 3,
@@ -1873,78 +1945,6 @@
       "text": "簿录郡奉诏巡丁，新增 2 户，共 9 口。",
       "severity": "info",
       "artifact": null
-    },
-    {
-      "tick": 63,
-      "year": 2,
-      "type": "ceremony",
-      "from_province": "brainfuck",
-      "text": "奇技郡夜放天灯，三百盏齐升，惊四方。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 63,
-      "year": 2,
-      "type": "produce",
-      "from_province": "rust",
-      "text": "锈铁郡 秋点甲胄，炉火映甲，献兵器 3 件。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 63,
-      "year": 2,
-      "type": "produce",
-      "from_province": "html",
-      "text": "文骨郡 秋飨备物，献仪礼 2 章。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 63,
-      "year": 2,
-      "type": "produce",
-      "from_province": "go",
-      "text": "御行郡 秋赋盈囷，驿道清明，献钱粮 4 石。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 63,
-      "year": 2,
-      "type": "produce",
-      "from_province": "python",
-      "text": "白蛇郡 秋稔登仓，天朗气清，献文书 6 卷。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 63,
-      "year": 2,
-      "type": "produce",
-      "from_province": "c",
-      "text": "始源郡 秋日 鼓风炼铁，铸工具 3 件。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 63,
-      "year": 2,
-      "type": "transform",
-      "from_province": "bash",
-      "text": "巴什郡兴土木 1 座，耗工具 5 件、文书 3 卷。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 63,
-      "year": 2,
-      "type": "service",
-      "from_province": "prolog",
-      "text": "律令郡今日无讼，律书一卷，束阁待召。",
-      "severity": "info",
-      "artifact": null
     }
   ],
   "milestones": [
@@ -2038,7 +2038,7 @@
     }
   ],
   "stats": {
-    "population": 1573,
+    "population": 1581,
     "land": 1,
     "military": 0,
     "reputation": 0,
