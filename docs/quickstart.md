@@ -42,11 +42,14 @@ python -m court.emperor --ticks 1
 [emperor] state 写回 empire/state.json
 ```
 
-`empire/state.json` 是当前帝国状态；`empire/history.jsonl` 追加每 tick 的报告。
+`empire/state.json` 是当前帝国状态；`empire/history.jsonl` 追加每 tick 的报告。`python -m court.province run <id>` 默认不写回状态；需要写回时显式加 `--commit`。
 
 ## 4. 试一试单郡
 
 ```bash
+python -m court.province validate python
+python -m court.province dry-run python
+python -m court.province run python
 python -m court.emperor --province python --ticks 1
 python -m court.emperor --province rust --ticks 1
 python -m court.emperor --province sql --ticks 1
