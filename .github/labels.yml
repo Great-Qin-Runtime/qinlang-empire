@@ -1,0 +1,26 @@
+# GitHub label catalog for maintainers.
+# This file is documentation-first; labels may be synced manually or by a future workflow.
+
+- name: needs-rfc
+  color: "5319e7"
+  description: "Requires an RFC before implementation"
+
+- name: area:collaboration
+  color: "0e8a16"
+  description: "External civilization / cross-project collaboration"
+
+- name: milestone:v0.4
+  color: "1d76db"
+  description: "V0.4 · 车同轨"
+
+- name: area:security
+  color: "b60205"
+  description: "Sandbox, permissions, secrets, supply-chain security"
+
+- name: area:runner
+  color: "0052cc"
+  description: "Runner/toolchain/Docker/Nix execution layer"
+
+- name: area:protocol
+  color: "d93f0b"
+  description: "Qin Law protocol, schemas, error codes"
