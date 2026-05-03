@@ -23,7 +23,7 @@ import time
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from . import registry, state as state_mod, ticker, dispatcher, stages, recruitment
+from . import registry, state as state_mod, ticker, dispatcher, stages, recruitment, chain
 
 ROOT = Path(__file__).resolve().parent.parent
 PROVINCES_DIR = ROOT / "provinces"
@@ -127,6 +127,9 @@ def main() -> int:
     ap = argparse.ArgumentParser(prog="emperor")
     ap.add_argument("--ticks", type=int, default=1, help="连续运行多少 tick（默认 1，可设为 0 仅做 build）")
     ap.add_argument("--province", default=None, help="只调度指定郡，调试用")
+    ap.add_argument("--chain", default=None, help="按逗号分隔的郡 id 运行 chain mode，例如 python,c,sql")
+    ap.add_argument("--chain-title", default="书同文小典", help="chain mode 标题")
+    ap.add_argument("--chain-payload", default="{}", help="chain mode payload JSON object")
     ap.add_argument("--no-build", action="store_true", help="跳过 build 步骤")
     ap.add_argument("--state-path", default=str(STATE_PATH))
     ap.add_argument("--quiet", action="store_true")
@@ -145,6 +148,42 @@ def main() -> int:
         if failed and not args.quiet:
             print(f"[emperor] build 失败：{failed}", file=sys.stderr)
         manifests = [m for m in manifests if m["id"] not in failed]
+
+    if args.chain:
+        try:
+            payload = json.loads(args.chain_payload)
+        except json.JSONDecodeError as exc:
+            print(f"[emperor] --chain-payload 不是合法 JSON：{exc}", file=sys.stderr)
+            return 2
+        if not isinstance(payload, dict):
+            print("[emperor] --chain-payload 必须是 JSON object", file=sys.stderr)
+            return 2
+        province_ids = [p.strip() for p in args.chain.split(",") if p.strip()]
+        record = chain.run_chain(
+            state=state,
+            manifests=manifests,
+            province_ids=province_ids,
+            title=args.chain_title,
+            payload=payload,
+            empire_dir=empire_dir,
+        )
+        state_mod.save_state(state, state_path)
+        state_mod.append_history(empire_dir / "history.jsonl", [{
+            "tick": state.get("tick", 0),
+            "year": state.get("year", 0),
+            "type": "chain",
+            "chain_id": record["chain_id"],
+            "status": record["status"],
+            "artifact": record.get("artifact"),
+            "steps": record.get("steps", []),
+        }])
+        if not args.quiet:
+            print(
+                f"[chain {record['chain_id']}] {record['status']} "
+                f"artifact={record.get('artifact')}",
+                file=sys.stderr,
+            )
+        return 0
 
     if args.ticks <= 0:
         return 0
@@ -166,7 +205,7 @@ def main() -> int:
             )
 
     state_mod.save_state(state, state_path)
-    state_mod.append_history(HISTORY_PATH, all_reports)
+    state_mod.append_history(empire_dir / "history.jsonl", all_reports)
 
     if not args.quiet:
         print(f"[emperor] state 写回 {state_path}", file=sys.stderr)
