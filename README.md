@@ -6,7 +6,7 @@
 [![tick](https://img.shields.io/badge/dynasty-%E7%A7%A6-7a1f1f)](#)
 [![stage](https://img.shields.io/badge/stage-%E7%A7%A6%E9%82%91-c9a544)](#)
 [![protocol](https://img.shields.io/badge/protocol-v2%20frozen-1f6f43)](docs/protocol/qin-law.md)
-[![release](https://img.shields.io/badge/release-v0.3.0-3a7d44)](https://github.com/Great-Qin-Runtime/qinlang-empire/releases)
+[![release](https://img.shields.io/badge/release-v0.4.0-3a7d44)](https://github.com/Great-Qin-Runtime/qinlang-empire/releases/tag/v0.4.0)
 [![role-system](https://img.shields.io/badge/roles-5-3a7d44)](docs/role-system.md)
 
 ---
@@ -138,7 +138,8 @@ qinlang-empire/
 │       └── manifest.schema.json
 ├── .github/workflows/
 │   ├── empire-tick.yml   cron 心跳（每 5 分钟）
-│   └── validate.yml      PR 静态校验 + dry-run
+│   ├── validate.yml      PR 跨平台矩阵校验 + dry-run
+│   └── docker.yml        GHCR 基础镜像构建
 ├── requirements.txt
 ├── index.html            根路径自动转 /dashboard/
 └── README.md             你正在读
@@ -162,7 +163,7 @@ qinlang-empire/
 - **自动运行**——CI cron + 静态网页 = 没有服务器，没有运维，只有继续跑；
 - **永远是秦**——这不是模拟器，是叙事。你看到的是同一个帝国，在长。
 
-## 七、当前状态（V0.3 完成 · 协议 v2 已冻结）
+## 七、当前状态（V0.4 完成 · 车同轨）
 
 | 组件 | 状态 |
 |---|---|
@@ -180,9 +181,14 @@ qinlang-empire/
 | `manifest.permissions` 软约束 + W0601 | ✅ V0.3 |
 | 传国玉玺 SVG 自动铸造 + 玉玺廊 dashboard | ✅ V0.3 |
 | `dashboard-spec.md` v2（与实际 state 模型对齐） | ✅ V0.3 |
+| chain 模式（多郡链式接力，artifact-only） | ✅ V0.4 |
+| `qinlang-province` 单郡 wrapper | ✅ V0.4 |
+| `manifest.permissions` hard preflight（fs/subprocess） | ✅ V0.4 |
+| CI 矩阵：Linux / macOS / Windows | ✅ V0.4 |
+| Docker / GHCR 基础镜像构建 | ✅ V0.4 |
 | GitHub Pages 部署 | ⚠️ 需在仓库 Settings 中启用 Pages |
-| chain 模式（多郡链式接力） | 🚧 V0.4 候选 |
-| docker / nix runner、文件系统硬约束 | 🚧 V0.4 |
+| docker runner / 运行时隔离 | 🚧 V0.5+ |
+| Nix flake 支持 | 🚧 P1 |
 | 300+ 郡入册 | 🚧 长期，每周加一批 |
 
 ## 八、贡献者指南速读
