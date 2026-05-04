@@ -210,6 +210,15 @@ main {
   filter: grayscale(1);
 }
 
+.province.pending {
+  opacity: 0.72;
+  border-style: dashed;
+}
+
+.province.pending .loyalty-bar > span {
+  background: var(--ink-mute);
+}
+
 .province .prov-name {
   font-size: 14px;
   font-weight: bold;
