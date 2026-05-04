@@ -37,7 +37,7 @@ python -m court.emperor --ticks 1
 期望输出（数字会随阶段变化）：
 
 ```text
-[emperor] 15 郡入册：[bash, brainfuck, c, glsl, go, ...]
+[emperor] 20 郡入册：[bash, brainfuck, c, csv, glsl, go, ...]
 [tick   nn/year   k] 5/5 ok, 320 ms
 [emperor] state 写回 empire/state.json
 ```

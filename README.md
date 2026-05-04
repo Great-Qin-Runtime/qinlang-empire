@@ -98,7 +98,7 @@ qinlang-empire/
 ├── empire/
 │   ├── state.json        帝国当前状态（cron 每 tick 改写）
 │   └── history.jsonl     完整 tick 报告流
-├── provinces/            郡（V0.2 已 15 郡入册）
+├── provinces/            郡（V0.5 已 20 郡入册）
 │   ├── python/      · 白蛇郡 · producer    · 文书
 │   ├── c/           · 始源郡 · producer    · 工具
 │   ├── rust/        · 锈铁郡 · producer    · 兵器
@@ -112,6 +112,11 @@ qinlang-empire/
 │   ├── jq/          · 角铲郡 · transformer · 典籍
 │   ├── prolog/      · 律令郡 · service     · 律令
 │   ├── glsl/        · 着色郡 · specialist  · 天象
+│   ├── json/        · 度量郡 · service     · 户籍
+│   ├── toml/        · 表头郡 · producer    · 文书
+│   ├── xml/         · 尖括郡 · service     · 典籍
+│   ├── csv/         · 列点郡 · service     · 钱粮
+│   ├── ini/         · 节段郡 · producer    · 工具
 │   ├── brainfuck/   · 奇技郡 · ceremonial  · 烟火
 │   └── whitespace/  · 无字郡 · ceremonial  · 静默
 ├── tools/
@@ -163,7 +168,7 @@ qinlang-empire/
 - **自动运行**——CI cron + 静态网页 = 没有服务器，没有运维，只有继续跑；
 - **永远是秦**——这不是模拟器，是叙事。你看到的是同一个帝国，在长。
 
-## 七、当前状态（V0.4 完成 · 车同轨）
+## 七、当前状态（V0.5 进行中 · 帝国舆图）
 
 | 组件 | 状态 |
 |---|---|
@@ -186,6 +191,7 @@ qinlang-empire/
 | `manifest.permissions` hard preflight（fs/subprocess） | ✅ V0.4 |
 | CI 矩阵：Linux / macOS / Windows | ✅ V0.4 |
 | Docker / GHCR 基础镜像构建 | ✅ V0.4 |
+| 配置 / 数据声明五郡（JSON / TOML / XML / CSV / INI） | ✅ V0.5 |
 | GitHub Pages 部署 | ⚠️ 需在仓库 Settings 中启用 Pages |
 | docker runner / 运行时隔离 | 🚧 V0.5+ |
 | Nix flake 支持 | 🚧 P1 |

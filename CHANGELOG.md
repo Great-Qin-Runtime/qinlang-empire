@@ -3,6 +3,14 @@
 > 大事记录于此，分版而书。  
 > 格式参考 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/) 与 [SemVer](https://semver.org/lang/zh-CN/)。
 
+## [Unreleased]
+
+### Added
+
+- **配置 / 数据声明五郡**：新增 JSON（度量郡）、TOML（表头郡）、XML（尖括郡）、CSV（列点郡）、INI（节段郡）五个 runnable province，统一使用 Python 标准库 wrapper 执行对应数据源，扩展到 20 个 manifest。
+
+---
+
 ## [v0.4.0] · 2026-05-04 · 车同轨
 
 **主题**：chain mode · 单郡工具链 · hard permissions · 跨平台 CI / GHCR 镜像
@@ -136,6 +144,7 @@
 
 ---
 
+[Unreleased]: https://github.com/Great-Qin-Runtime/qinlang-empire/compare/v0.4.0...main
 [v0.4.0]: https://github.com/Great-Qin-Runtime/qinlang-empire/releases/tag/v0.4.0
 [v0.3.0]: https://github.com/Great-Qin-Runtime/qinlang-empire/releases/tag/v0.3.0
 [v0.2.0]: https://github.com/Great-Qin-Runtime/qinlang-empire/tree/main

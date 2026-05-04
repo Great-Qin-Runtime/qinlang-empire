@@ -1,7 +1,7 @@
 {
   "$schema": "../protocol/manifest.schema.json",
   "version": 1,
-  "comment": "Seed 数据：V0.1 第一批 20 种语言。完整登记表暂时直接维护在本文件。",
+  "comment": "Seed 数据：核心语言与当前可运行扩展。完整登记表暂时直接维护在本文件。",
   "languages": [
     {
       "id": "python",
@@ -148,6 +148,51 @@
       "runner": "query",
       "status": "runnable",
       "tags": ["mainstream", "query"]
+    },
+    {
+      "id": "json",
+      "name": "JSON",
+      "province": "度量郡",
+      "category": "config-data-language",
+      "runner": "query",
+      "status": "runnable",
+      "tags": ["config", "data"]
+    },
+    {
+      "id": "toml",
+      "name": "TOML",
+      "province": "表头郡",
+      "category": "config-data-language",
+      "runner": "query",
+      "status": "runnable",
+      "tags": ["config", "data"]
+    },
+    {
+      "id": "xml",
+      "name": "XML",
+      "province": "尖括郡",
+      "category": "config-data-language",
+      "runner": "query",
+      "status": "runnable",
+      "tags": ["config", "data"]
+    },
+    {
+      "id": "csv",
+      "name": "CSV",
+      "province": "列点郡",
+      "category": "config-data-language",
+      "runner": "query",
+      "status": "runnable",
+      "tags": ["config", "data"]
+    },
+    {
+      "id": "ini",
+      "name": "INI",
+      "province": "节段郡",
+      "category": "config-data-language",
+      "runner": "query",
+      "status": "runnable",
+      "tags": ["config", "data"]
     },
     {
       "id": "r",

@@ -1,0 +1,5 @@
+[province]
+resource = "wen-shu"
+base = 3
+cycle = 2
+edict = "表头郡按 TOML 章表修成文书"

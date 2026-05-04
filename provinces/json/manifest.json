@@ -1,0 +1,31 @@
+{
+  "schema_version": 2,
+  "id": "json",
+  "name": "JSON",
+  "province": "度量郡",
+  "category": "config-data-language",
+  "runner": "query",
+  "source": "main.json",
+  "build": null,
+  "run": "python run.py",
+  "input": "stdin-json",
+  "output": "stdout-json",
+  "timeout_ms": 3000,
+  "role": "service",
+  "trigger": "periodic",
+  "period_ticks": 1,
+  "service_type": "measure-registry",
+  "produces": [
+    "hu-ji"
+  ],
+  "cooldown_ticks": 1,
+  "tick_weight": 0.8,
+  "status": "runnable",
+  "tags": [
+    "config",
+    "data",
+    "json"
+  ],
+  "description": "度量郡，以 JSON 定制量衡簿，校准各郡户籍尺度。",
+  "permissions": {}
+}
