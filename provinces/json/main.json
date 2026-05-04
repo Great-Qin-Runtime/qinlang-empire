@@ -1,0 +1,7 @@
+{
+  "registry": "measure-ledger",
+  "resource": "hu-ji",
+  "base": 2,
+  "cycle": 3,
+  "edict": "度量郡按 JSON 户册校准民籍。"
+}

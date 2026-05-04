@@ -1,0 +1,29 @@
+{
+  "schema_version": 2,
+  "id": "toml",
+  "name": "TOML",
+  "province": "表头郡",
+  "category": "config-data-language",
+  "runner": "query",
+  "source": "main.toml",
+  "build": null,
+  "run": "python run.py",
+  "input": "stdin-json",
+  "output": "stdout-json",
+  "timeout_ms": 3000,
+  "role": "producer",
+  "produces": [
+    "wen-shu"
+  ],
+  "produce_rate": 3,
+  "cooldown_ticks": 1,
+  "tick_weight": 0.8,
+  "status": "runnable",
+  "tags": [
+    "config",
+    "data",
+    "toml"
+  ],
+  "description": "表头郡，以 TOML 分章列项，产出规整文书。",
+  "permissions": {}
+}

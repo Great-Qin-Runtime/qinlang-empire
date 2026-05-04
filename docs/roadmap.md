@@ -13,7 +13,7 @@ V0.5 帝国舆图: 可视化与报告（4 周）         🚧
 V1.0 六合一统: 100+ 语言、稳定协议、可贡献社区
 ```
 
-时间为建议节奏，实际取决于贡献者数量。当前状态：**V0.4 已完成（chain mode、单郡 wrapper、hard permissions preflight、跨平台 CI、GHCR 基础镜像全部到位），V0.5 进入规划**。
+时间为建议节奏，实际取决于贡献者数量。当前状态：**V0.4 已完成（chain mode、单郡 wrapper、hard permissions preflight、跨平台 CI、GHCR 基础镜像全部到位），V0.5 已启动**。
 
 ---
 
@@ -113,8 +113,9 @@ python -m court.emperor --ticks 1
 
 里程碑事件：**Dashboard 可视化上线**
 
-| 任务 | 优先级 |
+| 任务 | 优先级 / 状态 |
 |---|---|
+| 配置 / 数据声明五郡（JSON / TOML / XML / CSV / INI） | ✅ |
 | Dashboard 首页（语言计数 / 类型饼图） | P0 |
 | 语言详情页 | P0 |
 | 战报页（最近一次运行） | P0 |

@@ -1,0 +1,29 @@
+{
+  "schema_version": 2,
+  "id": "ini",
+  "name": "INI",
+  "province": "节段郡",
+  "category": "config-data-language",
+  "runner": "query",
+  "source": "main.ini",
+  "build": null,
+  "run": "python run.py",
+  "input": "stdin-json",
+  "output": "stdout-json",
+  "timeout_ms": 3000,
+  "role": "producer",
+  "produces": [
+    "gong-ju"
+  ],
+  "produce_rate": 2,
+  "cooldown_ticks": 1,
+  "tick_weight": 0.7,
+  "status": "runnable",
+  "tags": [
+    "config",
+    "data",
+    "ini"
+  ],
+  "description": "节段郡，以 INI 节段整理工坊器具。",
+  "permissions": {}
+}
