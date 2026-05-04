@@ -105,9 +105,9 @@ RFC（律令议案）用于所有会影响长期契约的设计变更。V0.3 起
 
 ## 8. 镜像与依赖
 
-1. Docker 镜像（待 V0.4 落地）统一发布到 `ghcr.io/Great-Qin-Runtime/qinlang-<id>` 或后续 RFC 指定命名空间；
+1. Docker 镜像统一发布到 `ghcr.io/great-qin-runtime/qinlang-<id>` 或后续 RFC 指定命名空间；
 2. 镜像必须基于 LTS 基础镜像，避免 `latest` 标签；
-3. 镜像构建脚本必须在仓库内可见（`tools/docker/<id>/Dockerfile`，目录尚未建立）；
+3. 镜像构建脚本必须在仓库内可见（基础镜像使用根 `Dockerfile`；分郡镜像可使用 `tools/docker/<id>/Dockerfile`）；
 4. 不允许在 `manifest.json` 中引用未发布的私人镜像。
 
-> ⚠️ 当前 V0.4 启动阶段尚未引入 docker runner；所有 docker 相关条款仍需 RFC/实现 PR 落地。
+> V0.4 先落地基础镜像构建与 GHCR 发布；docker runner / 运行时隔离仍需后续 RFC/实现 PR。
