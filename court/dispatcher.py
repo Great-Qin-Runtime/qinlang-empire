@@ -36,6 +36,13 @@ def run_province(manifest: Dict[str, Any], dispatch: Dict[str, Any]) -> Dict[str
     stdin_data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
 
     perm_events = sandbox.permission_warnings(manifest)
+    perm_error = sandbox.hard_permission_error(manifest)
+    if perm_error is not None:
+        return _failure(
+            manifest, dispatch, status="permission-denied",
+            code=perm_error["code"], message=perm_error["message"],
+            extra_events=perm_events,
+        )
     subprocess_env = sandbox.build_subprocess_env(manifest)
 
     try:

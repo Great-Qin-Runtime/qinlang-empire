@@ -12,6 +12,8 @@ V0.3 仅做**环境变量层**约束：
 from __future__ import annotations
 
 import os
+import re
+from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 
@@ -43,6 +45,15 @@ _NETWORK_BLOCK_ENV = {
     "no_proxy":    "",
 }
 
+_SHELL_ORCHESTRATION_RE = re.compile(
+    r"(\|\||&&|[;|`]|<<?|>>?|\$\(|\b(?:sh|bash|cmd|powershell|pwsh)\s+[-/]c\b)",
+    re.IGNORECASE,
+)
+_SUSPICIOUS_RUN_RE = re.compile(
+    r"(\brm\s+-rf\b|\brmdir\s+/s\b|\bdel\s+/[fsq]\b|\bcurl\b|\bwget\b)",
+    re.IGNORECASE,
+)
+
 
 def has_permissions_declaration(manifest: Dict[str, Any]) -> bool:
     """manifest 是否显式声明 permissions 字段（包括空 dict {}）。"""
@@ -59,6 +70,30 @@ def network_allowed(perms: Dict[str, Any]) -> bool:
     """permissions.network 非空数组才视为放开。"""
     net = perms.get("network")
     return isinstance(net, list) and len(net) > 0
+
+
+def subprocess_allowed(perms: Dict[str, Any]) -> bool:
+    return perms.get("subprocess") is True
+
+
+def hard_permission_error(manifest: Dict[str, Any]) -> Optional[Dict[str, str]]:
+    perms = get_permissions(manifest)
+    run_cmd = str(manifest.get("run", ""))
+    if _SUSPICIOUS_RUN_RE.search(run_cmd):
+        return {
+            "code": "E0603",
+            "message": f"suspicious run command denied: {run_cmd}",
+        }
+    if not subprocess_allowed(perms) and _SHELL_ORCHESTRATION_RE.search(run_cmd):
+        return {
+            "code": "E0605",
+            "message": "manifest.permissions.subprocess must be true for shell orchestration",
+        }
+    for key, code in (("fs_read", "E0602"), ("fs_write", "E0601")):
+        error = _validate_path_acl(manifest, key)
+        if error is not None:
+            return {"code": code, "message": error}
+    return None
 
 
 def build_subprocess_env(manifest: Dict[str, Any],
@@ -85,6 +120,30 @@ def build_subprocess_env(manifest: Dict[str, Any],
         env.update(_NETWORK_BLOCK_ENV)
 
     return env
+
+
+def _validate_path_acl(manifest: Dict[str, Any], key: str) -> Optional[str]:
+    perms = get_permissions(manifest)
+    entries = perms.get(key)
+    if entries is None:
+        return None
+    if not isinstance(entries, list):
+        return f"manifest.permissions.{key} must be a list"
+    cwd_value = manifest.get("__cwd")
+    if not cwd_value:
+        return None
+    cwd = Path(str(cwd_value)).resolve()
+    for entry in entries:
+        raw = str(entry)
+        if not raw or "\x00" in raw:
+            return f"manifest.permissions.{key} contains an invalid path"
+        path = Path(raw)
+        if path.is_absolute():
+            return f"manifest.permissions.{key} path must be relative: {raw}"
+        resolved = (cwd / path).resolve()
+        if resolved != cwd and cwd not in resolved.parents:
+            return f"manifest.permissions.{key} escapes province directory: {raw}"
+    return None
 
 
 def permission_warnings(manifest: Dict[str, Any]) -> List[Dict[str, Any]]:

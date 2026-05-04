@@ -84,3 +84,42 @@ def test_get_permissions_handles_missing_or_invalid():
     assert sandbox.get_permissions({"permissions": None}) == {}
     assert sandbox.get_permissions({"permissions": "bad"}) == {}
     assert sandbox.get_permissions({"permissions": {"network": []}}) == {"network": []}
+
+
+def test_hard_permission_denies_suspicious_run_command():
+    manifest = {"id": "demo", "run": "rm -rf /", "permissions": {"subprocess": True}}
+    err = sandbox.hard_permission_error(manifest)
+    assert err["code"] == "E0603"
+
+
+def test_hard_permission_denies_shell_orchestration_without_subprocess():
+    manifest = {"id": "demo", "run": "python a.py && python b.py", "permissions": {}}
+    err = sandbox.hard_permission_error(manifest)
+    assert err["code"] == "E0605"
+
+
+def test_hard_permission_allows_shell_orchestration_with_subprocess():
+    manifest = {"id": "demo", "run": "python a.py && python b.py", "permissions": {"subprocess": True}}
+    assert sandbox.hard_permission_error(manifest) is None
+
+
+def test_hard_permission_denies_fs_acl_escape(tmp_path):
+    manifest = {
+        "id": "demo",
+        "run": "python main.py",
+        "__cwd": str(tmp_path),
+        "permissions": {"fs_read": ["../secret.txt"]},
+    }
+    err = sandbox.hard_permission_error(manifest)
+    assert err["code"] == "E0602"
+
+
+def test_hard_permission_denies_absolute_fs_acl(tmp_path):
+    manifest = {
+        "id": "demo",
+        "run": "python main.py",
+        "__cwd": str(tmp_path),
+        "permissions": {"fs_write": [str(tmp_path / "out.txt")]},
+    }
+    err = sandbox.hard_permission_error(manifest)
+    assert err["code"] == "E0601"

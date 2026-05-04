@@ -204,3 +204,19 @@ def test_dispatcher_reports_empty_stdout(tmp_path):
     result = dispatcher.run_province(manifest, _dispatch())
     assert result["ok"] is False
     assert result["error"]["code"] == "E0009"
+
+
+def test_dispatcher_denies_hard_permission_before_running(tmp_path):
+    marker = tmp_path / "marker.txt"
+    manifest = _make_manifest(tmp_path, f"""
+        from pathlib import Path
+        Path({str(marker)!r}).write_text("executed", encoding="utf-8")
+        print({_ok_payload()!r})
+    """)
+    manifest["run"] = f"{manifest['run']} && echo should-not-run"
+    manifest["permissions"] = {}
+    result = dispatcher.run_province(manifest, _dispatch())
+    assert result["ok"] is False
+    assert result["__status"] == "permission-denied"
+    assert result["error"]["code"] == "E0605"
+    assert not marker.exists()

@@ -136,6 +136,7 @@
 | E0602 | UNAUTHORIZED_FS_READ | 未授权的文件系统读取 |
 | E0603 | SUSPICIOUS_RUN_COMMAND | run 命令包含可疑模式（rm -rf 等） |
 | E0604 | EXEC_OUTSIDE_PROVINCE | 子进程试图执行 province 外文件 |
+| E0605 | UNAUTHORIZED_SUBPROCESS | 未声明 `permissions.subprocess=true` 却使用 shell 编排 / 二级进程模式 |
 
 ### Docker 类（E0700-E0799）
 
