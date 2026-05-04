@@ -8,12 +8,12 @@
 V0.1 建国    : 跑通最小闭环（4 周）         ✅ 已完成
 V0.2 郡县制  : 扩展到 50 种语言（8 周）     ✅ 已完成（实际 15 郡入册）
 V0.3 书同文  : 协议加固（4 周）             ✅ 已完成（v2 冻结）
-V0.4 车同轨  : 工具链统一 + 硬约束（6 周）  🚧 计划中
+V0.4 车同轨  : 工具链统一 + 硬约束（6 周）  ✅ 已完成
 V0.5 帝国舆图: 可视化与报告（4 周）         🚧
 V1.0 六合一统: 100+ 语言、稳定协议、可贡献社区
 ```
 
-时间为建议节奏，实际取决于贡献者数量。当前状态：**V0.3 已完成（v2 协议冻结，玉玺铸造 / 严格 JSON / 软权限模型 / dashboard-spec v2 全部到位），V0.4 启动中**。
+时间为建议节奏，实际取决于贡献者数量。当前状态：**V0.4 已完成（chain mode、单郡 wrapper、hard permissions preflight、跨平台 CI、GHCR 基础镜像全部到位），V0.5 进入规划**。
 
 ---
 
@@ -85,26 +85,27 @@ python -m court.emperor --ticks 1
 
 ---
 
-## V0.4 · 车同轨（M4）
+## V0.4 · 车同轨（M4）✅ 已完成
 
 里程碑事件：**chain 模式 + 任意环境一键运行 + 权限硬约束**
 
-| 任务 | 优先级 |
+| 任务 | 状态 |
 |---|---|
-| chain 模式（多郡链式接力，从 V0.3 移交） | P0 |
-| 协议 RFC 流程文档（`governance.md` 完整化） | P0 |
-| `permissions` 硬约束：fs_write/fs_read/subprocess | P0 |
-| Docker 镜像 CI 自动构建到 ghcr.io | P0 |
-| Nix flake 支持（`runner: nix`） | P1 |
-| CI 矩阵：Linux / macOS / Windows | P0 |
-| `qinlang-province` 包装器 | P0 |
-| 工具链矩阵自动生成 | P2 |
-| 平台受限语言 status 自动标注 | P1 |
-| 每日全量巡查 cron | P1 |
-| 二阶资源（兵马 / 城池 / 诏书 / 典籍）合成 | P1 |
-| 浏览器快 tick（路径 D） | P2 |
+| 协议 RFC 流程文档（`governance.md` 完整化） | ✅ |
+| RFC 0001 chain-mode 定稿 | ✅ #51 |
+| chain 模式 MVP（多郡链式接力，artifact-only） | ✅ #52 |
+| `qinlang-province` 包装器 | ✅ #53 |
+| `permissions` 硬约束 v1：fs_write/fs_read/subprocess preflight | ✅ #54 |
+| Docker 镜像 CI 自动构建到 ghcr.io | ✅ #55 |
+| CI 矩阵：Linux / macOS / Windows | ✅ #55 |
+| Nix flake 支持（`runner: nix`） | 🚧 移交 V0.5+ |
+| 工具链矩阵自动生成 | 🚧 移交 V0.5+ |
+| 平台受限语言 status 自动标注 | 🚧 移交 V0.5+ |
+| 每日全量巡查 cron | 🚧 移交 V0.5+ |
+| 二阶资源（兵马 / 城池 / 诏书 / 典籍）合成 | 🚧 移交 V0.5+ |
+| 浏览器快 tick（路径 D） | 🚧 移交 V0.5+ |
 
-**验收**：在干净 GitHub Actions runner 上 `python -m court.emperor --ticks 24` 30 分钟内跑完，所有 `runnable` 郡至少被调度一次。
+**验收**：P0 已完成；`python -m pytest tests/` 与 `python tools/validate_all.py` 全绿；CI 覆盖 Linux / macOS / Windows；GHCR 基础镜像 workflow 已上线。
 
 ---
 

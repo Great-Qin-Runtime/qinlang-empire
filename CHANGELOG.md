@@ -3,6 +3,57 @@
 > 大事记录于此，分版而书。  
 > 格式参考 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/) 与 [SemVer](https://semver.org/lang/zh-CN/)。
 
+## [v0.4.0] · 2026-05-04 · 车同轨
+
+**主题**：chain mode · 单郡工具链 · hard permissions · 跨平台 CI / GHCR 镜像
+
+> 本次发布将 V0.3 冻结后的协议推进到“可规模化运行”：朝廷可编排多郡 chain ceremony，贡献者可用统一 wrapper 本地验证单郡，`manifest.permissions` 进入 V0.4 hard preflight，CI 覆盖 Linux / macOS / Windows，并自动构建 GHCR 基础镜像。
+
+### Added
+
+- **RFC 0001 Chain Mode**：新增 `docs/rfcs/0001-chain-mode.md`，定义 court-owned、artifact-only、多郡接力模式，明确 chain step 不合并 delta、不修改 province state。(#51)
+- **`court/chain.py`**：实现 chain mode MVP。支持 deterministic `chain_id`、fail-soft step status、`empire/chains/<chain_id>.json` artifact、chain event 写入 state events、`max_steps` / elapsed limit。(#52)
+- **`court.emperor --chain`**：可从 emperor CLI 直接触发 chain ceremony，支持 title 与 payload。
+- **`court/province.py` / `qinlang-province.py`**：新增单郡 wrapper。支持 `validate` / `dry-run` / `run`；`run` 默认只读，只有 `--commit` 才写回 `state.json` 与 `history.jsonl`。(#53)
+- **V0.4 hard permissions preflight**：`sandbox.hard_permission_error()` 在 dispatch 前拒绝危险命令、未授权 shell 编排、越界 fs ACL。(#54)
+- **错误码**：新增 / 落地 `E0601`、`E0602`、`E0603`、`E0605` 对应 hard permission deny。
+- **CI OS matrix**：`validate.yml` 覆盖 `ubuntu-latest` / `macos-latest` / `windows-latest`，全平台运行 pytest + 静态 `validate_all`，Ubuntu 继续跑完整 dry-run toolchain。(#55)
+- **Docker / GHCR 基础镜像**：新增根 `Dockerfile`、`.dockerignore`、`docker.yml`，PR 构建 smoke test，main push 发布 `ghcr.io/great-qin-runtime/qinlang-empire`。(#55)
+
+### Changed
+
+- **`manifest.permissions` 语义**：`fs_read` / `fs_write` 从软记录推进为静态 ACL 越界阻断；`subprocess` 现在控制 shell 编排 / 二级进程模式。
+- **`docs/security-permissions.md`**：更新为 V0.4 hard permissions v1 当前行为，并将运行时 FS ACL、主机名级 network ACL、OS 级 fork 阻断延后到 V0.5+ 容器化阶段。
+- **`docs/protocol/manifest.schema.json`**：更新 permissions 字段描述，明确 V0.4 preflight。
+- **`docs/quickstart.md` / `docs/contribution-guide.md`**：加入 `python -m court.province` 本地验证路径。
+- **`docs/governance.md`**：补充 RFC / release / GHCR 镜像治理，统一 lowercase GHCR 命名空间。
+- **`.gitignore`**：忽略 runtime chain artifacts：`empire/chains/*.json`。
+
+### Tests / CI
+
+- 新增 `tests/test_chain.py` 覆盖 chain artifact、fail-soft、dispatch context、delta 不合并、province state 不改写等行为。
+- 新增 `tests/test_province_wrapper.py` 覆盖 wrapper validate / dry-run / read-only run / CLI JSON 输出。
+- 扩展 `tests/test_sandbox.py` 与 `tests/test_dispatcher.py` 覆盖 hard permission deny 与 preflight 不执行郡代码。
+- V0.4 收尾时本地验证：`python -m pytest tests/ -q` 57 passed；`python tools/validate_all.py` 15 manifests ok。
+
+### Migration / Compatibility
+
+- 现有 v2 manifest 仍兼容；但 `run` 字段若使用 `&&` / `||` / 管道 / 重定向 / shell `-c` 等 shell 编排，需要显式声明 `"permissions": { "subprocess": true }`。
+- `permissions.fs_read` / `permissions.fs_write` 中只能填 province 内相对路径；绝对路径、空路径、NUL、`..` 越界会在 dispatch 前被拒绝。
+- chain mode 是 artifact-only ceremonial mode，不会把 step delta merge 到 `empire/state.json`。
+
+### Issue / PR 索引
+
+| Issue | PR | 主题 |
+|---|---|---|
+| #51 | #56 | RFC 0001 chain-mode 定稿 |
+| #52 | #56 | chain 模式 MVP |
+| #53 | #57 | `qinlang-province` 包装器 |
+| #54 | #58 | permissions 硬约束 v1 |
+| #55 | #59 | Docker / CI matrix 基础 |
+
+---
+
 ## [v0.3.0] · 2026-04-28 · 书同文
 
 **主题**：v2 协议冻结 · 玉玺廊上线 · dashboard-spec 重写
@@ -85,6 +136,7 @@
 
 ---
 
+[v0.4.0]: https://github.com/Great-Qin-Runtime/qinlang-empire/releases/tag/v0.4.0
 [v0.3.0]: https://github.com/Great-Qin-Runtime/qinlang-empire/releases/tag/v0.3.0
 [v0.2.0]: https://github.com/Great-Qin-Runtime/qinlang-empire/tree/main
 [v0.1.0]: https://github.com/Great-Qin-Runtime/qinlang-empire/tree/main
