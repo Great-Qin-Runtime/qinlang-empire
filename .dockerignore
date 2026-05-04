@@ -1,0 +1,10 @@
+.git
+.github
+.venv
+__pycache__
+.pytest_cache
+*.pyc
+empire/chains/*.json
+empire/seals/*.svg
+node_modules
+.DS_Store
