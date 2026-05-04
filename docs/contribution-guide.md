@@ -42,7 +42,7 @@ pip install -r requirements.txt
 
 - [ ] 标题符合 [命名规范 §7](naming-convention.md)；
 - [ ] `pytest tests/ -q` 全绿；
-- [ ] 受影响的郡能本地通过 `python -m court.emperor --province <id> --ticks 1`；
+- [ ] 受影响的郡能本地通过 `python -m court.province validate <id>` 与 `python -m court.province dry-run <id>`；
 - [ ] 如改协议 / 新分类 / 新 runner，已附 RFC 链接；
 - [ ] `python tools/validate_all.py` 全绿（manifest schema + dry-run）；
 - [ ] 文档随代码同步更新（README / catalog / language-addition-guide）；
