@@ -6,6 +6,7 @@
  */
 
 const STATE_URL  = "../empire/state.json";
+const CATALOG_URL = "../docs/catalog/languages.catalog.seed.json";
 const REFRESH_MS = 30_000;
 
 const STAGE_NAMES = {
@@ -53,6 +54,14 @@ async function loadState() {
   return res.json();
 }
 
+async function loadCatalog() {
+  const url = `${CATALOG_URL}?ts=${Date.now()}`;
+  const res = await fetch(url, { cache: "no-store" });
+  if (!res.ok) return [];
+  const data = await res.json();
+  return (data.languages || []).filter(item => item.status === "runnable");
+}
+
 async function loadManifests() {
   // 我们没有列举接口；直接根据 state.provinces 的 keys 去 fetch 各 manifest。
   // 失败的 manifest 会被静默忽略，列表只用来做 dashboard 显示信息。
@@ -86,13 +95,13 @@ function escapeHtml(s) {
   }[c]));
 }
 
-function renderClock(state) {
+function renderClock(state, provinceCount) {
   bind("stageName", escapeHtml(STAGE_NAMES[state.stage] || state.stage));
   bind("year", state.year);
   bind("tick", state.tick);
   bind("season", escapeHtml(state.season || "—"));
   bind("weather", escapeHtml(state.weather || "—"));
-  bind("provinceCount", Object.keys(state.provinces || {}).length);
+  bind("provinceCount", provinceCount);
   const now = new Date();
   bind("updatedAt", `更新于 ${now.toLocaleTimeString("zh-Hans-CN")}`);
 }
@@ -116,7 +125,7 @@ function renderTreasury(state) {
   bind("treasuryList", items);
 }
 
-function renderProvinces(state, manifests) {
+function renderProvinces(state, manifests, ids) {
   const provinces = state.provinces || {};
   const recentlyActive = new Set();
   // 把"上一个 tick 出现的郡"标记为 active 高亮
@@ -124,7 +133,9 @@ function renderProvinces(state, manifests) {
     if (e.from_province) recentlyActive.add(e.from_province);
   }
 
-  const tiles = Object.entries(provinces).map(([id, ps]) => {
+  const renderIds = ids && ids.length ? ids : Object.keys(provinces);
+  const tiles = renderIds.map((id) => {
+    const ps = provinces[id] || {};
     const m = manifests[id] || {};
     const role = m.role || "producer";
     const provName = m.province || id;
@@ -134,10 +145,13 @@ function renderProvinces(state, manifests) {
     const cls = [
       "province",
       `role-${role}`,
+      provinces[id] ? "" : "pending",
       ps.quarantined ? "quarantined" : "",
       recentlyActive.has(id) ? "active" : "",
     ].filter(Boolean).join(" ");
-    const stat = ps.quarantined
+    const stat = !provinces[id]
+      ? "待诏"
+      : ps.quarantined
       ? "废"
       : `产 ${ps.produced || 0}　忠 ${loyalty}`;
     return `
@@ -211,13 +225,20 @@ function renderMilestones(state) {
 
 async function refresh() {
   try {
-    const state = await loadState();
-    const ids = Object.keys(state.provinces || {});
-    const manifests = await fetchManifestsFor(ids);
+    const [state, catalog] = await Promise.all([loadState(), loadCatalog()]);
+    const stateIds = Object.keys(state.provinces || {});
+    const catalogIds = catalog.map(item => item.id);
+    const fetchedManifests = await fetchManifestsFor(Array.from(new Set([...catalogIds, ...stateIds])));
+    const catalogManifests = Object.fromEntries(catalog.map(item => [item.id, item]));
+    const manifests = { ...catalogManifests, ...fetchedManifests };
+    const ids = Array.from(new Set([
+      ...Object.keys(fetchedManifests),
+      ...stateIds,
+    ])).sort();
 
-    renderClock(state);
+    renderClock(state, ids.length);
     renderTreasury(state);
-    renderProvinces(state, manifests);
+    renderProvinces(state, manifests, ids);
     renderEvents(state);
     renderMilestones(state);
     renderSeals(state);
