@@ -1,30 +1,30 @@
 {
   "schema_version": 1,
   "dynasty": "秦",
-  "tick": 2099,
+  "tick": 2100,
   "year": 87,
   "stage": "chun-qiu",
   "stage_progress": 0.858,
-  "season": "夏",
+  "season": "秋",
   "weather": "晴",
   "treasury": {
-    "wen-shu": 10109,
-    "gong-ju": 6471,
-    "qian-liang": 17021,
-    "jian-zhu": 699,
-    "hu-ji": 4199,
-    "dian-ji": 1045,
-    "yi-li": 4212,
-    "bing-qi": 9440,
+    "wen-shu": 10111,
+    "gong-ju": 6462,
+    "qian-liang": 17015,
+    "jian-zhu": 700,
+    "hu-ji": 4200,
+    "dian-ji": 1046,
+    "yi-li": 4214,
+    "bing-qi": 9445,
     "xue-wen": 6,
-    "cheng-chi": 417
+    "cheng-chi": 418
   },
   "provinces": {
     "python": {
       "level": 1,
       "loyalty": 200,
-      "last_tick": 2099,
-      "produced": 10471,
+      "last_tick": 2100,
+      "produced": 10477,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -32,8 +32,8 @@
     "c": {
       "level": 1,
       "loyalty": 200,
-      "last_tick": 2099,
-      "produced": 7337,
+      "last_tick": 2100,
+      "produced": 7339,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -41,8 +41,8 @@
     "sql": {
       "level": 1,
       "loyalty": 200,
-      "last_tick": 2099,
-      "produced": 4199,
+      "last_tick": 2100,
+      "produced": 4200,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -50,16 +50,16 @@
     "bash": {
       "level": 1,
       "loyalty": 200,
-      "last_tick": 2097,
-      "produced": 699,
-      "consumed": 5592,
+      "last_tick": 2100,
+      "produced": 700,
+      "consumed": 5600,
       "fail_streak": 0,
       "quarantined": false
     },
     "brainfuck": {
       "level": 1,
       "loyalty": 200,
-      "last_tick": 2098,
+      "last_tick": 2100,
       "produced": 0,
       "consumed": 0,
       "fail_streak": 0,
@@ -68,7 +68,7 @@
     "prolog": {
       "level": 1,
       "loyalty": 200,
-      "last_tick": 2099,
+      "last_tick": 2100,
       "produced": 0,
       "consumed": 0,
       "fail_streak": 0,
@@ -77,26 +77,26 @@
     "jq": {
       "level": 1,
       "loyalty": 200,
-      "last_tick": 2098,
-      "produced": 1045,
-      "consumed": 5225,
+      "last_tick": 2100,
+      "produced": 1046,
+      "consumed": 5230,
       "fail_streak": 0,
       "quarantined": false
     },
     "make": {
       "level": 1,
       "loyalty": 200,
-      "last_tick": 2095,
-      "produced": 417,
-      "consumed": 11676,
+      "last_tick": 2100,
+      "produced": 418,
+      "consumed": 11704,
       "fail_streak": 0,
       "quarantined": false
     },
     "go": {
       "level": 1,
       "loyalty": 200,
-      "last_tick": 2099,
-      "produced": 12437,
+      "last_tick": 2100,
+      "produced": 12444,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -113,8 +113,8 @@
     "html": {
       "level": 1,
       "loyalty": 200,
-      "last_tick": 2099,
-      "produced": 4180,
+      "last_tick": 2100,
+      "produced": 4182,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -122,8 +122,8 @@
     "rust": {
       "level": 1,
       "loyalty": 200,
-      "last_tick": 2099,
-      "produced": 9440,
+      "last_tick": 2100,
+      "produced": 9445,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -149,8 +149,8 @@
     "csv": {
       "level": 1,
       "loyalty": 200,
-      "last_tick": 2099,
-      "produced": 12924,
+      "last_tick": 2100,
+      "produced": 12931,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -158,8 +158,8 @@
     "toml": {
       "level": 1,
       "loyalty": 200,
-      "last_tick": 2099,
-      "produced": 6960,
+      "last_tick": 2100,
+      "produced": 6964,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -167,8 +167,8 @@
     "ini": {
       "level": 1,
       "loyalty": 200,
-      "last_tick": 2099,
-      "produced": 5965,
+      "last_tick": 2100,
+      "produced": 5967,
       "consumed": 0,
       "fail_streak": 0,
       "quarantined": false
@@ -184,6 +184,172 @@
     }
   },
   "events": [
+    {
+      "tick": 2100,
+      "year": 87,
+      "type": "ceremony",
+      "from_province": "brainfuck",
+      "text": "奇技郡焚奇香，街巷皆嗅，竟数日不散。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 2100,
+      "year": 87,
+      "type": "produce",
+      "from_province": "ini",
+      "text": "节段郡按 INI 条目整备工坊器具 2 件。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 2100,
+      "year": 87,
+      "type": "produce",
+      "from_province": "toml",
+      "text": "表头郡按 TOML 章表修成文书 4 卷。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 2100,
+      "year": 87,
+      "type": "produce",
+      "from_province": "rust",
+      "text": "锈铁郡 秋点甲胄，炉火映甲，献兵器 5 件。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 2100,
+      "year": 87,
+      "type": "produce",
+      "from_province": "python",
+      "text": "白蛇郡 秋稔登仓，天朗气清，献文书 6 卷。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 2100,
+      "year": 87,
+      "type": "produce",
+      "from_province": "html",
+      "text": "文骨郡 秋飨备物，献仪礼 2 章。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 2100,
+      "year": 87,
+      "type": "produce",
+      "from_province": "go",
+      "text": "御行郡 秋赋盈囷，驿道清明，献钱粮 7 石。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 2100,
+      "year": 87,
+      "type": "produce",
+      "from_province": "c",
+      "text": "始源郡 秋日 鼓风炼铁，铸工具 2 件。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 2100,
+      "year": 87,
+      "type": "transform",
+      "from_province": "jq",
+      "text": "角铲郡铲文书 5 卷，钞撮成典籍 1 编。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 2100,
+      "year": 87,
+      "type": "transform",
+      "from_province": "bash",
+      "text": "巴什郡兴土木 1 座，耗工具 5 件、文书 3 卷。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 2100,
+      "year": 87,
+      "type": "transform",
+      "from_province": "make",
+      "text": "工部郡按规筑城 1 座，役工具 8 件、钱粮 20 石。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 2100,
+      "year": 87,
+      "type": "service",
+      "from_province": "prolog",
+      "text": "律令郡今日无讼，律书一卷，束阁待召。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 2100,
+      "year": 87,
+      "type": "service",
+      "from_province": "csv",
+      "text": "列点郡按 CSV 仓表盘点，入库钱粮 7 石。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 2100,
+      "year": 87,
+      "type": "service",
+      "from_province": "sql",
+      "text": "簿录郡奉诏巡丁，新增 1 户，共 4 口。",
+      "severity": "info",
+      "artifact": null
+    },
+    {
+      "tick": 2099,
+      "year": 87,
+      "type": "unlock",
+      "from_province": "xml",
+      "text": "帝国 87 年，魏人仕秦，献「XML」之术。帝国从此设「尖括郡」，列于官署之列。",
+      "severity": "epic"
+    },
+    {
+      "tick": 2099,
+      "year": 87,
+      "type": "unlock",
+      "from_province": "toml",
+      "text": "帝国 87 年，齐人仕秦，献「TOML」之术。帝国从此设「表头郡」，列于工坊之列。",
+      "severity": "epic"
+    },
+    {
+      "tick": 2099,
+      "year": 87,
+      "type": "unlock",
+      "from_province": "json",
+      "text": "帝国 87 年，蜀人仕秦，献「JSON」之术。帝国从此设「度量郡」，列于官署之列。",
+      "severity": "epic"
+    },
+    {
+      "tick": 2099,
+      "year": 87,
+      "type": "unlock",
+      "from_province": "ini",
+      "text": "帝国 87 年，鲁人仕秦，献「INI」之术。帝国从此设「节段郡」，列于工坊之列。",
+      "severity": "epic"
+    },
+    {
+      "tick": 2099,
+      "year": 87,
+      "type": "unlock",
+      "from_province": "csv",
+      "text": "帝国 87 年，卫人仕秦，献「CSV」之术。帝国从此设「列点郡」，列于官署之列。",
+      "severity": "epic"
+    },
     {
       "tick": 2099,
       "year": 87,
@@ -1759,170 +1925,6 @@
       "from_province": "json",
       "text": "帝国 87 年，蜀人仕秦，献「JSON」之术。帝国从此设「度量郡」，列于官署之列。",
       "severity": "epic"
-    },
-    {
-      "tick": 2088,
-      "year": 87,
-      "type": "unlock",
-      "from_province": "ini",
-      "text": "帝国 87 年，鲁人仕秦，献「INI」之术。帝国从此设「节段郡」，列于工坊之列。",
-      "severity": "epic"
-    },
-    {
-      "tick": 2088,
-      "year": 87,
-      "type": "unlock",
-      "from_province": "csv",
-      "text": "帝国 87 年，卫人仕秦，献「CSV」之术。帝国从此设「列点郡」，列于官署之列。",
-      "severity": "epic"
-    },
-    {
-      "tick": 2088,
-      "year": 87,
-      "type": "produce",
-      "from_province": "ini",
-      "text": "节段郡按 INI 条目整备工坊器具 2 件。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 2088,
-      "year": 87,
-      "type": "produce",
-      "from_province": "toml",
-      "text": "表头郡按 TOML 章表修成文书 4 卷。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 2088,
-      "year": 87,
-      "type": "produce",
-      "from_province": "rust",
-      "text": "锈铁郡 春试新刃，炉火映甲，献兵器 5 件。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 2088,
-      "year": 87,
-      "type": "produce",
-      "from_province": "python",
-      "text": "白蛇郡 春耕之余，天朗气清，献文书 3 卷。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 2088,
-      "year": 87,
-      "type": "produce",
-      "from_province": "html",
-      "text": "文骨郡 春朝陈仪，献仪礼 2 章。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 2088,
-      "year": 87,
-      "type": "produce",
-      "from_province": "go",
-      "text": "御行郡 春耕粮丰，驿道清明，献钱粮 8 石。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 2088,
-      "year": 87,
-      "type": "produce",
-      "from_province": "c",
-      "text": "始源郡 春日 鼓风炼铁，铸工具 2 件。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 2088,
-      "year": 87,
-      "type": "transform",
-      "from_province": "jq",
-      "text": "角铲郡铲文书 5 卷，钞撮成典籍 1 编。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 2088,
-      "year": 87,
-      "type": "transform",
-      "from_province": "bash",
-      "text": "巴什郡兴土木 1 座，耗工具 5 件、文书 3 卷。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 2088,
-      "year": 87,
-      "type": "service",
-      "from_province": "prolog",
-      "text": "律令郡今日无讼，律书一卷，束阁待召。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 2088,
-      "year": 87,
-      "type": "service",
-      "from_province": "csv",
-      "text": "列点郡按 CSV 仓表盘点，入库钱粮 7 石。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 2088,
-      "year": 87,
-      "type": "service",
-      "from_province": "sql",
-      "text": "簿录郡奉诏巡丁，新增 1 户，共 4 口。",
-      "severity": "info",
-      "artifact": null
-    },
-    {
-      "tick": 2088,
-      "year": 87,
-      "type": "epoch",
-      "from_province": null,
-      "text": "帝国 87 年。",
-      "severity": "info"
-    },
-    {
-      "tick": 2087,
-      "year": 86,
-      "type": "unlock",
-      "from_province": "xml",
-      "text": "帝国 86 年，齐人仕秦，献「XML」之术。帝国从此设「尖括郡」，列于官署之列。",
-      "severity": "epic"
-    },
-    {
-      "tick": 2087,
-      "year": 86,
-      "type": "unlock",
-      "from_province": "toml",
-      "text": "帝国 86 年，蜀人仕秦，献「TOML」之术。帝国从此设「表头郡」，列于工坊之列。",
-      "severity": "epic"
-    },
-    {
-      "tick": 2087,
-      "year": 86,
-      "type": "unlock",
-      "from_province": "json",
-      "text": "帝国 86 年，鲁人仕秦，献「JSON」之术。帝国从此设「度量郡」，列于官署之列。",
-      "severity": "epic"
-    },
-    {
-      "tick": 2087,
-      "year": 86,
-      "type": "unlock",
-      "from_province": "ini",
-      "text": "帝国 86 年，卫人仕秦，献「INI」之术。帝国从此设「节段郡」，列于工坊之列。",
-      "severity": "epic"
     }
   ],
   "milestones": [
@@ -2016,7 +2018,7 @@
     }
   ],
   "stats": {
-    "population": 13634,
+    "population": 13638,
     "land": 1,
     "military": 0,
     "reputation": 0,
